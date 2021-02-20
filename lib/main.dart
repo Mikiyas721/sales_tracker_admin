@@ -1,6 +1,11 @@
+import 'package:admin_app/presentation/pages/current_status_page.dart';
+import 'package:admin_app/presentation/pages/fund_transactions_page.dart';
 import 'package:admin_app/presentation/pages/home_page.dart';
 import 'package:admin_app/presentation/pages/new_sales_person_page.dart';
+import 'package:admin_app/presentation/pages/sale_transactions_page.dart';
 import 'package:admin_app/presentation/pages/sales_people_page.dart';
+import 'package:admin_app/presentation/pages/sales_person_shops_page.dart';
+import 'package:admin_app/presentation/pages/sales_person_status_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -45,4 +50,9 @@ final routes = {
   '/': (BuildContext context)=> HomePage(),
   '/salesPeoplePage': (BuildContext context)=> SalesPeoplePage(),
   '/newSalesPersonPage': (BuildContext context)=> NewSalesPersonPage(),
+  '/salesPersonStatusPage': (BuildContext context)=> SalesPersonStatusPage(),
+  '/salesPersonShopsPage': (BuildContext context)=> SalesPersonShopsPage(),
+  '/saleTransactionsPage': (BuildContext context)=> SaleTransactionsPage(),
+  '/fundTransactionsPage': (BuildContext context)=> FundTransactionsPage(),
+  '/currentStatusPage': (BuildContext context)=> CurrentStatusPage(),
 };

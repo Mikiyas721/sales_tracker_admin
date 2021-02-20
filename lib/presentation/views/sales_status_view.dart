@@ -28,14 +28,6 @@ class SalesStatusView extends StatelessWidget {
               salesStatusViewModel.title,
               style: context.headline2,
             ),
-            Spacer(),
-            IconButton(icon: Icon(Icons.lock), onPressed: () {}),
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () {
-                Navigator.pushNamed(context, 'routeName');
-              },
-            )
           ],
         ),
         Padding(
