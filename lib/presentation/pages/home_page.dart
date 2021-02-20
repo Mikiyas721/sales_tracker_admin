@@ -38,18 +38,12 @@ class HomePage extends StatelessWidget {
                             BarData(x: 5, barHeight: 600, stackHeight: 450),
                           ])),
                   Align(
-                    alignment: Alignment.topCenter,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(icon: Icon(Icons.lock), onPressed: () {}),
-                        IconButton(
-                          icon: Icon(Icons.more_vert),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/currentStatusPage');
-                          },
-                        )
-                      ],
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_forward_ios_outlined),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/currentStatusPage');
+                      },
                     ),
                   ),
                 ],
