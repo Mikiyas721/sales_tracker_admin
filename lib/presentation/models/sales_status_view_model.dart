@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class SalesStatusViewModel extends Equatable {
-  final String title;
   final int activeButtonIndex;
   final String soldAmount;
   final String fundedAmount;
@@ -11,7 +10,6 @@ class SalesStatusViewModel extends Equatable {
   final double maxY;
 
   SalesStatusViewModel({
-    @required this.title,
     @required this.activeButtonIndex,
     @required this.soldAmount,
     @required this.fundedAmount,
@@ -21,7 +19,7 @@ class SalesStatusViewModel extends Equatable {
 
   @override
   List<Object> get props =>
-      [title, activeButtonIndex, soldAmount, fundedAmount, loanedAmount, bars];
+      [activeButtonIndex, soldAmount, fundedAmount, loanedAmount, bars];
 }
 
 double _getMax(List<BarData> bars) {
@@ -33,12 +31,14 @@ double _getMax(List<BarData> bars) {
 }
 
 class BarData extends Equatable {
-  final int x;
+  final int value;
+  final String label;
   final double barHeight;
   final double stackHeight;
 
   BarData({
-    @required this.x,
+    @required this.value,
+    @required this.label,
     @required this.barHeight,
     @required this.stackHeight,
   });
@@ -46,7 +46,8 @@ class BarData extends Equatable {
   @override
   // TODO: implement props
   List<Object> get props => [
-        x,
+        value,
+    label,
         barHeight,
         stackHeight,
       ];

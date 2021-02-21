@@ -25,7 +25,7 @@ class SalesStatusView extends StatelessWidget {
         Row(
           children: [
             Text(
-              salesStatusViewModel.title,
+              getTitle(salesStatusViewModel.activeButtonIndex),
               style: context.headline2,
             ),
           ],
@@ -102,27 +102,51 @@ class SalesStatusView extends StatelessWidget {
         ),
         60.vSpace,
         BarChart(BarChartData(
-            barGroups: salesStatusViewModel.bars
-                .map((BarData data) =>
-                    getBar(data.x, data.barHeight, data.stackHeight))
-                .toList(),
-            minY: 0,
-            maxY: salesStatusViewModel.maxY,
-            gridData: FlGridData(drawHorizontalLine: true, show: true),
-            borderData: FlBorderData(show: false)))
+          barGroups: salesStatusViewModel.bars
+              .map((BarData data) =>
+                  getBar(data.value, data.barHeight, data.stackHeight))
+              .toList(),
+          minY: 0,
+          maxY: salesStatusViewModel.maxY,
+          gridData: FlGridData(drawHorizontalLine: true, show: true),
+          borderData: FlBorderData(show: false),
+          titlesData: FlTitlesData(
+              show: true,
+              bottomTitles: SideTitles(
+                  showTitles: true,
+                  getTitles: (double value) {
+                    String label;
+                    for (BarData bar in salesStatusViewModel.bars) {
+                      if (value == bar.value) {
+                        label = bar.label;
+                        break;
+                      }
+                    }
+                    return label;
+                  })),
+        ))
       ],
     );
   }
 }
 
 BarChartGroupData getBar(int x, double barHeight, double stackHeight) {
-  return BarChartGroupData(x: x, barRods: [
-    BarChartRodData(
-      colors: [Colors.blue],
-      width: 20,
-      borderRadius: BorderRadius.all(Radius.circular(3)),
-      y: barHeight,
-      rodStackItems: [BarChartRodStackItem(0, stackHeight, Colors.red)],
-    )
-  ]);
+  return BarChartGroupData(
+    x: x,
+    barRods: [
+      BarChartRodData(
+        colors: [Colors.blue],
+        width: 20,
+        borderRadius: BorderRadius.all(Radius.circular(3)),
+        y: barHeight,
+        rodStackItems: [BarChartRodStackItem(0, stackHeight, Colors.red)],
+      )
+    ],
+  );
+}
+String getTitle(int activeButtonIndex){
+  if(activeButtonIndex==0) return 'Today';
+  else if(activeButtonIndex==1) return 'This Week';
+  else if(activeButtonIndex==2)return 'This Month';
+  else throw Exception('Unknown active button index. Tried to map to title');
 }
