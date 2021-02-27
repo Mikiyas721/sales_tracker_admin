@@ -1,3 +1,5 @@
+import 'package:admin_app/common/id_dto.dart';
+import 'package:admin_app/infrastructure/dto/shop_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../common/failure.dart';
@@ -12,8 +14,18 @@ class ShopRepoImpl extends IShopRepo {
   ShopRepoImpl(this.shopCrudDataSource);
 
   @override
-  Future<Either<Failure, List<Shop>>> fetchSalesPersonShops(String salesPersonId) {
-    // TODO: implement fetchSalesPersonShops
-    throw UnimplementedError();
+  Future<Either<Failure, List<Shop>>> fetchSalesPersonShops(
+      String salesPersonId) async {
+    final result = await shopCrudDataSource.find(options: {
+      "filter": {
+        "where": {
+          {"salesPersonId": "$salesPersonId"}
+        }
+      }
+    });
+    return result.either.fold(
+        (l) => left(SimpleFailure("Invalid Shop Data")),
+        (r) =>
+            right(IdDto.toDomainList<Shop, ShopDto>(r)));
   }
 }

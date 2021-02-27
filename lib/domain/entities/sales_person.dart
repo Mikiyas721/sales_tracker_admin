@@ -1,8 +1,9 @@
+import 'package:admin_app/common/entity.dart';
 import 'package:dartz/dartz.dart';
 import '../value_objects/name.dart';
 import '../value_objects/phone_number.dart';
 
-class SalesPerson {
+class SalesPerson extends Entity{
   final String id;
   final Name name;
   final PhoneNumber phoneNumber;

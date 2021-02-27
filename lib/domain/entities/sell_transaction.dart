@@ -1,10 +1,11 @@
+import 'package:admin_app/common/entity.dart';
 import 'package:dartz/dartz.dart';
 import '../entities/sales_person.dart';
 import '../entities/shop.dart';
 import '../value_objects/card_amount.dart';
 import '../value_objects/cash_amount.dart';
 
-class SaleTransaction {
+class SaleTransaction extends Entity {
   final String id;
   final String salesPersonId;
   final String shopId;

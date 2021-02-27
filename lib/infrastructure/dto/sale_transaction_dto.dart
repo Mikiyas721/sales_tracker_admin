@@ -9,7 +9,7 @@ import '../dto/shop_dto.dart';
 part 'sale_transaction_dto.g.dart';
 
 @JsonSerializable(nullable: false)
-class SaleTransactionDto extends IdDto implements TimeStampedDto {
+class SaleTransactionDto extends IdDto<SaleTransaction> implements TimeStampedDto {
   final String id;
   final String salesPersonId;
   final String shopId;
@@ -37,8 +37,10 @@ class SaleTransactionDto extends IdDto implements TimeStampedDto {
   factory SaleTransactionDto.fromJson(Map<String, dynamic> json) =>
       _$SaleTransactionDtoFromJson(json);
 
+
   Map<String, dynamic> toJson() => _$SaleTransactionDtoToJson(this);
 
+  @override
   Option<SaleTransaction> toDomain(){
     return SaleTransaction.create(
         id:id,
