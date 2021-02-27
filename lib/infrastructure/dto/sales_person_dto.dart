@@ -31,6 +31,12 @@ class SalesPersonDto extends IdDto implements TimeStampedDto {
 
   Map<String, dynamic> toJson() => _$SalesPersonDtoToJson(this);
 
+  static List<SalesPerson> toDomainList(List<SalesPersonDto> dto) {
+    return dto.map((e) {
+      var result = e.toDomain().getOrElse(() => null);
+      if(result!=null) return result;
+    }).toList();
+  }
   Option<SalesPerson> toDomain() {
     return SalesPerson.create(
         id:id,

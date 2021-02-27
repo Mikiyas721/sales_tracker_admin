@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'datasource/rest_datasource/rest_datasource.dart';
-import 'datasource/rest_datasource/rest_request.dart';
-import 'datasource/rest_datasource/rest_response.dart';
+import 'data_source/rest_datasource/rest_datasource.dart';
+import 'data_source/rest_datasource/rest_request.dart';
+import 'data_source/rest_datasource/rest_response.dart';
 
 @LazySingleton(as: RestDataSource)
 class DioRestDataSource implements RestDataSource {

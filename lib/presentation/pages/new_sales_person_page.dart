@@ -16,7 +16,7 @@ class NewSalesPersonPage extends StatelessWidget {
             children: [
               100.vSpace,
               Text(
-                'Enter\nshop\ninformation',
+                'Enter\nsalesperson\ninformation',
                 style: context.headline2,
               ),
               70.vSpace,
