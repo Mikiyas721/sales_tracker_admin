@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../value_objects/name.dart';
 import '../value_objects/phone_number.dart';
 
-class SalesPerson extends Entity{
+class Salesperson extends Entity {
   final String id;
   final Name name;
   final PhoneNumber phoneNumber;
@@ -11,7 +11,7 @@ class SalesPerson extends Entity{
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  SalesPerson._({
+  Salesperson._({
     this.id,
     this.name,
     this.phoneNumber,
@@ -20,7 +20,7 @@ class SalesPerson extends Entity{
     this.updatedAt,
   });
 
-  static Option<SalesPerson> create({
+  static Option<Salesperson> create({
     String id,
     String name,
     String phoneNumber,
@@ -37,16 +37,26 @@ class SalesPerson extends Entity{
       updatedAt,
     ].any((element) => element == null)) return none();
     final nameObject = Name.create(name).getOrElse(() => null);
-    final phoneNumberObject = PhoneNumber.create(phoneNumber).getOrElse(() => null);
+    final phoneNumberObject =
+        PhoneNumber.create(phoneNumber).getOrElse(() => null);
     if (nameObject == null) return none();
     if (phoneNumberObject == null) return none();
-    return some(SalesPerson._(
-        id:id,
-        name:nameObject,
-        phoneNumber:phoneNumberObject,
-        shops:shops,
-        createdAt:createdAt,
-        updatedAt:updatedAt,
+    return some(Salesperson._(
+      id: id,
+      name: nameObject,
+      phoneNumber: phoneNumberObject,
+      shops: shops,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    ));
+  }
+
+  static Option<Salesperson> createFromInputs(
+      {Name name, PhoneNumber phoneNumber}) {
+    if ([name, phoneNumber].any((element) => element == null)) return none();
+    return some(Salesperson._(
+      name: name,
+      phoneNumber: phoneNumber,
     ));
   }
 }

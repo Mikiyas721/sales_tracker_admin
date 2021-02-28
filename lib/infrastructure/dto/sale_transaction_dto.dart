@@ -15,7 +15,7 @@ class SaleTransactionDto extends IdDto<SaleTransaction> implements TimeStampedDt
   final String shopId;
 
   @JsonKey(nullable: true,includeIfNull: false) final ShopDto shop;
-  @JsonKey(nullable: true,includeIfNull: false) final SalesPersonDto salesPerson;
+  @JsonKey(nullable: true,includeIfNull: false) final SalespersonDto salesPerson;
 
   final int soldAmount;
   final double receivedAmount;

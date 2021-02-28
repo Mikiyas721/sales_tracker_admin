@@ -15,13 +15,13 @@ class _$FetchTotalStatsStateTearOff {
 
 // ignore: unused_element
   _FetchTotalStatsState call(
-      {List<Stats> detailedData,
+      {Stats stats,
       int activeTabIndex,
       Failure loadingError,
       bool isLoading,
       bool hasLoaded}) {
     return _FetchTotalStatsState(
-      detailedData: detailedData,
+      stats: stats,
       activeTabIndex: activeTabIndex,
       loadingError: loadingError,
       isLoading: isLoading,
@@ -36,7 +36,7 @@ const $FetchTotalStatsState = _$FetchTotalStatsStateTearOff();
 
 /// @nodoc
 mixin _$FetchTotalStatsState {
-  List<Stats> get detailedData;
+  Stats get stats;
   int get activeTabIndex;
   Failure get loadingError;
   bool get isLoading;
@@ -52,7 +52,7 @@ abstract class $FetchTotalStatsStateCopyWith<$Res> {
           $Res Function(FetchTotalStatsState) then) =
       _$FetchTotalStatsStateCopyWithImpl<$Res>;
   $Res call(
-      {List<Stats> detailedData,
+      {Stats stats,
       int activeTabIndex,
       Failure loadingError,
       bool isLoading,
@@ -70,16 +70,14 @@ class _$FetchTotalStatsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object detailedData = freezed,
+    Object stats = freezed,
     Object activeTabIndex = freezed,
     Object loadingError = freezed,
     Object isLoading = freezed,
     Object hasLoaded = freezed,
   }) {
     return _then(_value.copyWith(
-      detailedData: detailedData == freezed
-          ? _value.detailedData
-          : detailedData as List<Stats>,
+      stats: stats == freezed ? _value.stats : stats as Stats,
       activeTabIndex: activeTabIndex == freezed
           ? _value.activeTabIndex
           : activeTabIndex as int,
@@ -100,7 +98,7 @@ abstract class _$FetchTotalStatsStateCopyWith<$Res>
       __$FetchTotalStatsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<Stats> detailedData,
+      {Stats stats,
       int activeTabIndex,
       Failure loadingError,
       bool isLoading,
@@ -120,16 +118,14 @@ class __$FetchTotalStatsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object detailedData = freezed,
+    Object stats = freezed,
     Object activeTabIndex = freezed,
     Object loadingError = freezed,
     Object isLoading = freezed,
     Object hasLoaded = freezed,
   }) {
     return _then(_FetchTotalStatsState(
-      detailedData: detailedData == freezed
-          ? _value.detailedData
-          : detailedData as List<Stats>,
+      stats: stats == freezed ? _value.stats : stats as Stats,
       activeTabIndex: activeTabIndex == freezed
           ? _value.activeTabIndex
           : activeTabIndex as int,
@@ -145,14 +141,14 @@ class __$FetchTotalStatsStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FetchTotalStatsState implements _FetchTotalStatsState {
   const _$_FetchTotalStatsState(
-      {this.detailedData,
+      {this.stats,
       this.activeTabIndex,
       this.loadingError,
       this.isLoading,
       this.hasLoaded});
 
   @override
-  final List<Stats> detailedData;
+  final Stats stats;
   @override
   final int activeTabIndex;
   @override
@@ -164,16 +160,15 @@ class _$_FetchTotalStatsState implements _FetchTotalStatsState {
 
   @override
   String toString() {
-    return 'FetchTotalStatsState(detailedData: $detailedData, activeTabIndex: $activeTabIndex, loadingError: $loadingError, isLoading: $isLoading, hasLoaded: $hasLoaded)';
+    return 'FetchTotalStatsState(stats: $stats, activeTabIndex: $activeTabIndex, loadingError: $loadingError, isLoading: $isLoading, hasLoaded: $hasLoaded)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FetchTotalStatsState &&
-            (identical(other.detailedData, detailedData) ||
-                const DeepCollectionEquality()
-                    .equals(other.detailedData, detailedData)) &&
+            (identical(other.stats, stats) ||
+                const DeepCollectionEquality().equals(other.stats, stats)) &&
             (identical(other.activeTabIndex, activeTabIndex) ||
                 const DeepCollectionEquality()
                     .equals(other.activeTabIndex, activeTabIndex)) &&
@@ -191,7 +186,7 @@ class _$_FetchTotalStatsState implements _FetchTotalStatsState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(detailedData) ^
+      const DeepCollectionEquality().hash(stats) ^
       const DeepCollectionEquality().hash(activeTabIndex) ^
       const DeepCollectionEquality().hash(loadingError) ^
       const DeepCollectionEquality().hash(isLoading) ^
@@ -206,14 +201,14 @@ class _$_FetchTotalStatsState implements _FetchTotalStatsState {
 
 abstract class _FetchTotalStatsState implements FetchTotalStatsState {
   const factory _FetchTotalStatsState(
-      {List<Stats> detailedData,
+      {Stats stats,
       int activeTabIndex,
       Failure loadingError,
       bool isLoading,
       bool hasLoaded}) = _$_FetchTotalStatsState;
 
   @override
-  List<Stats> get detailedData;
+  Stats get stats;
   @override
   int get activeTabIndex;
   @override

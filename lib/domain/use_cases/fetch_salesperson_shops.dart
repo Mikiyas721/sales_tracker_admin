@@ -5,10 +5,10 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class FetchSalesPersonShops {
+class FetchSalespersonShops {
   final IShopRepo _iShopRepo;
 
-  FetchSalesPersonShops(this._iShopRepo);
+  FetchSalespersonShops(this._iShopRepo);
 
   Future<Either<Failure, List<Shop>>> execute(String salesPersonId) async {
     return _iShopRepo.fetchSalesPersonShops(salesPersonId);

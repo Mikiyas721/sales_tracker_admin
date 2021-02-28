@@ -1,9 +1,9 @@
-import 'package:admin_app/presentation/models/sales_person_view_model.dart';
+import 'package:admin_app/presentation/models/salesperson_view_model.dart';
 import 'package:admin_app/presentation/views/sales_person_view.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
-class SalesPeoplePage extends StatelessWidget {
+class SalespeoplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +16,7 @@ class SalesPeoplePage extends StatelessWidget {
             itemCount: 20,
             itemBuilder: (BuildContext context, int count) {
               return SalesPersonView(
-                salesPersonViewModel: SalesPersonViewModel(
+                salesPersonViewModel: SalespersonViewModel(
                     name: 'Melaku Belay',
                     phoneNumber: '+251 941135730',
                     totalLoan: '200',

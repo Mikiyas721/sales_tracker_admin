@@ -6,8 +6,8 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class FetchSalesPersonThisWeekStats extends FetchStats {
-  FetchSalesPersonThisWeekStats(iFundTransactionRepo, iSaleTransactionRepo)
+class FetchSalespersonThisWeekStats extends FetchStats {
+  FetchSalespersonThisWeekStats(iFundTransactionRepo, iSaleTransactionRepo)
       : super(iFundTransactionRepo, iSaleTransactionRepo);
 
   Future<Either<Failure, Stats>> execute(String salesPersonId) async {

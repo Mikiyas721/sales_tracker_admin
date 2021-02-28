@@ -6,17 +6,17 @@ import 'package:admin_app/infrastructure/dto/sales_person_dto.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class SalesPersonCrudDataSource
-    extends CrudDataSource<SalesPersonDto, RestResponseFailure> {}
+    extends CrudDataSource<SalespersonDto, RestResponseFailure> {}
 
 @LazySingleton(as: SalesPersonCrudDataSource)
 class SalesPersonLoopbackDataSource
-    extends LoopbackRestCrudDataSource<SalesPersonDto>
+    extends LoopbackRestCrudDataSource<SalespersonDto>
     implements SalesPersonCrudDataSource {
   SalesPersonLoopbackDataSource(RestDataSource restDataSource)
       : super(
           '/salesPeople',
           restDataSource,
           (salesPerson) => salesPerson.toJson(),
-          (map) => SalesPersonDto.fromJson(map),
+          (map) => SalespersonDto.fromJson(map),
         );
 }

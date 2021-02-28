@@ -1,7 +1,8 @@
+import 'package:admin_app/common/view_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class SalesStatusViewModel extends Equatable {
+class SalesStatusViewModel extends ViewModel {
   final int activeButtonIndex;
   final String soldAmount;
   final String fundedAmount;

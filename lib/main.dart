@@ -1,11 +1,11 @@
 import 'package:admin_app/presentation/pages/current_status_page.dart';
 import 'package:admin_app/presentation/pages/fund_transactions_page.dart';
 import 'package:admin_app/presentation/pages/home_page.dart';
-import 'package:admin_app/presentation/pages/new_sales_person_page.dart';
+import 'package:admin_app/presentation/pages/new_salesperson_page.dart';
 import 'package:admin_app/presentation/pages/sale_transactions_page.dart';
-import 'package:admin_app/presentation/pages/sales_people_page.dart';
-import 'package:admin_app/presentation/pages/sales_person_shops_page.dart';
-import 'package:admin_app/presentation/pages/sales_person_status_page.dart';
+import 'package:admin_app/presentation/pages/salespeople_page.dart';
+import 'package:admin_app/presentation/pages/salesperson_shops_page.dart';
+import 'package:admin_app/presentation/pages/salesperson_status_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sales Tracker',
+      title: 'Sales Tracker Admin',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryColor: Color(0xff5837B6),
@@ -48,10 +48,10 @@ class MyApp extends StatelessWidget {
 }
 final routes = {
   '/': (BuildContext context)=> HomePage(),
-  '/salesPeoplePage': (BuildContext context)=> SalesPeoplePage(),
+  '/salesPeoplePage': (BuildContext context)=> SalespeoplePage(),
   '/newSalesPersonPage': (BuildContext context)=> NewSalesPersonPage(),
-  '/salesPersonStatusPage': (BuildContext context)=> SalesPersonStatusPage(),
-  '/salesPersonShopsPage': (BuildContext context)=> SalesPersonShopsPage(),
+  '/salesPersonStatusPage': (BuildContext context)=> SalespersonStatusPage(),
+  '/salesPersonShopsPage': (BuildContext context)=> SalespersonShopsPage(),
   '/saleTransactionsPage': (BuildContext context)=> SaleTransactionsPage(),
   '/fundTransactionsPage': (BuildContext context)=> FundTransactionsPage(),
   '/currentStatusPage': (BuildContext context)=> CurrentStatusPage(),

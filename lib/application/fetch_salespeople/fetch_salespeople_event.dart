@@ -10,7 +10,7 @@ class SalesPeopleLoadingEvent extends FetchSalespeopleEvent {
 }
 
 class SalesPeopleLoadingSucceededEvent extends FetchSalespeopleEvent {
-  final List<SalesPerson> salesPerson;
+  final List<Salesperson> salesPerson;
 
   SalesPeopleLoadingSucceededEvent(this.salesPerson);
 

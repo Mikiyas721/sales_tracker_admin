@@ -1,9 +1,9 @@
-import 'package:admin_app/presentation/models/sales_person_view_model.dart';
+import 'package:admin_app/presentation/models/salesperson_view_model.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
 class SalesPersonView extends StatelessWidget{
-  final SalesPersonViewModel salesPersonViewModel;
+  final SalespersonViewModel salesPersonViewModel;
 
   const SalesPersonView({Key key, @required this.salesPersonViewModel}) : super(key: key);
   @override

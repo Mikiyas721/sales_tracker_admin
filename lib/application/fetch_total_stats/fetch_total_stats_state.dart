@@ -4,7 +4,7 @@ part of 'fetch_total_stats_bloc.dart';
 abstract class FetchTotalStatsState extends BlocState
     with _$FetchTotalStatsState {
   const factory FetchTotalStatsState({
-    List<Stats> detailedData,
+    Stats stats,
     int activeTabIndex,
     Failure loadingError,
     bool isLoading,
@@ -14,7 +14,7 @@ abstract class FetchTotalStatsState extends BlocState
   factory FetchTotalStatsState.initial()=>
       FetchTotalStatsState(hasLoaded: false,
           isLoading: false,
-          detailedData: null,
+          stats: null,
           loadingError: null,
           activeTabIndex: 0);
 }

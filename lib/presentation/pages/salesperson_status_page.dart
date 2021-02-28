@@ -1,10 +1,9 @@
 import 'package:admin_app/presentation/models/sales_status_view_model.dart';
 import 'package:admin_app/presentation/views/sales_status_view.dart';
-import 'package:admin_app/presentation/widgets/my_action_button.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
-class SalesPersonStatusPage extends StatelessWidget {
+class SalespersonStatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -23,7 +23,7 @@ FundTransactionDto _$FundTransactionDtoFromJson(Map<String, dynamic> json) {
         : ShopDto.fromJson(json['shop'] as Map<String, dynamic>),
     salesPerson: json['salesPerson'] == null
         ? null
-        : SalesPersonDto.fromJson(json['salesPerson'] as Map<String, dynamic>),
+        : SalespersonDto.fromJson(json['salesPerson'] as Map<String, dynamic>),
   );
 }
 

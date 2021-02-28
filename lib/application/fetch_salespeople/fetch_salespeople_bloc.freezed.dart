@@ -18,7 +18,7 @@ class _$FetchSalespeopleStateTearOff {
       {bool isLoading,
       bool hasLoaded,
       Failure salespeopleLoadingFailure,
-      List<SalesPerson> salespeople}) {
+      List<Salesperson> salespeople}) {
     return _FetchSalespeopleState(
       isLoading: isLoading,
       hasLoaded: hasLoaded,
@@ -37,7 +37,7 @@ mixin _$FetchSalespeopleState {
   bool get isLoading;
   bool get hasLoaded;
   Failure get salespeopleLoadingFailure;
-  List<SalesPerson> get salespeople;
+  List<Salesperson> get salespeople;
 
   @JsonKey(ignore: true)
   $FetchSalespeopleStateCopyWith<FetchSalespeopleState> get copyWith;
@@ -52,7 +52,7 @@ abstract class $FetchSalespeopleStateCopyWith<$Res> {
       {bool isLoading,
       bool hasLoaded,
       Failure salespeopleLoadingFailure,
-      List<SalesPerson> salespeople});
+      List<Salesperson> salespeople});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$FetchSalespeopleStateCopyWithImpl<$Res>
           : salespeopleLoadingFailure as Failure,
       salespeople: salespeople == freezed
           ? _value.salespeople
-          : salespeople as List<SalesPerson>,
+          : salespeople as List<Salesperson>,
     ));
   }
 }
@@ -95,7 +95,7 @@ abstract class _$FetchSalespeopleStateCopyWith<$Res>
       {bool isLoading,
       bool hasLoaded,
       Failure salespeopleLoadingFailure,
-      List<SalesPerson> salespeople});
+      List<Salesperson> salespeople});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$FetchSalespeopleStateCopyWithImpl<$Res>
           : salespeopleLoadingFailure as Failure,
       salespeople: salespeople == freezed
           ? _value.salespeople
-          : salespeople as List<SalesPerson>,
+          : salespeople as List<Salesperson>,
     ));
   }
 }
@@ -144,7 +144,7 @@ class _$_FetchSalespeopleState implements _FetchSalespeopleState {
   @override
   final Failure salespeopleLoadingFailure;
   @override
-  final List<SalesPerson> salespeople;
+  final List<Salesperson> salespeople;
 
   @override
   String toString() {
@@ -191,7 +191,7 @@ abstract class _FetchSalespeopleState implements FetchSalespeopleState {
       {bool isLoading,
       bool hasLoaded,
       Failure salespeopleLoadingFailure,
-      List<SalesPerson> salespeople}) = _$_FetchSalespeopleState;
+      List<Salesperson> salespeople}) = _$_FetchSalespeopleState;
 
   @override
   bool get isLoading;
@@ -200,7 +200,7 @@ abstract class _FetchSalespeopleState implements FetchSalespeopleState {
   @override
   Failure get salespeopleLoadingFailure;
   @override
-  List<SalesPerson> get salespeople;
+  List<Salesperson> get salespeople;
   @override
   @JsonKey(ignore: true)
   _$FetchSalespeopleStateCopyWith<_FetchSalespeopleState> get copyWith;

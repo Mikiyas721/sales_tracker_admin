@@ -23,7 +23,7 @@ class FetchTotalStatsIndexChangedEvent extends FetchTotalStatsEvent {
 }
 
 class FetchTotalStatsLoadingSucceededEvent extends FetchTotalStatsEvent {
-  final List<Stats> stats;
+  final Stats stats;
 
   FetchTotalStatsLoadingSucceededEvent(this.stats);
 
@@ -31,7 +31,7 @@ class FetchTotalStatsLoadingSucceededEvent extends FetchTotalStatsEvent {
   Stream<FetchTotalStatsState> handle(
       FetchTotalStatsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, hasLoaded: true, detailedData: stats);
+        isLoading: false, hasLoaded: true, stats: stats);
   }
 }
 

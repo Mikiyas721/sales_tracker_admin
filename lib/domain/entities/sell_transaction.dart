@@ -1,6 +1,6 @@
 import 'package:admin_app/common/entity.dart';
 import 'package:dartz/dartz.dart';
-import '../entities/sales_person.dart';
+import '../entities/salesperson.dart';
 import '../entities/shop.dart';
 import '../value_objects/card_amount.dart';
 import '../value_objects/cash_amount.dart';
@@ -10,7 +10,7 @@ class SaleTransaction extends Entity {
   final String salesPersonId;
   final String shopId;
   final Option<Shop> shop;
-  final Option<SalesPerson> salesPerson;
+  final Option<Salesperson> salesPerson;
   final CardAmount soldAmount;
   final CashAmount receivedAmount;
   final DateTime createdAt;
@@ -33,7 +33,7 @@ class SaleTransaction extends Entity {
     String salesPersonId,
     String shopId,
     Option<Shop> shop,
-    Option<SalesPerson> salesPerson,
+    Option<Salesperson> salesPerson,
     num soldAmount,
     num receivedAmount,
     DateTime createdAt,

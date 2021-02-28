@@ -1,6 +1,7 @@
+import 'package:admin_app/common/view_model.dart';
 import 'package:equatable/equatable.dart';
 
-class NewSalesViewModel extends Equatable{
+class NewSalesViewModel extends ViewModel{
   final String name;
   final String phoneNumber;
   final String amount;

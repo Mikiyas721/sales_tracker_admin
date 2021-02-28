@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../entities/shop.dart';
 import '../value_objects/cash_amount.dart';
 
-import 'sales_person.dart';
+import 'salesperson.dart';
 
 class FundTransaction extends Entity{
   final String id;
@@ -12,7 +12,7 @@ class FundTransaction extends Entity{
   final Option<Shop> shop;
 
   /// Why not use Option on other objects as well, like String
-  final Option<SalesPerson> salesPerson;
+  final Option<Salesperson> salesPerson;
   final CashAmount amount;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -33,7 +33,7 @@ class FundTransaction extends Entity{
     String salesPersonId,
     String shopId,
     Option<Shop> shop,
-    Option<SalesPerson> salesPerson,
+    Option<Salesperson> salesPerson,
     num amount,
     DateTime createdAt,
     DateTime updatedAt,

@@ -18,7 +18,7 @@ class FundTransactionDto extends IdDto<FundTransaction>
   @JsonKey(nullable: true, includeIfNull: false)
   final ShopDto shop;
   @JsonKey(nullable: true, includeIfNull: false)
-  final SalesPersonDto salesPerson;
+  final SalespersonDto salesPerson;
 
   final double amount;
 

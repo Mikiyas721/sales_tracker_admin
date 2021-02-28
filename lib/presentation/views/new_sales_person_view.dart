@@ -1,10 +1,10 @@
-import 'package:admin_app/presentation/models/new_sales_person_view_model.dart';
+import 'package:admin_app/presentation/models/new_salesperson_view_model.dart';
 import 'package:admin_app/presentation/widgets/my_action_button.dart';
 import 'package:admin_app/presentation/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
-class NewSalesPersonView extends StatelessWidget{
+class NewSalesPersonView extends StatelessWidget {
   final NewSalesPersonViewModel newSalesPersonViewModel;
   final void Function(String name) onNameChanged;
   final void Function(String phoneNumber) onPhoneNumberChanged;
@@ -12,10 +12,10 @@ class NewSalesPersonView extends StatelessWidget{
 
   const NewSalesPersonView(
       {Key key,
-        @required this.newSalesPersonViewModel,
-        @required this.onAdd,
-        @required this.onNameChanged,
-        @required this.onPhoneNumberChanged})
+      @required this.newSalesPersonViewModel,
+      @required this.onAdd,
+      @required this.onNameChanged,
+      @required this.onPhoneNumberChanged})
       : super(key: key);
 
   @override
@@ -35,7 +35,11 @@ class NewSalesPersonView extends StatelessWidget{
             errorText: newSalesPersonViewModel.phoneNumberError,
             onChanged: onPhoneNumberChanged),
         200.vSpace,
-        MyActionButton(label: 'Add', onSubmit: onAdd),
+        MyActionButton(
+          label: 'Add',
+          onSubmit: onAdd,
+          isLoading: newSalesPersonViewModel.isAdding,
+        ),
       ],
     );
   }

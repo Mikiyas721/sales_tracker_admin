@@ -3,7 +3,7 @@ part of 'fetch_salesperson_stats_bloc.dart';
 abstract class FetchSalespersonStatsEvent extends BlocEvent<FetchSalespersonStatsState> {
 }
 
-class FetchTotalStatsLoadingEvent extends FetchSalespersonStatsEvent {
+class FetchSalespersonStatsLoadingEvent extends FetchSalespersonStatsEvent {
   @override
   Stream<FetchSalespersonStatsState> handle(
       FetchSalespersonStatsState currentState) async* {
@@ -11,10 +11,10 @@ class FetchTotalStatsLoadingEvent extends FetchSalespersonStatsEvent {
   }
 }
 
-class FetchTotalStatsIndexChangedEvent extends FetchSalespersonStatsEvent {
+class FetchSalespersonStatsIndexChangedEvent extends FetchSalespersonStatsEvent {
   final int index;
 
-  FetchTotalStatsIndexChangedEvent(this.index);
+  FetchSalespersonStatsIndexChangedEvent(this.index);
 
   @override
   Stream<FetchSalespersonStatsState> handle(
@@ -23,10 +23,10 @@ class FetchTotalStatsIndexChangedEvent extends FetchSalespersonStatsEvent {
   }
 }
 
-class FetchTotalStatsLoadingSucceededEvent extends FetchSalespersonStatsEvent {
+class FetchSalespersonStatsLoadingSucceededEvent extends FetchSalespersonStatsEvent {
   final List<Stats> stats;
 
-  FetchTotalStatsLoadingSucceededEvent(this.stats);
+  FetchSalespersonStatsLoadingSucceededEvent(this.stats);
 
   @override
   Stream<FetchSalespersonStatsState> handle(
@@ -36,10 +36,10 @@ class FetchTotalStatsLoadingSucceededEvent extends FetchSalespersonStatsEvent {
   }
 }
 
-class FetchTotalStatsLoadingFailedEvent extends FetchSalespersonStatsEvent {
+class FetchSalespersonStatsLoadingFailedEvent extends FetchSalespersonStatsEvent {
   final Failure loadingFailure;
 
-  FetchTotalStatsLoadingFailedEvent(this.loadingFailure);
+  FetchSalespersonStatsLoadingFailedEvent(this.loadingFailure);
 
   @override
   Stream<FetchSalespersonStatsState> handle(

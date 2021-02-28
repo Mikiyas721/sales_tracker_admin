@@ -7,7 +7,7 @@ abstract class FetchSalespeopleState extends BlocState
     bool isLoading,
     bool hasLoaded,
     Failure salespeopleLoadingFailure,
-    List<SalesPerson> salespeople,
+    List<Salesperson> salespeople,
   }) = _FetchSalespeopleState;
 
   factory FetchSalespeopleState.initial() => FetchSalespeopleState(

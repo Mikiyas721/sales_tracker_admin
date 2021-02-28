@@ -2,12 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../../common/id_dto.dart';
-import '../../domain/entities/sales_person.dart';
+import '../../domain/entities/salesperson.dart';
 
 part 'sales_person_dto.g.dart';
 
 @JsonSerializable(nullable: false)
-class SalesPersonDto extends IdDto<SalesPerson> implements TimeStampedDto {
+class SalespersonDto extends IdDto<Salesperson> implements TimeStampedDto {
   final String id;
   final String name;
   final String phoneNumber;
@@ -17,7 +17,7 @@ class SalesPersonDto extends IdDto<SalesPerson> implements TimeStampedDto {
   @JsonKey(nullable: true, includeIfNull: false) final DateTime createdAt;
   @JsonKey(nullable: true, includeIfNull: false) final DateTime updatedAt;
 
-  SalesPersonDto({
+  SalespersonDto({
     @required this.id,
     @required this.name,
     @required this.phoneNumber,
@@ -26,14 +26,14 @@ class SalesPersonDto extends IdDto<SalesPerson> implements TimeStampedDto {
     this.shops,
   });
 
-  factory SalesPersonDto.fromJson(Map<String, dynamic> json) =>
+  factory SalespersonDto.fromJson(Map<String, dynamic> json) =>
       _$SalesPersonDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$SalesPersonDtoToJson(this);
 
   @override
-  Option<SalesPerson> toDomain() {
-    return SalesPerson.create(
+  Option<Salesperson> toDomain() {
+    return Salesperson.create(
         id:id,
         name:name,
         phoneNumber:phoneNumber,
@@ -43,8 +43,8 @@ class SalesPersonDto extends IdDto<SalesPerson> implements TimeStampedDto {
     );
   }
 
-  static SalesPersonDto fromDomain(SalesPerson salesPerson) {
-    return SalesPersonDto(
+  static SalespersonDto fromDomain(Salesperson salesPerson) {
+    return SalespersonDto(
       id: salesPerson.id,
       name: salesPerson.name.value,
       phoneNumber: salesPerson.phoneNumber.value,

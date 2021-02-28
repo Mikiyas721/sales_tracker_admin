@@ -1,7 +1,7 @@
 import 'package:admin_app/common/failure.dart';
 import 'package:admin_app/common/id_dto.dart';
 import 'package:admin_app/domain/entities/fund_transaction.dart';
-import 'package:admin_app/domain/entities/sales_person.dart';
+import 'package:admin_app/domain/entities/salesperson.dart';
 import 'package:admin_app/domain/entities/sell_transaction.dart';
 import 'package:admin_app/domain/ports/sales_person_repo.dart';
 import 'package:admin_app/infrastructure/data_sources/sales_person_data_source.dart';
@@ -16,9 +16,9 @@ class SalesPersonRepoImpl extends ISalesPersonRepo {
   SalesPersonRepoImpl(this.salesPersonCrudDataSource);
 
   @override
-  Future<Either<Failure, SalesPerson>> create(SalesPerson salesPerson) async {
+  Future<Either<Failure, Salesperson>> create(Salesperson salesPerson) async {
     final result = await salesPersonCrudDataSource
-        .create(SalesPersonDto.fromDomain(salesPerson));
+        .create(SalespersonDto.fromDomain(salesPerson));
     return result.either.fold(
         (l) => left(l),
         (r) => r
@@ -27,9 +27,9 @@ class SalesPersonRepoImpl extends ISalesPersonRepo {
   }
 
   @override
-  Future<Either<Failure, List<SalesPerson>>> fetchAll() async {
+  Future<Either<Failure, List<Salesperson>>> fetchAll() async {
     final result = await salesPersonCrudDataSource.find();
     return result.either.fold((l) => left(l),
-        (r) => right(IdDto.toDomainList<SalesPerson, SalesPersonDto>(r)));
+        (r) => right(IdDto.toDomainList<Salesperson, SalespersonDto>(r)));
   }
 }

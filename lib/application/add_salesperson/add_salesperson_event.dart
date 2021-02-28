@@ -2,10 +2,10 @@ part of 'add_salesperson_bloc.dart';
 
 abstract class AddSalespersonEvent extends BlocEvent<AddSalespersonState> {}
 
-class AddSalesPersonNameChangedEvent extends AddSalespersonEvent {
+class AddSalespersonNameChangedEvent extends AddSalespersonEvent {
   final String name;
 
-  AddSalesPersonNameChangedEvent(this.name);
+  AddSalespersonNameChangedEvent(this.name);
 
   @override
   Stream<AddSalespersonState> handle(
@@ -14,10 +14,10 @@ class AddSalesPersonNameChangedEvent extends AddSalespersonEvent {
         name: Name.create(name));
   }
 }
-class AddSalesPersonPhoneNumberChangedEvent extends AddSalespersonEvent {
+class AddSalespersonPhoneNumberChangedEvent extends AddSalespersonEvent {
   final String phoneNumber;
 
-  AddSalesPersonPhoneNumberChangedEvent(this.phoneNumber);
+  AddSalespersonPhoneNumberChangedEvent(this.phoneNumber);
 
   @override
   Stream<AddSalespersonState> handle(
@@ -27,7 +27,7 @@ class AddSalesPersonPhoneNumberChangedEvent extends AddSalespersonEvent {
   }
 }
 
-class AddSalesPersonSubmittedEvent extends AddSalespersonEvent {
+class AddSalespersonSubmittedEvent extends AddSalespersonEvent {
   @override
   Stream<AddSalespersonState> handle(
       AddSalespersonState currentState) async* {
@@ -35,7 +35,7 @@ class AddSalesPersonSubmittedEvent extends AddSalespersonEvent {
   }
 }
 
-class AddSalesPersonRequestedEvent extends AddSalespersonEvent {
+class AddSalespersonRequestedEvent extends AddSalespersonEvent {
   @override
   Stream<AddSalespersonState> handle(
       AddSalespersonState currentState) async* {
@@ -43,7 +43,7 @@ class AddSalesPersonRequestedEvent extends AddSalespersonEvent {
   }
 }
 
-class AddSalesPersonSucceededEvent extends AddSalespersonEvent {
+class AddSalespersonSucceededEvent extends AddSalespersonEvent {
   @override
   Stream<AddSalespersonState> handle(
       AddSalespersonState currentState) async* {
@@ -58,10 +58,10 @@ class AddSalesPersonSucceededEvent extends AddSalespersonEvent {
   }
 }
 
-class AddSalesPersonFailedEvent extends AddSalespersonEvent {
+class AddSalespersonFailedEvent extends AddSalespersonEvent {
   final Failure addSalesPersonFailure;
 
-  AddSalesPersonFailedEvent(this.addSalesPersonFailure);
+  AddSalespersonFailedEvent(this.addSalesPersonFailure);
 
   @override
   Stream<AddSalespersonState> handle(
