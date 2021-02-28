@@ -28,4 +28,21 @@ class ShopRepoImpl extends IShopRepo {
         (r) =>
             right(IdDto.toDomainList<Shop, ShopDto>(r)));
   }
+
+  @override
+  Future<Either<Failure, List<Shop>>> fetchNewShops() async{
+    final result = await shopCrudDataSource.find(options: {
+      "filter": {
+        "where": {
+          "createdAt": {
+            "gt": "${DateTime.now().subtract(Duration(days: 7)).toString()}"
+          }
+        }
+      }
+    });
+    return result.either.fold(
+            (l) => left(SimpleFailure("Invalid Shop Transaction Data")),
+            (r) =>
+            right(IdDto.toDomainList<Shop, ShopDto>(r)));
+  }
 }

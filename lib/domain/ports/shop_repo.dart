@@ -4,4 +4,5 @@ import '../../domain/entities/shop.dart';
 
 abstract class IShopRepo{
   Future<Either<Failure,List<Shop>>> fetchSalesPersonShops(String salesPersonId);
+  Future<Either<Failure, List<Shop>>> fetchNewShops();
 }
