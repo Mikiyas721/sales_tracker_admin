@@ -10,8 +10,8 @@ part of 'fetch_salesperson_shop_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$FetchSalespersonShopStateTearOff {
-  const _$FetchSalespersonShopStateTearOff();
+class _$FetchSalespersonShopsStateTearOff {
+  const _$FetchSalespersonShopsStateTearOff();
 
 // ignore: unused_element
   _FetchSalespersonShopState call(
@@ -30,24 +30,24 @@ class _$FetchSalespersonShopStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $FetchSalespersonShopState = _$FetchSalespersonShopStateTearOff();
+const $FetchSalespersonShopsState = _$FetchSalespersonShopsStateTearOff();
 
 /// @nodoc
-mixin _$FetchSalespersonShopState {
+mixin _$FetchSalespersonShopsState {
   bool get isLoading;
   bool get hasLoaded;
   Failure get salesPersonShopsLoadingFailure;
   List<Shop> get shops;
 
   @JsonKey(ignore: true)
-  $FetchSalespersonShopStateCopyWith<FetchSalespersonShopState> get copyWith;
+  $FetchSalespersonShopsStateCopyWith<FetchSalespersonShopsState> get copyWith;
 }
 
 /// @nodoc
-abstract class $FetchSalespersonShopStateCopyWith<$Res> {
-  factory $FetchSalespersonShopStateCopyWith(FetchSalespersonShopState value,
-          $Res Function(FetchSalespersonShopState) then) =
-      _$FetchSalespersonShopStateCopyWithImpl<$Res>;
+abstract class $FetchSalespersonShopsStateCopyWith<$Res> {
+  factory $FetchSalespersonShopsStateCopyWith(FetchSalespersonShopsState value,
+          $Res Function(FetchSalespersonShopsState) then) =
+      _$FetchSalespersonShopsStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
       bool hasLoaded,
@@ -56,13 +56,13 @@ abstract class $FetchSalespersonShopStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FetchSalespersonShopStateCopyWithImpl<$Res>
-    implements $FetchSalespersonShopStateCopyWith<$Res> {
-  _$FetchSalespersonShopStateCopyWithImpl(this._value, this._then);
+class _$FetchSalespersonShopsStateCopyWithImpl<$Res>
+    implements $FetchSalespersonShopsStateCopyWith<$Res> {
+  _$FetchSalespersonShopsStateCopyWithImpl(this._value, this._then);
 
-  final FetchSalespersonShopState _value;
+  final FetchSalespersonShopsState _value;
   // ignore: unused_field
-  final $Res Function(FetchSalespersonShopState) _then;
+  final $Res Function(FetchSalespersonShopsState) _then;
 
   @override
   $Res call({
@@ -84,7 +84,7 @@ class _$FetchSalespersonShopStateCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$FetchSalespersonShopStateCopyWith<$Res>
-    implements $FetchSalespersonShopStateCopyWith<$Res> {
+    implements $FetchSalespersonShopsStateCopyWith<$Res> {
   factory _$FetchSalespersonShopStateCopyWith(_FetchSalespersonShopState value,
           $Res Function(_FetchSalespersonShopState) then) =
       __$FetchSalespersonShopStateCopyWithImpl<$Res>;
@@ -98,7 +98,7 @@ abstract class _$FetchSalespersonShopStateCopyWith<$Res>
 
 /// @nodoc
 class __$FetchSalespersonShopStateCopyWithImpl<$Res>
-    extends _$FetchSalespersonShopStateCopyWithImpl<$Res>
+    extends _$FetchSalespersonShopsStateCopyWithImpl<$Res>
     implements _$FetchSalespersonShopStateCopyWith<$Res> {
   __$FetchSalespersonShopStateCopyWithImpl(_FetchSalespersonShopState _value,
       $Res Function(_FetchSalespersonShopState) _then)
@@ -145,7 +145,7 @@ class _$_FetchSalespersonShopState implements _FetchSalespersonShopState {
 
   @override
   String toString() {
-    return 'FetchSalespersonShopState(isLoading: $isLoading, hasLoaded: $hasLoaded, salesPersonShopsLoadingFailure: $salesPersonShopsLoadingFailure, shops: $shops)';
+    return 'FetchSalespersonShopsState(isLoading: $isLoading, hasLoaded: $hasLoaded, salesPersonShopsLoadingFailure: $salesPersonShopsLoadingFailure, shops: $shops)';
   }
 
   @override
@@ -183,7 +183,8 @@ class _$_FetchSalespersonShopState implements _FetchSalespersonShopState {
               this, _$identity);
 }
 
-abstract class _FetchSalespersonShopState implements FetchSalespersonShopState {
+abstract class _FetchSalespersonShopState
+    implements FetchSalespersonShopsState {
   const factory _FetchSalespersonShopState(
       {bool isLoading,
       bool hasLoaded,

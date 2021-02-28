@@ -1,13 +1,20 @@
 import 'package:admin_app/common/view_model.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class ShopViewModel extends ViewModel {
+class SalespersonShopsViewModel extends ViewModel{
+  final List<SalespersonShopViewModel> shops;
+
+  SalespersonShopsViewModel({@required this.shops});
+  @override
+  List<Object> get props =>[shops];
+
+}
+class SalespersonShopViewModel extends ViewModel {
   final String name;
   final String phoneNumber;
   final String location;
 
-  ShopViewModel({
+  SalespersonShopViewModel({
     @required this.name,
     @required this.phoneNumber,
     @required this.location,

@@ -2,17 +2,17 @@ part of 'fetch_loans_bloc.dart';
 
 abstract class FetchLoansEvent extends BlocEvent<FetchLoansState> {}
 
-class FetchingSalesEvent extends FetchLoansEvent {
+class FetchingLoansEvent extends FetchLoansEvent {
   @override
   Stream<FetchLoansState> handle(FetchLoansState currentState) async* {
     yield currentState.copyWith(isLoading: true);
   }
 }
 
-class FetchingSalesSucceededEvent extends FetchLoansEvent {
+class FetchingLoansSucceededEvent extends FetchLoansEvent {
   final List<SaleTransaction> sales;
 
-  FetchingSalesSucceededEvent(this.sales);
+  FetchingLoansSucceededEvent(this.sales);
 
   @override
   Stream<FetchLoansState> handle(FetchLoansState currentState) async* {
@@ -21,10 +21,10 @@ class FetchingSalesSucceededEvent extends FetchLoansEvent {
   }
 }
 
-class FetchingSalesFailedEvent extends FetchLoansEvent {
+class FetchingLoansFailedEvent extends FetchLoansEvent {
   final Failure loadingFailure;
 
-  FetchingSalesFailedEvent(this.loadingFailure);
+  FetchingLoansFailedEvent(this.loadingFailure);
 
   @override
   Stream<FetchLoansState> handle(FetchLoansState currentState) async* {

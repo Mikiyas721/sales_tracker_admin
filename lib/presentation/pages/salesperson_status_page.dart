@@ -1,3 +1,5 @@
+import 'package:admin_app/common/controller/controller_provider.dart';
+import 'package:admin_app/presentation/controller/salesperson_stats_controller.dart';
 import 'package:admin_app/presentation/models/sales_status_view_model.dart';
 import 'package:admin_app/presentation/views/sales_status_view.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import '../../common/common.dart';
 class SalespersonStatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String salespersonId = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -28,26 +31,38 @@ class SalespersonStatusPage extends StatelessWidget {
           child: Column(
             children: [
               20.vSpace,
-              SalesStatusView(
-                  onToday: (bool isActive) {},
-                  onThisWeek: (bool isActive) {},
-                  onThisMonth: (bool isActive) {},
-                  salesStatusViewModel: SalesStatusViewModel(
-                      activeButtonIndex: 1,
-                      soldAmount: '500',
-                      fundedAmount: '100',
-                      loanedAmount: '200',
-                      bars: [
-                        BarData(value: 0,label: 'M', barHeight: 1000, stackHeight: 600),
-                        BarData(value: 1,label: 'T', barHeight: 900, stackHeight: 700),
-                        BarData(value: 2,label: 'W', barHeight: 700, stackHeight: 500),
-                        BarData(value: 3,label: 'T', barHeight: 800, stackHeight: 400),
-                        BarData(value: 4,label: 'F', barHeight: 300, stackHeight: 200),
-                        BarData(value: 5,label: 'S', barHeight: 100, stackHeight: 100),
-                        BarData(value: 6,label: 'S', barHeight: 500, stackHeight: 200),
-                      ])),
-              70.vSpace,
-              25.vSpace
+              ViewModelBuilder.withController<SalesStatusViewModel,
+                      SalespersonStatsController>(
+                  create: () =>
+                      SalespersonStatsController(context, salespersonId),
+                  builder: (context, controller, model) {
+                    controller.onToday(true);
+                    if (controller.bloc.state.isLoading)
+                      return Center(child: CircularProgressIndicator());
+                    if (controller.bloc.state.hasLoaded &&
+                        controller.bloc.state.stats.detailedData.isEmpty)
+                      return Center(
+                          child: Text('No stats for this sales person'));
+                    if (controller.bloc.state.hasLoaded &&
+                        controller.bloc.state.loadingError != null)
+                      return Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(controller.bloc.state.loadingError.message),
+                            IconButton(
+                                icon: Icon(Icons.refresh),
+                                onPressed: controller.onRefresh)
+                          ],
+                        ),
+                      );
+                    return SalesStatusView(
+                        onToday: controller.onToday,
+                        onThisWeek: controller.onThisWeek,
+                        onThisMonth: controller.onThisMonth,
+                        salesStatusViewModel: model);
+                  }),
+              95.vSpace,
             ],
           ),
         ),

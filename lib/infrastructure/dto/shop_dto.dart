@@ -51,7 +51,7 @@ class ShopDto extends IdDto<Shop> implements TimeStampedDto {
     return ShopDto(
       id: fundTransaction.id,
       name: fundTransaction.name.value,
-      address: fundTransaction.address,
+      address: fundTransaction.address.value,
       phoneNumber: fundTransaction.phoneNumber.value,
       createdAt: fundTransaction.createdAt,
       updatedAt: fundTransaction.updatedAt,

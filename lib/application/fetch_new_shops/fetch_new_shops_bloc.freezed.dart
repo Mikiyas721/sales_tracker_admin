@@ -17,12 +17,12 @@ class _$FetchNewShopsStateTearOff {
   _FetchNewShopsState call(
       {bool isLoading,
       bool hasLoaded,
-      Failure fetchingSalesFailure,
+      Failure fetchingShopsFailure,
       List<Shop> shops}) {
     return _FetchNewShopsState(
       isLoading: isLoading,
       hasLoaded: hasLoaded,
-      fetchingSalesFailure: fetchingSalesFailure,
+      fetchingShopsFailure: fetchingShopsFailure,
       shops: shops,
     );
   }
@@ -36,7 +36,7 @@ const $FetchNewShopsState = _$FetchNewShopsStateTearOff();
 mixin _$FetchNewShopsState {
   bool get isLoading;
   bool get hasLoaded;
-  Failure get fetchingSalesFailure;
+  Failure get fetchingShopsFailure;
   List<Shop> get shops;
 
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $FetchNewShopsStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasLoaded,
-      Failure fetchingSalesFailure,
+      Failure fetchingShopsFailure,
       List<Shop> shops});
 }
 
@@ -68,15 +68,15 @@ class _$FetchNewShopsStateCopyWithImpl<$Res>
   $Res call({
     Object isLoading = freezed,
     Object hasLoaded = freezed,
-    Object fetchingSalesFailure = freezed,
+    Object fetchingShopsFailure = freezed,
     Object shops = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
-      fetchingSalesFailure: fetchingSalesFailure == freezed
-          ? _value.fetchingSalesFailure
-          : fetchingSalesFailure as Failure,
+      fetchingShopsFailure: fetchingShopsFailure == freezed
+          ? _value.fetchingShopsFailure
+          : fetchingShopsFailure as Failure,
       shops: shops == freezed ? _value.shops : shops as List<Shop>,
     ));
   }
@@ -92,7 +92,7 @@ abstract class _$FetchNewShopsStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasLoaded,
-      Failure fetchingSalesFailure,
+      Failure fetchingShopsFailure,
       List<Shop> shops});
 }
 
@@ -111,15 +111,15 @@ class __$FetchNewShopsStateCopyWithImpl<$Res>
   $Res call({
     Object isLoading = freezed,
     Object hasLoaded = freezed,
-    Object fetchingSalesFailure = freezed,
+    Object fetchingShopsFailure = freezed,
     Object shops = freezed,
   }) {
     return _then(_FetchNewShopsState(
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
-      fetchingSalesFailure: fetchingSalesFailure == freezed
-          ? _value.fetchingSalesFailure
-          : fetchingSalesFailure as Failure,
+      fetchingShopsFailure: fetchingShopsFailure == freezed
+          ? _value.fetchingShopsFailure
+          : fetchingShopsFailure as Failure,
       shops: shops == freezed ? _value.shops : shops as List<Shop>,
     ));
   }
@@ -128,20 +128,20 @@ class __$FetchNewShopsStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FetchNewShopsState implements _FetchNewShopsState {
   const _$_FetchNewShopsState(
-      {this.isLoading, this.hasLoaded, this.fetchingSalesFailure, this.shops});
+      {this.isLoading, this.hasLoaded, this.fetchingShopsFailure, this.shops});
 
   @override
   final bool isLoading;
   @override
   final bool hasLoaded;
   @override
-  final Failure fetchingSalesFailure;
+  final Failure fetchingShopsFailure;
   @override
   final List<Shop> shops;
 
   @override
   String toString() {
-    return 'FetchNewShopsState(isLoading: $isLoading, hasLoaded: $hasLoaded, fetchingSalesFailure: $fetchingSalesFailure, shops: $shops)';
+    return 'FetchNewShopsState(isLoading: $isLoading, hasLoaded: $hasLoaded, fetchingShopsFailure: $fetchingShopsFailure, shops: $shops)';
   }
 
   @override
@@ -154,9 +154,9 @@ class _$_FetchNewShopsState implements _FetchNewShopsState {
             (identical(other.hasLoaded, hasLoaded) ||
                 const DeepCollectionEquality()
                     .equals(other.hasLoaded, hasLoaded)) &&
-            (identical(other.fetchingSalesFailure, fetchingSalesFailure) ||
+            (identical(other.fetchingShopsFailure, fetchingShopsFailure) ||
                 const DeepCollectionEquality().equals(
-                    other.fetchingSalesFailure, fetchingSalesFailure)) &&
+                    other.fetchingShopsFailure, fetchingShopsFailure)) &&
             (identical(other.shops, shops) ||
                 const DeepCollectionEquality().equals(other.shops, shops)));
   }
@@ -166,7 +166,7 @@ class _$_FetchNewShopsState implements _FetchNewShopsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(hasLoaded) ^
-      const DeepCollectionEquality().hash(fetchingSalesFailure) ^
+      const DeepCollectionEquality().hash(fetchingShopsFailure) ^
       const DeepCollectionEquality().hash(shops);
 
   @JsonKey(ignore: true)
@@ -179,7 +179,7 @@ abstract class _FetchNewShopsState implements FetchNewShopsState {
   const factory _FetchNewShopsState(
       {bool isLoading,
       bool hasLoaded,
-      Failure fetchingSalesFailure,
+      Failure fetchingShopsFailure,
       List<Shop> shops}) = _$_FetchNewShopsState;
 
   @override
@@ -187,7 +187,7 @@ abstract class _FetchNewShopsState implements FetchNewShopsState {
   @override
   bool get hasLoaded;
   @override
-  Failure get fetchingSalesFailure;
+  Failure get fetchingShopsFailure;
   @override
   List<Shop> get shops;
   @override

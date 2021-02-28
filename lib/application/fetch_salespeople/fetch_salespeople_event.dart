@@ -2,28 +2,28 @@ part of 'fetch_salespeople_bloc.dart';
 
 abstract class FetchSalespeopleEvent extends BlocEvent<FetchSalespeopleState> {}
 
-class SalesPeopleLoadingEvent extends FetchSalespeopleEvent {
+class SalespeopleLoadingEvent extends FetchSalespeopleEvent {
   @override
   Stream<FetchSalespeopleState> handle(FetchSalespeopleState currentState) async* {
     yield currentState.copyWith(isLoading: true);
   }
 }
 
-class SalesPeopleLoadingSucceededEvent extends FetchSalespeopleEvent {
-  final List<Salesperson> salesPerson;
+class SalespeopleLoadingSucceededEvent extends FetchSalespeopleEvent {
+  final List<Salesperson> salespeople;
 
-  SalesPeopleLoadingSucceededEvent(this.salesPerson);
+  SalespeopleLoadingSucceededEvent(this.salespeople);
 
   @override
   Stream<FetchSalespeopleState> handle(FetchSalespeopleState currentState) async* {
-    yield currentState.copyWith(isLoading:false,hasLoaded: true, salespeople: salesPerson);
+    yield currentState.copyWith(isLoading:false,hasLoaded: true, salespeople: salespeople);
   }
 }
 
-class SalesPeopleLoadingFailedEvent extends FetchSalespeopleEvent {
+class SalespeopleLoadingFailedEvent extends FetchSalespeopleEvent {
   final Failure loadingFailure;
 
-  SalesPeopleLoadingFailedEvent(this.loadingFailure);
+  SalespeopleLoadingFailedEvent(this.loadingFailure);
 
   @override
   Stream<FetchSalespeopleState> handle(FetchSalespeopleState currentState) async* {

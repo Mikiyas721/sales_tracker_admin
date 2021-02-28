@@ -6,7 +6,7 @@ part of 'sales_person_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SalespersonDto _$SalesPersonDtoFromJson(Map<String, dynamic> json) {
+SalespersonDto _$SalespersonDtoFromJson(Map<String, dynamic> json) {
   return SalespersonDto(
     id: json['id'] as String,
     name: json['name'] as String,
@@ -21,7 +21,7 @@ SalespersonDto _$SalesPersonDtoFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SalesPersonDtoToJson(SalespersonDto instance) {
+Map<String, dynamic> _$SalespersonDtoToJson(SalespersonDto instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'name': instance.name,

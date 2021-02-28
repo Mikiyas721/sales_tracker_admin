@@ -8,10 +8,10 @@ class FetchingNewShopsEvent extends FetchNewShopsEvent {
     yield currentState.copyWith(isLoading: true);
   }
 }
-class FetchingSNewShopsSucceededEvent extends FetchNewShopsEvent {
+class FetchingNewShopsSucceededEvent extends FetchNewShopsEvent {
   final List<Shop> shops;
 
-  FetchingSNewShopsSucceededEvent(this.shops);
+  FetchingNewShopsSucceededEvent(this.shops);
 
   @override
   Stream<FetchNewShopsState> handle(FetchNewShopsState currentState) async* {
@@ -27,7 +27,7 @@ class FetchingNewShopsFailedEvent extends FetchNewShopsEvent {
   @override
   Stream<FetchNewShopsState> handle(FetchNewShopsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, fetchingSalesFailure: loadingFailure);
+        isLoading: false, fetchingShopsFailure: loadingFailure);
   }
 }
 

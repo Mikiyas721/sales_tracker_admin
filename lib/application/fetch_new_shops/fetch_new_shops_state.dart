@@ -5,7 +5,7 @@ abstract class FetchNewShopsState extends BlocState with _$FetchNewShopsState {
   const factory FetchNewShopsState({
     bool isLoading,
     bool hasLoaded,
-    Failure fetchingSalesFailure,
+    Failure fetchingShopsFailure,
     List<Shop> shops,
   }) = _FetchNewShopsState;
 
@@ -13,6 +13,6 @@ abstract class FetchNewShopsState extends BlocState with _$FetchNewShopsState {
         isLoading: false,
         hasLoaded: false,
         shops: null,
-        fetchingSalesFailure: null,
+        fetchingShopsFailure: null,
       );
 }

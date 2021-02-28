@@ -24,7 +24,7 @@ class FetchSalespersonStatsIndexChangedEvent extends FetchSalespersonStatsEvent 
 }
 
 class FetchSalespersonStatsLoadingSucceededEvent extends FetchSalespersonStatsEvent {
-  final List<Stats> stats;
+  final Stats stats;
 
   FetchSalespersonStatsLoadingSucceededEvent(this.stats);
 
@@ -32,7 +32,7 @@ class FetchSalespersonStatsLoadingSucceededEvent extends FetchSalespersonStatsEv
   Stream<FetchSalespersonStatsState> handle(
       FetchSalespersonStatsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, hasLoaded: true, detailedData: stats);
+        isLoading: false, hasLoaded: true, stats: stats);
   }
 }
 

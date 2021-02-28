@@ -2,10 +2,25 @@ import 'package:admin_app/presentation/models/fund_transaction_view_model.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
+class FundTransactionsView extends StatelessWidget {
+  final FundTransactionsViewModel funds;
+
+  const FundTransactionsView({Key key, this.funds}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: funds.funds.length,
+        itemBuilder: (BuildContext context, int index) {
+          return FundTransactionView._(
+              fundTransactionViewModel: funds.funds[index]);
+        });
+  }
+}
 class FundTransactionView extends StatelessWidget {
   final FundTransactionViewModel fundTransactionViewModel;
 
-  const FundTransactionView({
+  const FundTransactionView._({
     Key key,
     @required this.fundTransactionViewModel,
   }) : super(key: key);

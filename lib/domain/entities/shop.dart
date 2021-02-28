@@ -1,4 +1,5 @@
 import 'package:admin_app/common/entity.dart';
+import 'package:admin_app/domain/value_objects/address.dart';
 import 'package:dartz/dartz.dart';
 import '../value_objects/name.dart';
 import '../value_objects/phone_number.dart';
@@ -6,7 +7,7 @@ import '../value_objects/phone_number.dart';
 class Shop extends Entity{
   final String id;
   final Name name;
-  final String address;
+  final Address address;
   final PhoneNumber phoneNumber;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -43,10 +44,12 @@ class Shop extends Entity{
     if(nameObject==null) return none();
     final phoneNumberObject = PhoneNumber.create(phoneNumber).getOrElse(() => null);
     if(phoneNumberObject==null) return none();
+    final addressObject = Address.create(address).getOrElse(() => null);
+    if(addressObject==null) return none();
     return some(Shop._(
         id:id,
         name:nameObject,
-        address:address,
+        address:addressObject,
         phoneNumber:phoneNumberObject,
         createdAt:createdAt,
         updatedAt:updatedAt,

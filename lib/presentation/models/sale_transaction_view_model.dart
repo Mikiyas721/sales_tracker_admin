@@ -1,7 +1,14 @@
 import 'package:admin_app/common/view_model.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+class SalesTransactionsViewModel extends ViewModel{
+  final List<SaleTransactionViewModel> sales;
+
+  SalesTransactionsViewModel(this.sales);
+  @override
+  List<Object> get props => [sales];
+
+}
 class SaleTransactionViewModel extends ViewModel {
   final String date;
   final String soldAmount;

@@ -3,16 +3,27 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../presentation/models/shop_view_model.dart';
 import '../../common/common.dart';
 
-class SalesPersonShopView extends StatelessWidget {
-  final ShopViewModel shopViewModel;
-  final VoidCallback onSalesTransactions;
-  final VoidCallback onFundTransactions;
+class SalespersonShopsView extends StatelessWidget {
+  final SalespersonShopsViewModel salespeople;
 
-  const SalesPersonShopView(
-      {Key key,
-        @required this.shopViewModel,
-        this.onSalesTransactions,
-        this.onFundTransactions})
+  const SalespersonShopsView({Key key, this.salespeople}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: salespeople.shops.length,
+        itemBuilder: (BuildContext context, int index) {
+          return SalespersonShopView(
+            shopViewModel: salespeople.shops[index],
+          );
+        });
+  }
+}
+
+class SalespersonShopView extends StatelessWidget {
+  final SalespersonShopViewModel shopViewModel;
+
+  const SalespersonShopView({Key key, @required this.shopViewModel})
       : super(key: key);
 
   @override
@@ -27,7 +38,7 @@ class SalesPersonShopView extends StatelessWidget {
         title: Text(shopViewModel.name),
         subtitle: Text(
           '${shopViewModel.phoneNumber}\n${shopViewModel.location}',
-          style: TextStyle(color: Colors.grey,fontSize: 12),
+          style: TextStyle(color: Colors.grey, fontSize: 12),
         ),
         isThreeLine: true,
       ),
@@ -35,7 +46,7 @@ class SalesPersonShopView extends StatelessWidget {
         IconSlideAction(
           icon: Icons.swap_horiz,
           caption: 'Sales',
-          onTap: onSalesTransactions,
+          onTap: () {},
           color: context.primaryColor,
           foregroundColor: Colors.white,
         ),
@@ -44,7 +55,7 @@ class SalesPersonShopView extends StatelessWidget {
         IconSlideAction(
           icon: Icons.attach_money,
           caption: 'Funds',
-          onTap: onFundTransactions,
+          onTap: () {},
           color: context.primaryColor,
           foregroundColor: Colors.white,
         ),

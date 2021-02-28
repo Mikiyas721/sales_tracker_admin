@@ -1,16 +1,16 @@
 part of 'fetch_salesperson_shop_bloc.dart';
 
 @freezed
-abstract class FetchSalespersonShopState extends BlocState
-    with _$FetchSalespersonShopState {
-  const factory FetchSalespersonShopState({
+abstract class FetchSalespersonShopsState extends BlocState
+    with _$FetchSalespersonShopsState {
+  const factory FetchSalespersonShopsState({
     bool isLoading,
     bool hasLoaded,
     Failure salesPersonShopsLoadingFailure,
     List<Shop> shops,
   }) = _FetchSalespersonShopState;
 
-  factory FetchSalespersonShopState.initial() => FetchSalespersonShopState(
+  factory FetchSalespersonShopsState.initial() => FetchSalespersonShopsState(
       isLoading: false,
       hasLoaded: false,
       salesPersonShopsLoadingFailure: null,

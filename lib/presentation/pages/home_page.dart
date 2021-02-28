@@ -6,7 +6,7 @@ import 'package:admin_app/presentation/widgets/my_action_button.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget { // could it be a StatefulWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
                           StatsController>(
                       create: () => StatsController(context),
                       builder: (context, controller, model) {
+                        controller.onToday(true);
                         if (controller.bloc.state.isLoading)
                           return Center(child: CircularProgressIndicator());
                         if (controller.bloc.state.hasLoaded &&

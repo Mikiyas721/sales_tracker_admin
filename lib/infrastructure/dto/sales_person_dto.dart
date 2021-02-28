@@ -27,9 +27,9 @@ class SalespersonDto extends IdDto<Salesperson> implements TimeStampedDto {
   });
 
   factory SalespersonDto.fromJson(Map<String, dynamic> json) =>
-      _$SalesPersonDtoFromJson(json);
+      _$SalespersonDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SalesPersonDtoToJson(this);
+  Map<String, dynamic> toJson() => _$SalespersonDtoToJson(this);
 
   @override
   Option<Salesperson> toDomain() {

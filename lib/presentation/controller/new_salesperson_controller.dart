@@ -3,8 +3,6 @@ import 'package:admin_app/common/controller/controller.dart';
 import 'package:admin_app/common/controller/toast_mixin.dart';
 import 'package:admin_app/domain/entities/salesperson.dart';
 import 'package:admin_app/domain/use_cases/add_salesperson.dart';
-import 'package:admin_app/domain/value_objects/name.dart';
-import 'package:admin_app/infrastructure/dto/sales_person_dto.dart';
 import 'package:admin_app/injection.dart';
 import 'package:admin_app/presentation/models/new_salesperson_view_model.dart';
 import 'package:flutter/cupertino.dart';
