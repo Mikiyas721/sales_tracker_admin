@@ -11,14 +11,17 @@ class SaleTransactionsPage extends StatelessWidget {
     final Map<String, dynamic> args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sale Transactions'),
+        title: Text(
+          'Sale Transactions',
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       body: Padding(
         padding: 20.hPadding,
         child: ViewModelBuilder.withController<SalesTransactionsViewModel,
                 SalesWithShopController>(
             create: () => SalesWithShopController(
-                context, args['salesperson'].id, args['shop'].id),
+                context, args['Salesperson'].id, args['Shop'].id),
             builder: (context, controller, model) {
               if (controller.bloc.state.isLoading)
                 return Center(child: CircularProgressIndicator());
@@ -26,7 +29,7 @@ class SaleTransactionsPage extends StatelessWidget {
                   controller.bloc.state.sales.isEmpty)
                 return Center(
                     child: Text(
-                        'No sales transactions between ${args['salesperson'].name} and ${args['shop'].name}'));
+                        'No sales transactions between ${args['Salesperson'].name} and ${args['Shop'].name}'));
               if (controller.bloc.state.hasLoaded &&
                   controller.bloc.state.fetchingSalesFailure.message != null)
                 return Center(

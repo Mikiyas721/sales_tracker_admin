@@ -5,7 +5,6 @@ import 'package:admin_app/presentation/controller/recent_sales_controller.dart';
 import 'package:admin_app/presentation/models/loans_view_model.dart';
 import 'package:admin_app/presentation/models/new_sales_view_model.dart';
 import 'package:admin_app/presentation/models/new_shops_view_model.dart';
-import 'package:admin_app/presentation/models/shop_view_model.dart';
 import 'package:admin_app/presentation/views/loans_view.dart';
 import 'package:admin_app/presentation/views/new_shops_view.dart';
 import 'package:admin_app/presentation/views/recently_sold_view.dart';

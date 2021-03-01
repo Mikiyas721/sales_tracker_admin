@@ -23,8 +23,8 @@ class SalesWithShopController extends BlocViewModelController<
     return SalesTransactionsViewModel(s.sales
         .map((e) => SaleTransactionViewModel(
             receivedAmount: e.receivedAmount.value.toString(),
-            date: getDate(e.createdAt),
-            time: getDate(e.createdAt),
+            date: getShortDateString(e.createdAt),
+            time: mapTimeToMeridian(e.createdAt),
             soldAmount: e.soldAmount.value.toString()))
         .toList());
   }

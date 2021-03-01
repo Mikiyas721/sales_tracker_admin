@@ -46,7 +46,7 @@ class SalespersonView extends StatelessWidget {
       ),
       onTap: () {
         Navigator.pushNamed(context, '/salesPersonStatusPage',
-            arguments: salesPersonViewModel.id);
+            arguments: salesPersonViewModel);
       },
     );
   }

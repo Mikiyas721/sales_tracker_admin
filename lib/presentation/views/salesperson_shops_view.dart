@@ -1,20 +1,25 @@
+import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../presentation/models/shop_view_model.dart';
 import '../../common/common.dart';
 
 class SalespersonShopsView extends StatelessWidget {
-  final SalespersonShopsViewModel salespeople;
+  final SalespersonShopsViewModel salespersonShops;
+  final SalespersonViewModel salespersonViewModel;
 
-  const SalespersonShopsView({Key key, this.salespeople}) : super(key: key);
+  const SalespersonShopsView(
+      {Key key, this.salespersonShops, this.salespersonViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: salespeople.shops.length,
+        itemCount: salespersonShops.shops.length,
         itemBuilder: (BuildContext context, int index) {
           return SalespersonShopView(
-            shopViewModel: salespeople.shops[index],
+            shopViewModel: salespersonShops.shops[index],
+            salespersonViewModel: salespersonViewModel,
           );
         });
   }
@@ -22,8 +27,12 @@ class SalespersonShopsView extends StatelessWidget {
 
 class SalespersonShopView extends StatelessWidget {
   final SalespersonShopViewModel shopViewModel;
+  final SalespersonViewModel salespersonViewModel;
 
-  const SalespersonShopView({Key key, @required this.shopViewModel})
+  const SalespersonShopView(
+      {Key key,
+      @required this.shopViewModel,
+      @required this.salespersonViewModel})
       : super(key: key);
 
   @override
@@ -46,7 +55,12 @@ class SalespersonShopView extends StatelessWidget {
         IconSlideAction(
           icon: Icons.swap_horiz,
           caption: 'Sales',
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/saleTransactionsPage', arguments: {
+              'Salesperson': salespersonViewModel,
+              'Shop': shopViewModel
+            });
+          },
           color: context.primaryColor,
           foregroundColor: Colors.white,
         ),
@@ -55,7 +69,12 @@ class SalespersonShopView extends StatelessWidget {
         IconSlideAction(
           icon: Icons.attach_money,
           caption: 'Funds',
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/fundTransactionsPage', arguments: {
+              'Salesperson': salespersonViewModel,
+              'Shop': shopViewModel
+            });
+          },
           color: context.primaryColor,
           foregroundColor: Colors.white,
         ),

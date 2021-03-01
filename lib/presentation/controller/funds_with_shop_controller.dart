@@ -23,8 +23,8 @@ class FundsWithShopController extends BlocViewModelController<
     return FundTransactionsViewModel(s.funds
         .map((e) => FundTransactionViewModel(
         receivedAmount: e.amount.value.toString(),
-        date: getDate(e.createdAt),
-        time: getDate(e.createdAt),))
+        date: getShortDateString(e.createdAt),
+        time: mapTimeToMeridian(e.createdAt),))
         .toList());
   }
 

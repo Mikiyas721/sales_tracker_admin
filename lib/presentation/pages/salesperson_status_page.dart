@@ -1,6 +1,7 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
 import 'package:admin_app/presentation/controller/salesperson_stats_controller.dart';
 import 'package:admin_app/presentation/models/sales_status_view_model.dart';
+import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:admin_app/presentation/views/sales_status_view.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
@@ -8,11 +9,11 @@ import '../../common/common.dart';
 class SalespersonStatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String salespersonId = ModalRoute.of(context).settings.arguments;
+    SalespersonViewModel salespersonViewModel = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Melaku Belay',
+          '${salespersonViewModel.name}',
         ),
         actions: [
           IconButton(
@@ -21,7 +22,7 @@ class SalespersonStatusPage extends StatelessWidget {
                 color: context.primaryColor,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/salesPersonShopsPage');
+                Navigator.pushNamed(context, '/salesPersonShopsPage',arguments: salespersonViewModel);
               })
         ],
       ),
@@ -34,7 +35,7 @@ class SalespersonStatusPage extends StatelessWidget {
               ViewModelBuilder.withController<SalesStatusViewModel,
                       SalespersonStatsController>(
                   create: () =>
-                      SalespersonStatsController(context, salespersonId),
+                      SalespersonStatsController(context, salespersonViewModel.id),
                   builder: (context, controller, model) {
                     controller.onToday(true);
                     if (controller.bloc.state.isLoading)
