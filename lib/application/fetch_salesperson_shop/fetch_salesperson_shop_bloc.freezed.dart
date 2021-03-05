@@ -15,15 +15,13 @@ class _$FetchSalespersonShopsStateTearOff {
 
 // ignore: unused_element
   _FetchSalespersonShopState call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure salesPersonShopsLoadingFailure,
-      List<Shop> shops}) {
+      {List<Shop> shops,
+      Option<Failure> salesPersonShopsLoadingFailure,
+      bool isLoading}) {
     return _FetchSalespersonShopState(
-      isLoading: isLoading,
-      hasLoaded: hasLoaded,
-      salesPersonShopsLoadingFailure: salesPersonShopsLoadingFailure,
       shops: shops,
+      salesPersonShopsLoadingFailure: salesPersonShopsLoadingFailure,
+      isLoading: isLoading,
     );
   }
 }
@@ -34,10 +32,9 @@ const $FetchSalespersonShopsState = _$FetchSalespersonShopsStateTearOff();
 
 /// @nodoc
 mixin _$FetchSalespersonShopsState {
-  bool get isLoading;
-  bool get hasLoaded;
-  Failure get salesPersonShopsLoadingFailure;
   List<Shop> get shops;
+  Option<Failure> get salesPersonShopsLoadingFailure;
+  bool get isLoading;
 
   @JsonKey(ignore: true)
   $FetchSalespersonShopsStateCopyWith<FetchSalespersonShopsState> get copyWith;
@@ -49,10 +46,9 @@ abstract class $FetchSalespersonShopsStateCopyWith<$Res> {
           $Res Function(FetchSalespersonShopsState) then) =
       _$FetchSalespersonShopsStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure salesPersonShopsLoadingFailure,
-      List<Shop> shops});
+      {List<Shop> shops,
+      Option<Failure> salesPersonShopsLoadingFailure,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -66,18 +62,16 @@ class _$FetchSalespersonShopsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object hasLoaded = freezed,
-    Object salesPersonShopsLoadingFailure = freezed,
     Object shops = freezed,
+    Object salesPersonShopsLoadingFailure = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
+      shops: shops == freezed ? _value.shops : shops as List<Shop>,
       salesPersonShopsLoadingFailure: salesPersonShopsLoadingFailure == freezed
           ? _value.salesPersonShopsLoadingFailure
-          : salesPersonShopsLoadingFailure as Failure,
-      shops: shops == freezed ? _value.shops : shops as List<Shop>,
+          : salesPersonShopsLoadingFailure as Option<Failure>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -90,10 +84,9 @@ abstract class _$FetchSalespersonShopStateCopyWith<$Res>
       __$FetchSalespersonShopStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure salesPersonShopsLoadingFailure,
-      List<Shop> shops});
+      {List<Shop> shops,
+      Option<Failure> salesPersonShopsLoadingFailure,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -110,18 +103,16 @@ class __$FetchSalespersonShopStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object hasLoaded = freezed,
-    Object salesPersonShopsLoadingFailure = freezed,
     Object shops = freezed,
+    Object salesPersonShopsLoadingFailure = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_FetchSalespersonShopState(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
+      shops: shops == freezed ? _value.shops : shops as List<Shop>,
       salesPersonShopsLoadingFailure: salesPersonShopsLoadingFailure == freezed
           ? _value.salesPersonShopsLoadingFailure
-          : salesPersonShopsLoadingFailure as Failure,
-      shops: shops == freezed ? _value.shops : shops as List<Shop>,
+          : salesPersonShopsLoadingFailure as Option<Failure>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -129,51 +120,42 @@ class __$FetchSalespersonShopStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FetchSalespersonShopState implements _FetchSalespersonShopState {
   const _$_FetchSalespersonShopState(
-      {this.isLoading,
-      this.hasLoaded,
-      this.salesPersonShopsLoadingFailure,
-      this.shops});
+      {this.shops, this.salesPersonShopsLoadingFailure, this.isLoading});
 
   @override
-  final bool isLoading;
-  @override
-  final bool hasLoaded;
-  @override
-  final Failure salesPersonShopsLoadingFailure;
-  @override
   final List<Shop> shops;
+  @override
+  final Option<Failure> salesPersonShopsLoadingFailure;
+  @override
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'FetchSalespersonShopsState(isLoading: $isLoading, hasLoaded: $hasLoaded, salesPersonShopsLoadingFailure: $salesPersonShopsLoadingFailure, shops: $shops)';
+    return 'FetchSalespersonShopsState(shops: $shops, salesPersonShopsLoadingFailure: $salesPersonShopsLoadingFailure, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FetchSalespersonShopState &&
-            (identical(other.isLoading, isLoading) ||
-                const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)) &&
-            (identical(other.hasLoaded, hasLoaded) ||
-                const DeepCollectionEquality()
-                    .equals(other.hasLoaded, hasLoaded)) &&
+            (identical(other.shops, shops) ||
+                const DeepCollectionEquality().equals(other.shops, shops)) &&
             (identical(other.salesPersonShopsLoadingFailure,
                     salesPersonShopsLoadingFailure) ||
                 const DeepCollectionEquality().equals(
                     other.salesPersonShopsLoadingFailure,
                     salesPersonShopsLoadingFailure)) &&
-            (identical(other.shops, shops) ||
-                const DeepCollectionEquality().equals(other.shops, shops)));
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(hasLoaded) ^
+      const DeepCollectionEquality().hash(shops) ^
       const DeepCollectionEquality().hash(salesPersonShopsLoadingFailure) ^
-      const DeepCollectionEquality().hash(shops);
+      const DeepCollectionEquality().hash(isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -186,19 +168,16 @@ class _$_FetchSalespersonShopState implements _FetchSalespersonShopState {
 abstract class _FetchSalespersonShopState
     implements FetchSalespersonShopsState {
   const factory _FetchSalespersonShopState(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure salesPersonShopsLoadingFailure,
-      List<Shop> shops}) = _$_FetchSalespersonShopState;
+      {List<Shop> shops,
+      Option<Failure> salesPersonShopsLoadingFailure,
+      bool isLoading}) = _$_FetchSalespersonShopState;
 
   @override
-  bool get isLoading;
-  @override
-  bool get hasLoaded;
-  @override
-  Failure get salesPersonShopsLoadingFailure;
-  @override
   List<Shop> get shops;
+  @override
+  Option<Failure> get salesPersonShopsLoadingFailure;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$FetchSalespersonShopStateCopyWith<_FetchSalespersonShopState> get copyWith;

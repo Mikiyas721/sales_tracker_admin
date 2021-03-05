@@ -1,8 +1,6 @@
 import 'package:admin_app/common/failure.dart';
 import 'package:admin_app/common/id_dto.dart';
-import 'package:admin_app/domain/entities/fund_transaction.dart';
 import 'package:admin_app/domain/entities/salesperson.dart';
-import 'package:admin_app/domain/entities/sell_transaction.dart';
 import 'package:admin_app/domain/ports/sales_person_repo.dart';
 import 'package:admin_app/infrastructure/data_sources/sales_person_data_source.dart';
 import 'package:admin_app/infrastructure/dto/sales_person_dto.dart';

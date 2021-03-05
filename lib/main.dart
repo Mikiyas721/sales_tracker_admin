@@ -1,8 +1,9 @@
+import 'package:admin_app/injection.dart';
 import 'package:admin_app/presentation/pages/current_status_page.dart';
-import 'package:admin_app/presentation/pages/fund_transactions_page.dart';
+import 'package:admin_app/presentation/pages/cash_transactions_page.dart';
 import 'package:admin_app/presentation/pages/home_page.dart';
 import 'package:admin_app/presentation/pages/new_salesperson_page.dart';
-import 'package:admin_app/presentation/pages/sale_transactions_page.dart';
+import 'package:admin_app/presentation/pages/card_transactions_page.dart';
 import 'package:admin_app/presentation/pages/salespeople_page.dart';
 import 'package:admin_app/presentation/pages/salesperson_shops_page.dart';
 import 'package:admin_app/presentation/pages/salesperson_status_page.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  configureDependencies();
   runApp(MyApp());
 }
 
@@ -52,7 +54,7 @@ final routes = {
   '/newSalesPersonPage': (BuildContext context)=> NewSalesPersonPage(),
   '/salesPersonStatusPage': (BuildContext context)=> SalespersonStatusPage(),
   '/salesPersonShopsPage': (BuildContext context)=> SalespersonShopsPage(),
-  '/saleTransactionsPage': (BuildContext context)=> SaleTransactionsPage(),
-  '/fundTransactionsPage': (BuildContext context)=> FundTransactionsPage(),
+  '/cardTransactionsPage': (BuildContext context)=> CardTransactionsPage(),
+  '/cashTransactionsPage': (BuildContext context)=> CashTransactionsPage(),
   '/currentStatusPage': (BuildContext context)=> CurrentStatusPage(),
 };

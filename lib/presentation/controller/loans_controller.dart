@@ -14,11 +14,16 @@ class LoansController extends BlocViewModelController<FetchLoansBloc,
   @override
   LoansViewModel mapStateToViewModel(FetchLoansState s) {
     return LoansViewModel(
-        loans: s.sales.map((e) => LoanViewModel(
-            name: e.salesPerson.getOrElse(() => null)?.name?.value,
-            phoneNumber:
-                e.salesPerson.getOrElse(() => null)?.phoneNumber?.value,
-            amount: (e.soldAmount.value - e.receivedAmount.value).toString())));
+      loans: s.sales
+          .map<LoanViewModel>((e) => LoanViewModel(
+              name: e.salesPerson.getOrElse(() => null)?.name?.value,
+              phoneNumber:
+                  e.salesPerson.getOrElse(() => null)?.phoneNumber?.value,
+              amount: e.amount.value.toString()))
+          .toList(),
+      loading: s.isLoading,
+      errorMessage: s.fetchingSalesFailure.getOrElse(() => null)?.message,
+    );
   }
 
   void loadLoans() async {

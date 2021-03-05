@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:admin_app/common/bloc/bloc_helpers.dart';
 import 'package:admin_app/common/failure.dart';
-import 'package:admin_app/domain/value_objects/card_amount.dart';
-import 'package:admin_app/domain/value_objects/cash_amount.dart';
-import 'package:admin_app/domain/value_objects/stats.dart';
+import 'package:admin_app/domain/entities/card_transaction.dart';
+import 'package:admin_app/domain/entities/cash_transaction.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

@@ -14,29 +14,15 @@ class SalespeoplePage extends StatelessWidget {
       ),
       body: Padding(
         padding: 20.hPadding,
-        child: ViewModelBuilder.withController<SalespeopleViewModel,SalespeopleController>(
+        child: ViewModelBuilder.withController<SalespeopleViewModel,
+                SalespeopleController>(
             create: () => SalespeopleController(context),
+            onInit: (controller) => controller.loadSalespeople(),
             builder: (context, controller, model) {
-              if (controller.bloc.state.isLoading)
-                return Center(child: CircularProgressIndicator());
-              if (controller.bloc.state.hasLoaded &&
-                  controller.bloc.state.salespeople.isEmpty)
-                return Center(
-                    child: Text('No stats for this sales person'));
-              if (controller.bloc.state.hasLoaded &&
-                  controller.bloc.state.salespeopleLoadingFailure.message != null)
-                return Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(controller.bloc.state.salespeopleLoadingFailure.message),
-                      IconButton(
-                          icon: Icon(Icons.refresh),
-                          onPressed: controller.loadSalespeople)
-                    ],
-                  ),
-                );
-              return SalespeopleView(salespeople: model);
+              return SalespeopleView(
+                salespeople: model,
+                onReload: controller.loadSalespeople,
+              );
             }),
       ),
       floatingActionButton: FloatingActionButton(

@@ -9,7 +9,8 @@ import '../../common/common.dart';
 class SalespersonStatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SalespersonViewModel salespersonViewModel = ModalRoute.of(context).settings.arguments;
+    SalespersonViewModel salespersonViewModel =
+        ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -22,7 +23,8 @@ class SalespersonStatusPage extends StatelessWidget {
                 color: context.primaryColor,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/salesPersonShopsPage',arguments: salespersonViewModel);
+                Navigator.pushNamed(context, '/salesPersonShopsPage',
+                    arguments: salespersonViewModel);
               })
         ],
       ),
@@ -34,29 +36,10 @@ class SalespersonStatusPage extends StatelessWidget {
               20.vSpace,
               ViewModelBuilder.withController<SalesStatusViewModel,
                       SalespersonStatsController>(
-                  create: () =>
-                      SalespersonStatsController(context, salespersonViewModel.id),
+                  create: () => SalespersonStatsController(
+                      context, salespersonViewModel.id),
+                  onInit: (controller) => controller.onToday(true),
                   builder: (context, controller, model) {
-                    controller.onToday(true);
-                    if (controller.bloc.state.isLoading)
-                      return Center(child: CircularProgressIndicator());
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.stats.detailedData.isEmpty)
-                      return Center(
-                          child: Text('No stats for this sales person'));
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.loadingError != null)
-                      return Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(controller.bloc.state.loadingError.message),
-                            IconButton(
-                                icon: Icon(Icons.refresh),
-                                onPressed: controller.onRefresh)
-                          ],
-                        ),
-                      );
                     return SalesStatusView(
                         onToday: controller.onToday,
                         onThisWeek: controller.onThisWeek,

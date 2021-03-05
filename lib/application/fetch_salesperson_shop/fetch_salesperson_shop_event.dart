@@ -1,11 +1,12 @@
 part of 'fetch_salesperson_shop_bloc.dart';
 
-@immutable
-abstract class FetchSalespersonShopsEvent extends BlocEvent<FetchSalespersonShopsState> {}
+abstract class FetchSalespersonShopsEvent
+    extends BlocEvent<FetchSalespersonShopsState> {}
 
 class SalespersonShopsLoadingEvent extends FetchSalespersonShopsEvent {
   @override
-  Stream<FetchSalespersonShopsState> handle(FetchSalespersonShopsState currentState) async* {
+  Stream<FetchSalespersonShopsState> handle(
+      FetchSalespersonShopsState currentState) async* {
     yield currentState.copyWith(isLoading: true);
   }
 }
@@ -16,8 +17,13 @@ class SalespersonShopsLoadingSucceededEvent extends FetchSalespersonShopsEvent {
   SalespersonShopsLoadingSucceededEvent(this.shops);
 
   @override
-  Stream<FetchSalespersonShopsState> handle(FetchSalespersonShopsState currentState) async* {
-    yield currentState.copyWith(isLoading:false,hasLoaded: true, shops: shops);
+  Stream<FetchSalespersonShopsState> handle(
+      FetchSalespersonShopsState currentState) async* {
+    yield currentState.copyWith(
+      shops: shops,
+      salesPersonShopsLoadingFailure: none(),
+      isLoading: false,
+    );
   }
 }
 
@@ -27,8 +33,12 @@ class SalespersonShopsLoadingFailedEvent extends FetchSalespersonShopsEvent {
   SalespersonShopsLoadingFailedEvent(this.loadingFailure);
 
   @override
-  Stream<FetchSalespersonShopsState> handle(FetchSalespersonShopsState currentState) async* {
+  Stream<FetchSalespersonShopsState> handle(
+      FetchSalespersonShopsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, salesPersonShopsLoadingFailure: loadingFailure);
+      isLoading: false,
+      salesPersonShopsLoadingFailure:
+          Failure.getFailureWithOption(loadingFailure),
+    );
   }
 }

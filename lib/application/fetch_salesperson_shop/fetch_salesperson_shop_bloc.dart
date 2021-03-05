@@ -4,9 +4,9 @@ import 'package:admin_app/common/bloc/bloc_helpers.dart';
 import 'package:admin_app/common/failure.dart';
 import 'package:admin_app/domain/entities/shop.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'fetch_salesperson_shop_event.dart';
 

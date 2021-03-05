@@ -1,7 +1,7 @@
 part of 'fetch_salesperson_stats_bloc.dart';
 
-abstract class FetchSalespersonStatsEvent extends BlocEvent<FetchSalespersonStatsState> {
-}
+abstract class FetchSalespersonStatsEvent
+    extends BlocEvent<FetchSalespersonStatsState> {}
 
 class FetchSalespersonStatsLoadingEvent extends FetchSalespersonStatsEvent {
   @override
@@ -11,7 +11,8 @@ class FetchSalespersonStatsLoadingEvent extends FetchSalespersonStatsEvent {
   }
 }
 
-class FetchSalespersonStatsIndexChangedEvent extends FetchSalespersonStatsEvent {
+class FetchSalespersonStatsIndexChangedEvent
+    extends FetchSalespersonStatsEvent {
   final int index;
 
   FetchSalespersonStatsIndexChangedEvent(this.index);
@@ -23,20 +24,27 @@ class FetchSalespersonStatsIndexChangedEvent extends FetchSalespersonStatsEvent 
   }
 }
 
-class FetchSalespersonStatsLoadingSucceededEvent extends FetchSalespersonStatsEvent {
-  final Stats stats;
+class FetchSalespersonStatsLoadingSucceededEvent
+    extends FetchSalespersonStatsEvent {
+  final List<CardTransaction> cards;
+  final List<CashTransaction> cash;
 
-  FetchSalespersonStatsLoadingSucceededEvent(this.stats);
+  FetchSalespersonStatsLoadingSucceededEvent(this.cards, this.cash);
 
   @override
   Stream<FetchSalespersonStatsState> handle(
       FetchSalespersonStatsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, hasLoaded: true, stats: stats);
+      cards: cards,
+      cash: cash,
+      loadingError: none(),
+      isLoading: false,
+    );
   }
 }
 
-class FetchSalespersonStatsLoadingFailedEvent extends FetchSalespersonStatsEvent {
+class FetchSalespersonStatsLoadingFailedEvent
+    extends FetchSalespersonStatsEvent {
   final Failure loadingFailure;
 
   FetchSalespersonStatsLoadingFailedEvent(this.loadingFailure);
@@ -45,7 +53,8 @@ class FetchSalespersonStatsLoadingFailedEvent extends FetchSalespersonStatsEvent
   Stream<FetchSalespersonStatsState> handle(
       FetchSalespersonStatsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, loadingError: loadingFailure);
+      isLoading: false,
+      loadingError: Failure.getFailureWithOption(loadingFailure),
+    );
   }
 }
-

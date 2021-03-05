@@ -4,7 +4,8 @@ abstract class FetchSalespeopleEvent extends BlocEvent<FetchSalespeopleState> {}
 
 class SalespeopleLoadingEvent extends FetchSalespeopleEvent {
   @override
-  Stream<FetchSalespeopleState> handle(FetchSalespeopleState currentState) async* {
+  Stream<FetchSalespeopleState> handle(
+      FetchSalespeopleState currentState) async* {
     yield currentState.copyWith(isLoading: true);
   }
 }
@@ -15,8 +16,13 @@ class SalespeopleLoadingSucceededEvent extends FetchSalespeopleEvent {
   SalespeopleLoadingSucceededEvent(this.salespeople);
 
   @override
-  Stream<FetchSalespeopleState> handle(FetchSalespeopleState currentState) async* {
-    yield currentState.copyWith(isLoading:false,hasLoaded: true, salespeople: salespeople);
+  Stream<FetchSalespeopleState> handle(
+      FetchSalespeopleState currentState) async* {
+    yield currentState.copyWith(
+      salespeople: salespeople,
+      salespeopleLoadingFailure: none(),
+      isLoading: false,
+    );
   }
 }
 
@@ -26,9 +32,11 @@ class SalespeopleLoadingFailedEvent extends FetchSalespeopleEvent {
   SalespeopleLoadingFailedEvent(this.loadingFailure);
 
   @override
-  Stream<FetchSalespeopleState> handle(FetchSalespeopleState currentState) async* {
+  Stream<FetchSalespeopleState> handle(
+      FetchSalespeopleState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, salespeopleLoadingFailure: loadingFailure);
+      isLoading: false,
+      salespeopleLoadingFailure: Failure.getFailureWithOption(loadingFailure),
+    );
   }
 }
-

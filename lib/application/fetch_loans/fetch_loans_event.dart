@@ -10,14 +10,17 @@ class FetchingLoansEvent extends FetchLoansEvent {
 }
 
 class FetchingLoansSucceededEvent extends FetchLoansEvent {
-  final List<SaleTransaction> sales;
+  final List<CardTransaction> sales;
 
   FetchingLoansSucceededEvent(this.sales);
 
   @override
   Stream<FetchLoansState> handle(FetchLoansState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, hasLoaded: true, sales: sales);
+      isLoading: false,
+      fetchingSalesFailure: none(),
+      sales: sales,
+    );
   }
 }
 
@@ -29,6 +32,7 @@ class FetchingLoansFailedEvent extends FetchLoansEvent {
   @override
   Stream<FetchLoansState> handle(FetchLoansState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, fetchingSalesFailure: loadingFailure);
+        isLoading: false,
+        fetchingSalesFailure: Failure.getFailureWithOption(loadingFailure));
   }
 }

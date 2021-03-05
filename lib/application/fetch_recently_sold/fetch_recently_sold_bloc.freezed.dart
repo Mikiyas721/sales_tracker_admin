@@ -15,15 +15,13 @@ class _$FetchRecentlySoldStateTearOff {
 
 // ignore: unused_element
   _FetchRecentlySoldState call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingSalesFailure,
-      List<SaleTransaction> sales}) {
+      {List<CardTransaction> sales,
+      Option<Failure> fetchingSalesFailure,
+      bool isLoading}) {
     return _FetchRecentlySoldState(
-      isLoading: isLoading,
-      hasLoaded: hasLoaded,
-      fetchingSalesFailure: fetchingSalesFailure,
       sales: sales,
+      fetchingSalesFailure: fetchingSalesFailure,
+      isLoading: isLoading,
     );
   }
 }
@@ -34,10 +32,9 @@ const $FetchRecentlySoldState = _$FetchRecentlySoldStateTearOff();
 
 /// @nodoc
 mixin _$FetchRecentlySoldState {
+  List<CardTransaction> get sales;
+  Option<Failure> get fetchingSalesFailure;
   bool get isLoading;
-  bool get hasLoaded;
-  Failure get fetchingSalesFailure;
-  List<SaleTransaction> get sales;
 
   @JsonKey(ignore: true)
   $FetchRecentlySoldStateCopyWith<FetchRecentlySoldState> get copyWith;
@@ -49,10 +46,9 @@ abstract class $FetchRecentlySoldStateCopyWith<$Res> {
           $Res Function(FetchRecentlySoldState) then) =
       _$FetchRecentlySoldStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingSalesFailure,
-      List<SaleTransaction> sales});
+      {List<CardTransaction> sales,
+      Option<Failure> fetchingSalesFailure,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -66,18 +62,16 @@ class _$FetchRecentlySoldStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object hasLoaded = freezed,
-    Object fetchingSalesFailure = freezed,
     Object sales = freezed,
+    Object fetchingSalesFailure = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
+      sales: sales == freezed ? _value.sales : sales as List<CardTransaction>,
       fetchingSalesFailure: fetchingSalesFailure == freezed
           ? _value.fetchingSalesFailure
-          : fetchingSalesFailure as Failure,
-      sales: sales == freezed ? _value.sales : sales as List<SaleTransaction>,
+          : fetchingSalesFailure as Option<Failure>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -90,10 +84,9 @@ abstract class _$FetchRecentlySoldStateCopyWith<$Res>
       __$FetchRecentlySoldStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingSalesFailure,
-      List<SaleTransaction> sales});
+      {List<CardTransaction> sales,
+      Option<Failure> fetchingSalesFailure,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -109,18 +102,16 @@ class __$FetchRecentlySoldStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object hasLoaded = freezed,
-    Object fetchingSalesFailure = freezed,
     Object sales = freezed,
+    Object fetchingSalesFailure = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_FetchRecentlySoldState(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
+      sales: sales == freezed ? _value.sales : sales as List<CardTransaction>,
       fetchingSalesFailure: fetchingSalesFailure == freezed
           ? _value.fetchingSalesFailure
-          : fetchingSalesFailure as Failure,
-      sales: sales == freezed ? _value.sales : sales as List<SaleTransaction>,
+          : fetchingSalesFailure as Option<Failure>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -128,46 +119,40 @@ class __$FetchRecentlySoldStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FetchRecentlySoldState implements _FetchRecentlySoldState {
   const _$_FetchRecentlySoldState(
-      {this.isLoading, this.hasLoaded, this.fetchingSalesFailure, this.sales});
+      {this.sales, this.fetchingSalesFailure, this.isLoading});
 
   @override
+  final List<CardTransaction> sales;
+  @override
+  final Option<Failure> fetchingSalesFailure;
+  @override
   final bool isLoading;
-  @override
-  final bool hasLoaded;
-  @override
-  final Failure fetchingSalesFailure;
-  @override
-  final List<SaleTransaction> sales;
 
   @override
   String toString() {
-    return 'FetchRecentlySoldState(isLoading: $isLoading, hasLoaded: $hasLoaded, fetchingSalesFailure: $fetchingSalesFailure, sales: $sales)';
+    return 'FetchRecentlySoldState(sales: $sales, fetchingSalesFailure: $fetchingSalesFailure, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FetchRecentlySoldState &&
-            (identical(other.isLoading, isLoading) ||
-                const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)) &&
-            (identical(other.hasLoaded, hasLoaded) ||
-                const DeepCollectionEquality()
-                    .equals(other.hasLoaded, hasLoaded)) &&
+            (identical(other.sales, sales) ||
+                const DeepCollectionEquality().equals(other.sales, sales)) &&
             (identical(other.fetchingSalesFailure, fetchingSalesFailure) ||
                 const DeepCollectionEquality().equals(
                     other.fetchingSalesFailure, fetchingSalesFailure)) &&
-            (identical(other.sales, sales) ||
-                const DeepCollectionEquality().equals(other.sales, sales)));
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(hasLoaded) ^
+      const DeepCollectionEquality().hash(sales) ^
       const DeepCollectionEquality().hash(fetchingSalesFailure) ^
-      const DeepCollectionEquality().hash(sales);
+      const DeepCollectionEquality().hash(isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -178,19 +163,16 @@ class _$_FetchRecentlySoldState implements _FetchRecentlySoldState {
 
 abstract class _FetchRecentlySoldState implements FetchRecentlySoldState {
   const factory _FetchRecentlySoldState(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingSalesFailure,
-      List<SaleTransaction> sales}) = _$_FetchRecentlySoldState;
+      {List<CardTransaction> sales,
+      Option<Failure> fetchingSalesFailure,
+      bool isLoading}) = _$_FetchRecentlySoldState;
 
   @override
+  List<CardTransaction> get sales;
+  @override
+  Option<Failure> get fetchingSalesFailure;
+  @override
   bool get isLoading;
-  @override
-  bool get hasLoaded;
-  @override
-  Failure get fetchingSalesFailure;
-  @override
-  List<SaleTransaction> get sales;
   @override
   @JsonKey(ignore: true)
   _$FetchRecentlySoldStateCopyWith<_FetchRecentlySoldState> get copyWith;

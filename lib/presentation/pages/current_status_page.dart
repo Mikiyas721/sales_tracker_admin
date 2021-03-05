@@ -41,87 +41,32 @@ class CurrentStatusPage extends StatelessWidget {
             children: [
               ViewModelBuilder.withController<LoansViewModel, LoansController>(
                   create: () => LoansController(context),
+                  onInit: (controller) => controller.loadLoans(),
                   builder: (context, controller, model) {
-                    controller.loadLoans();
-
-                    if (controller.bloc.state.isLoading)
-                      return Center(child: CircularProgressIndicator());
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.sales.isEmpty)
-                      return Center(child: Text('No Loans'));
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.fetchingSalesFailure.message !=
-                            null)
-                      return Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(controller
-                                .bloc.state.fetchingSalesFailure.message),
-                            IconButton(
-                                icon: Icon(Icons.refresh),
-                                onPressed: controller.loadLoans)
-                          ],
-                        ),
-                      );
-                    return LoansView(loans: model);
+                    return LoansView(
+                      loans: model,
+                      onReload: controller.loadLoans,
+                    );
                   }),
               ViewModelBuilder.withController<RecentSalesViewModel,
                       RecentSalesController>(
                   create: () => RecentSalesController(context),
+                  onInit: (controller) => controller.loadRecentSales(),
                   builder: (context, controller, model) {
-                    controller.loadRecentSales();
-
-                    if (controller.bloc.state.isLoading)
-                      return Center(child: CircularProgressIndicator());
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.sales.isEmpty)
-                      return Center(child: Text('No Recently Sold Card'));
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.fetchingSalesFailure.message !=
-                            null)
-                      return Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(controller
-                                .bloc.state.fetchingSalesFailure.message),
-                            IconButton(
-                                icon: Icon(Icons.refresh),
-                                onPressed: controller.loadRecentSales)
-                          ],
-                        ),
-                      );
                     return RecentSalesView(
                       newSales: model,
+                      onReload: controller.loadRecentSales,
                     );
                   }),
               ViewModelBuilder.withController<NewShopsViewModel,
                       NewShopsController>(
                   create: () => NewShopsController(context),
+                  onInit: (controller) => controller.loadNewShops(),
                   builder: (context, controller, model) {
-                    controller.loadNewShops();
-                    if (controller.bloc.state.isLoading)
-                      return Center(child: CircularProgressIndicator());
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.shops.isEmpty)
-                      return Center(child: Text('No New Shop'));
-                    if (controller.bloc.state.hasLoaded &&
-                        controller.bloc.state.fetchingShopsFailure.message !=
-                            null)
-                      return Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(controller
-                                .bloc.state.fetchingShopsFailure.message),
-                            IconButton(
-                                icon: Icon(Icons.refresh),
-                                onPressed: controller.loadNewShops)
-                          ],
-                        ),
-                      );
-                    return NewShopsView(newShopsViewModel: model);
+                    return NewShopsView(
+                      newShops: model,
+                      onReload: controller.loadNewShops,
+                    );
                   })
             ],
           ),

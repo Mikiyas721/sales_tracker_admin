@@ -15,15 +15,13 @@ class _$FetchNewShopsStateTearOff {
 
 // ignore: unused_element
   _FetchNewShopsState call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingShopsFailure,
-      List<Shop> shops}) {
+      {List<Shop> shops,
+      Option<Failure> fetchingShopsFailure,
+      bool isLoading}) {
     return _FetchNewShopsState(
-      isLoading: isLoading,
-      hasLoaded: hasLoaded,
-      fetchingShopsFailure: fetchingShopsFailure,
       shops: shops,
+      fetchingShopsFailure: fetchingShopsFailure,
+      isLoading: isLoading,
     );
   }
 }
@@ -34,10 +32,9 @@ const $FetchNewShopsState = _$FetchNewShopsStateTearOff();
 
 /// @nodoc
 mixin _$FetchNewShopsState {
-  bool get isLoading;
-  bool get hasLoaded;
-  Failure get fetchingShopsFailure;
   List<Shop> get shops;
+  Option<Failure> get fetchingShopsFailure;
+  bool get isLoading;
 
   @JsonKey(ignore: true)
   $FetchNewShopsStateCopyWith<FetchNewShopsState> get copyWith;
@@ -49,10 +46,7 @@ abstract class $FetchNewShopsStateCopyWith<$Res> {
           FetchNewShopsState value, $Res Function(FetchNewShopsState) then) =
       _$FetchNewShopsStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingShopsFailure,
-      List<Shop> shops});
+      {List<Shop> shops, Option<Failure> fetchingShopsFailure, bool isLoading});
 }
 
 /// @nodoc
@@ -66,18 +60,16 @@ class _$FetchNewShopsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object hasLoaded = freezed,
-    Object fetchingShopsFailure = freezed,
     Object shops = freezed,
+    Object fetchingShopsFailure = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
+      shops: shops == freezed ? _value.shops : shops as List<Shop>,
       fetchingShopsFailure: fetchingShopsFailure == freezed
           ? _value.fetchingShopsFailure
-          : fetchingShopsFailure as Failure,
-      shops: shops == freezed ? _value.shops : shops as List<Shop>,
+          : fetchingShopsFailure as Option<Failure>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -90,10 +82,7 @@ abstract class _$FetchNewShopsStateCopyWith<$Res>
       __$FetchNewShopsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingShopsFailure,
-      List<Shop> shops});
+      {List<Shop> shops, Option<Failure> fetchingShopsFailure, bool isLoading});
 }
 
 /// @nodoc
@@ -109,18 +98,16 @@ class __$FetchNewShopsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object hasLoaded = freezed,
-    Object fetchingShopsFailure = freezed,
     Object shops = freezed,
+    Object fetchingShopsFailure = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_FetchNewShopsState(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
+      shops: shops == freezed ? _value.shops : shops as List<Shop>,
       fetchingShopsFailure: fetchingShopsFailure == freezed
           ? _value.fetchingShopsFailure
-          : fetchingShopsFailure as Failure,
-      shops: shops == freezed ? _value.shops : shops as List<Shop>,
+          : fetchingShopsFailure as Option<Failure>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -128,46 +115,40 @@ class __$FetchNewShopsStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FetchNewShopsState implements _FetchNewShopsState {
   const _$_FetchNewShopsState(
-      {this.isLoading, this.hasLoaded, this.fetchingShopsFailure, this.shops});
+      {this.shops, this.fetchingShopsFailure, this.isLoading});
 
   @override
-  final bool isLoading;
-  @override
-  final bool hasLoaded;
-  @override
-  final Failure fetchingShopsFailure;
-  @override
   final List<Shop> shops;
+  @override
+  final Option<Failure> fetchingShopsFailure;
+  @override
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'FetchNewShopsState(isLoading: $isLoading, hasLoaded: $hasLoaded, fetchingShopsFailure: $fetchingShopsFailure, shops: $shops)';
+    return 'FetchNewShopsState(shops: $shops, fetchingShopsFailure: $fetchingShopsFailure, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FetchNewShopsState &&
-            (identical(other.isLoading, isLoading) ||
-                const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)) &&
-            (identical(other.hasLoaded, hasLoaded) ||
-                const DeepCollectionEquality()
-                    .equals(other.hasLoaded, hasLoaded)) &&
+            (identical(other.shops, shops) ||
+                const DeepCollectionEquality().equals(other.shops, shops)) &&
             (identical(other.fetchingShopsFailure, fetchingShopsFailure) ||
                 const DeepCollectionEquality().equals(
                     other.fetchingShopsFailure, fetchingShopsFailure)) &&
-            (identical(other.shops, shops) ||
-                const DeepCollectionEquality().equals(other.shops, shops)));
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(hasLoaded) ^
+      const DeepCollectionEquality().hash(shops) ^
       const DeepCollectionEquality().hash(fetchingShopsFailure) ^
-      const DeepCollectionEquality().hash(shops);
+      const DeepCollectionEquality().hash(isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -177,19 +158,16 @@ class _$_FetchNewShopsState implements _FetchNewShopsState {
 
 abstract class _FetchNewShopsState implements FetchNewShopsState {
   const factory _FetchNewShopsState(
-      {bool isLoading,
-      bool hasLoaded,
-      Failure fetchingShopsFailure,
-      List<Shop> shops}) = _$_FetchNewShopsState;
+      {List<Shop> shops,
+      Option<Failure> fetchingShopsFailure,
+      bool isLoading}) = _$_FetchNewShopsState;
 
   @override
-  bool get isLoading;
-  @override
-  bool get hasLoaded;
-  @override
-  Failure get fetchingShopsFailure;
-  @override
   List<Shop> get shops;
+  @override
+  Option<Failure> get fetchingShopsFailure;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$FetchNewShopsStateCopyWith<_FetchNewShopsState> get copyWith;

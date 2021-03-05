@@ -1,14 +1,19 @@
 import 'package:admin_app/common/view_model.dart';
 import 'package:flutter/material.dart';
 
-class SalespersonShopsViewModel extends ViewModel{
+class SalespersonShopsViewModel
+    extends SimpleListViewModel<SalespersonShopViewModel> {
   final List<SalespersonShopViewModel> shops;
+  final bool isLoading;
+  final String errorMessage;
 
-  SalespersonShopsViewModel({@required this.shops});
-  @override
-  List<Object> get props =>[shops];
+  SalespersonShopsViewModel(
+      {@required this.shops, @required this.isLoading, @required this.errorMessage})
+      :super(
+    data: shops, isLoading: isLoading, error: errorMessage);
 
 }
+
 class SalespersonShopViewModel extends ViewModel {
   final String name;
   final String phoneNumber;
@@ -21,9 +26,10 @@ class SalespersonShopViewModel extends ViewModel {
   });
 
   @override
-  List<Object> get props => [
-    name,
-    phoneNumber,
-    location,
-  ];
+  List<Object> get props =>
+      [
+        name,
+        phoneNumber,
+        location,
+      ];
 }

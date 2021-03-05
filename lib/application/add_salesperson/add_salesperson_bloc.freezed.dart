@@ -17,17 +17,15 @@ class _$AddSalespersonStateTearOff {
   _AddSalespersonState call(
       {Either<Failure, Name> name,
       Either<Failure, PhoneNumber> phoneNumber,
-      Failure addSalespersonFailure,
+      Option<Failure> addSalespersonFailure,
       bool hasSubmitted,
-      bool hasRequested,
-      bool requestCompleted}) {
+      bool hasRequested}) {
     return _AddSalespersonState(
       name: name,
       phoneNumber: phoneNumber,
       addSalespersonFailure: addSalespersonFailure,
       hasSubmitted: hasSubmitted,
       hasRequested: hasRequested,
-      requestCompleted: requestCompleted,
     );
   }
 }
@@ -40,10 +38,9 @@ const $AddSalespersonState = _$AddSalespersonStateTearOff();
 mixin _$AddSalespersonState {
   Either<Failure, Name> get name;
   Either<Failure, PhoneNumber> get phoneNumber;
-  Failure get addSalespersonFailure;
+  Option<Failure> get addSalespersonFailure;
   bool get hasSubmitted;
   bool get hasRequested;
-  bool get requestCompleted;
 
   @JsonKey(ignore: true)
   $AddSalespersonStateCopyWith<AddSalespersonState> get copyWith;
@@ -57,10 +54,9 @@ abstract class $AddSalespersonStateCopyWith<$Res> {
   $Res call(
       {Either<Failure, Name> name,
       Either<Failure, PhoneNumber> phoneNumber,
-      Failure addSalespersonFailure,
+      Option<Failure> addSalespersonFailure,
       bool hasSubmitted,
-      bool hasRequested,
-      bool requestCompleted});
+      bool hasRequested});
 }
 
 /// @nodoc
@@ -79,7 +75,6 @@ class _$AddSalespersonStateCopyWithImpl<$Res>
     Object addSalespersonFailure = freezed,
     Object hasSubmitted = freezed,
     Object hasRequested = freezed,
-    Object requestCompleted = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed ? _value.name : name as Either<Failure, Name>,
@@ -88,14 +83,11 @@ class _$AddSalespersonStateCopyWithImpl<$Res>
           : phoneNumber as Either<Failure, PhoneNumber>,
       addSalespersonFailure: addSalespersonFailure == freezed
           ? _value.addSalespersonFailure
-          : addSalespersonFailure as Failure,
+          : addSalespersonFailure as Option<Failure>,
       hasSubmitted:
           hasSubmitted == freezed ? _value.hasSubmitted : hasSubmitted as bool,
       hasRequested:
           hasRequested == freezed ? _value.hasRequested : hasRequested as bool,
-      requestCompleted: requestCompleted == freezed
-          ? _value.requestCompleted
-          : requestCompleted as bool,
     ));
   }
 }
@@ -110,10 +102,9 @@ abstract class _$AddSalespersonStateCopyWith<$Res>
   $Res call(
       {Either<Failure, Name> name,
       Either<Failure, PhoneNumber> phoneNumber,
-      Failure addSalespersonFailure,
+      Option<Failure> addSalespersonFailure,
       bool hasSubmitted,
-      bool hasRequested,
-      bool requestCompleted});
+      bool hasRequested});
 }
 
 /// @nodoc
@@ -134,7 +125,6 @@ class __$AddSalespersonStateCopyWithImpl<$Res>
     Object addSalespersonFailure = freezed,
     Object hasSubmitted = freezed,
     Object hasRequested = freezed,
-    Object requestCompleted = freezed,
   }) {
     return _then(_AddSalespersonState(
       name: name == freezed ? _value.name : name as Either<Failure, Name>,
@@ -143,14 +133,11 @@ class __$AddSalespersonStateCopyWithImpl<$Res>
           : phoneNumber as Either<Failure, PhoneNumber>,
       addSalespersonFailure: addSalespersonFailure == freezed
           ? _value.addSalespersonFailure
-          : addSalespersonFailure as Failure,
+          : addSalespersonFailure as Option<Failure>,
       hasSubmitted:
           hasSubmitted == freezed ? _value.hasSubmitted : hasSubmitted as bool,
       hasRequested:
           hasRequested == freezed ? _value.hasRequested : hasRequested as bool,
-      requestCompleted: requestCompleted == freezed
-          ? _value.requestCompleted
-          : requestCompleted as bool,
     ));
   }
 }
@@ -162,25 +149,22 @@ class _$_AddSalespersonState implements _AddSalespersonState {
       this.phoneNumber,
       this.addSalespersonFailure,
       this.hasSubmitted,
-      this.hasRequested,
-      this.requestCompleted});
+      this.hasRequested});
 
   @override
   final Either<Failure, Name> name;
   @override
   final Either<Failure, PhoneNumber> phoneNumber;
   @override
-  final Failure addSalespersonFailure;
+  final Option<Failure> addSalespersonFailure;
   @override
   final bool hasSubmitted;
   @override
   final bool hasRequested;
-  @override
-  final bool requestCompleted;
 
   @override
   String toString() {
-    return 'AddSalespersonState(name: $name, phoneNumber: $phoneNumber, addSalespersonFailure: $addSalespersonFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, requestCompleted: $requestCompleted)';
+    return 'AddSalespersonState(name: $name, phoneNumber: $phoneNumber, addSalespersonFailure: $addSalespersonFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested)';
   }
 
   @override
@@ -200,10 +184,7 @@ class _$_AddSalespersonState implements _AddSalespersonState {
                     .equals(other.hasSubmitted, hasSubmitted)) &&
             (identical(other.hasRequested, hasRequested) ||
                 const DeepCollectionEquality()
-                    .equals(other.hasRequested, hasRequested)) &&
-            (identical(other.requestCompleted, requestCompleted) ||
-                const DeepCollectionEquality()
-                    .equals(other.requestCompleted, requestCompleted)));
+                    .equals(other.hasRequested, hasRequested)));
   }
 
   @override
@@ -213,8 +194,7 @@ class _$_AddSalespersonState implements _AddSalespersonState {
       const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(addSalespersonFailure) ^
       const DeepCollectionEquality().hash(hasSubmitted) ^
-      const DeepCollectionEquality().hash(hasRequested) ^
-      const DeepCollectionEquality().hash(requestCompleted);
+      const DeepCollectionEquality().hash(hasRequested);
 
   @JsonKey(ignore: true)
   @override
@@ -227,23 +207,20 @@ abstract class _AddSalespersonState implements AddSalespersonState {
   const factory _AddSalespersonState(
       {Either<Failure, Name> name,
       Either<Failure, PhoneNumber> phoneNumber,
-      Failure addSalespersonFailure,
+      Option<Failure> addSalespersonFailure,
       bool hasSubmitted,
-      bool hasRequested,
-      bool requestCompleted}) = _$_AddSalespersonState;
+      bool hasRequested}) = _$_AddSalespersonState;
 
   @override
   Either<Failure, Name> get name;
   @override
   Either<Failure, PhoneNumber> get phoneNumber;
   @override
-  Failure get addSalespersonFailure;
+  Option<Failure> get addSalespersonFailure;
   @override
   bool get hasSubmitted;
   @override
   bool get hasRequested;
-  @override
-  bool get requestCompleted;
   @override
   @JsonKey(ignore: true)
   _$AddSalespersonStateCopyWith<_AddSalespersonState> get copyWith;

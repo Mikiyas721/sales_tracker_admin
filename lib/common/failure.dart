@@ -1,5 +1,11 @@
+import 'package:dartz/dartz.dart';
+
 abstract class Failure{
   String get message;
+
+  static Option<Failure> getFailureWithOption(Failure failure) {
+    return failure == null ? none() : some(failure);
+  }
 }
 
 

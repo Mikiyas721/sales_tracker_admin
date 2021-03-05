@@ -1,27 +1,43 @@
+import 'package:admin_app/common/widgets/simple_list_view.dart';
 import 'package:admin_app/presentation/models/new_sales_view_model.dart';
 import 'package:flutter/material.dart';
 
 class RecentSalesView extends StatelessWidget {
   final RecentSalesViewModel newSales;
+  final VoidCallback onReload;
 
-  const RecentSalesView({Key key, this.newSales}) : super(key: key);
+  const RecentSalesView({
+    Key key,
+    @required this.newSales,
+    @required this.onReload,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: newSales.newSales.length,
-        itemBuilder: (BuildContext context, int index) {
-          return RecentlySoldView._(
-            recentlySoldViewModel: newSales.newSales[index],
-          );
-        });
+    return SimpleListView<RecentlySoldViewModel>(
+        model: newSales,
+        itemBuilder: (BuildContext context, RecentlySoldViewModel model) {
+          return RecentlySoldView._(recentlySold: model);
+        },
+        errorView: Center(
+            child: EmptyErrorView.defaultError(
+              description: newSales.errorMessage,
+              onAction: onReload,
+            )),
+        loadingView: Center(child: MyLoadingView()),
+        emptyView: Center(
+          child: EmptyErrorView.defaultEmpty(
+            onAction: onReload,
+          ),
+        ));
   }
 }
 
 class RecentlySoldView extends StatelessWidget {
-  final RecentlySoldViewModel recentlySoldViewModel;
+  final RecentlySoldViewModel recentlySold;
 
-  const RecentlySoldView._({Key key, this.recentlySoldViewModel}) : super(key: key);
+  const RecentlySoldView._({Key key, this.recentlySold})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +46,11 @@ class RecentlySoldView extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10),
           child: Icon(Icons.person),
         ),
-        title: Text(recentlySoldViewModel.name),
+        title: Text(recentlySold.name),
         subtitle: Text(
-          recentlySoldViewModel.phoneNumber,
+          recentlySold.phoneNumber,
           style: TextStyle(color: Colors.grey, fontSize: 12),
         ),
-        trailing: Text('${recentlySoldViewModel.amount}ETB'));
+        trailing: Text('${recentlySold.amount}ETB'));
   }
 }

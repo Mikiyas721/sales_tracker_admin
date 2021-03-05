@@ -18,15 +18,20 @@ class RecentSalesController extends BlocViewModelController<
   @override
   RecentSalesViewModel mapStateToViewModel(FetchRecentlySoldState s) {
     return RecentSalesViewModel(
-        newSales: s.sales.map((e) => RecentlySoldViewModel(
-            name: e.salesPerson.getOrElse(() => null)?.name?.value,
-            phoneNumber: e.salesPerson.getOrElse(() => null)?.phoneNumber?.value,
-            amount: e.soldAmount.value.toString())));
+        newSales: s.sales.map<RecentlySoldViewModel>((e) =>
+            RecentlySoldViewModel(
+                name: e.salesPerson.getOrElse(() => null)?.name?.value,
+                phoneNumber:
+                    e.salesPerson.getOrElse(() => null)?.phoneNumber?.value,
+                amount: e.amount.value.toString())),
+        isLoading: s.isLoading,
+        errorMessage: s.fetchingSalesFailure.getOrElse(() => null)?.message);
   }
-  void loadRecentSales()async{
+
+  void loadRecentSales() async {
     bloc.add(FetchingRecentlySoldEvent());
     final result = await getIt.get<FetchRecentlySold>().execute();
-    result.fold((l){
+    result.fold((l) {
       bloc.add(FetchingRecentlySoldFailedEvent(l));
     }, (r) {
       bloc.add(FetchingRecentlySoldSucceededEvent(r));

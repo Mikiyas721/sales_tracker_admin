@@ -1,14 +1,19 @@
 import 'package:admin_app/common/view_model.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-class NewShopsViewModel extends ViewModel {
+class NewShopsViewModel extends SimpleListViewModel<NewShopViewModel> {
   final List<NewShopViewModel> newShops;
+  final bool isLoading;
+  final String errorMessage;
 
-  NewShopsViewModel({@required this.newShops});
+  NewShopsViewModel(
+      {@required this.newShops,
+      @required this.isLoading,
+      @required this.errorMessage})
+      : super(data: newShops, isLoading: isLoading, error: errorMessage);
 
   @override
-  List<Object> get props => [newShops];
+  List<Object> get props => [newShops, isLoading, errorMessage];
 }
 
 class NewShopViewModel extends ViewModel {

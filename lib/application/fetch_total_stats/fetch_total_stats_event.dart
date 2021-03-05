@@ -23,15 +23,20 @@ class FetchTotalStatsIndexChangedEvent extends FetchTotalStatsEvent {
 }
 
 class FetchTotalStatsLoadingSucceededEvent extends FetchTotalStatsEvent {
-  final Stats stats;
+  final List<CardTransaction> cards;
+  final List<CashTransaction> cash;
 
-  FetchTotalStatsLoadingSucceededEvent(this.stats);
+  FetchTotalStatsLoadingSucceededEvent(this.cards,this.cash);
 
   @override
   Stream<FetchTotalStatsState> handle(
       FetchTotalStatsState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, hasLoaded: true, stats: stats);
+      cards: cards,
+      cash: cash,
+      loadingError: none(),
+      isLoading: false,
+    );
   }
 }
 
@@ -43,7 +48,7 @@ class FetchTotalStatsLoadingFailedEvent extends FetchTotalStatsEvent {
   @override
   Stream<FetchTotalStatsState> handle(
       FetchTotalStatsState currentState) async* {
-    yield currentState.copyWith(
-        isLoading: false, loadingError: loadingFailure);
+    yield currentState.copyWith(isLoading: false,
+      loadingError: Failure.getFailureWithOption(loadingFailure),);
   }
 }

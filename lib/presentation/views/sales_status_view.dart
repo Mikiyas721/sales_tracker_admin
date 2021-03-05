@@ -133,20 +133,36 @@ class SalesStatusView extends StatelessWidget {
 BarChartGroupData getBar(int x, double barHeight, double stackHeight) {
   return BarChartGroupData(
     x: x,
-    barRods: [
-      BarChartRodData(
-        colors: [Colors.blue],
-        width: 20,
-        borderRadius: BorderRadius.all(Radius.circular(3)),
-        y: barHeight,
-        rodStackItems: [BarChartRodStackItem(0, stackHeight, Colors.red)],
-      )
-    ],
+    barRods: stackHeight > barHeight
+        ? [
+            BarChartRodData(
+              colors: [Colors.blue],
+              width: 20,
+              borderRadius: BorderRadius.all(Radius.circular(3)),
+              y: stackHeight,
+            )
+          ]
+        : [
+            BarChartRodData(
+              colors: [Colors.red],
+              width: 20,
+              borderRadius: BorderRadius.all(Radius.circular(3)),
+              y: barHeight,
+              rodStackItems: [
+                BarChartRodStackItem(0, stackHeight, Colors.blue)
+              ],
+            )
+          ],
   );
 }
-String getTitle(int activeButtonIndex){
-  if(activeButtonIndex==0) return 'Today';
-  else if(activeButtonIndex==1) return 'This Week';
-  else if(activeButtonIndex==2)return 'This Month';
-  else throw Exception('Unknown active button index. Tried to map to title');
+
+String getTitle(int activeButtonIndex) {
+  if (activeButtonIndex == 0)
+    return 'Today';
+  else if (activeButtonIndex == 1)
+    return 'This Week';
+  else if (activeButtonIndex == 2)
+    return 'This Month';
+  else
+    throw Exception('Unknown active button index. Tried to map to title');
 }

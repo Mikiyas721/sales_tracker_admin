@@ -1,5 +1,4 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
-import 'package:admin_app/domain/entities/salesperson.dart';
 import 'package:admin_app/presentation/controller/salesperson_shops_controller.dart';
 import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:admin_app/presentation/models/shop_view_model.dart';
@@ -21,31 +20,13 @@ class SalespersonShopsPage extends StatelessWidget {
               SalespersonShopsController>(
           create: () =>
               SalespersonShopsController(context, salespersonViewModel.id),
+          onInit: (controller) => controller.loadShops(),
           builder: (context, controller, model) {
-            controller.loadShops();
-            if (controller.bloc.state.isLoading)
-              return Center(child: CircularProgressIndicator());
-            if (controller.bloc.state.hasLoaded &&
-                controller.bloc.state.shops.isEmpty)
-              return Center(
-                  child: Text('${salespersonViewModel.name} has no shops'));
-            if (controller.bloc.state.hasLoaded &&
-                controller.bloc.state.salesPersonShopsLoadingFailure != null)
-              return Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(controller
-                        .bloc.state.salesPersonShopsLoadingFailure.message),
-                    IconButton(
-                        icon: Icon(Icons.refresh),
-                        onPressed: controller.loadShops)
-                  ],
-                ),
-              );
             return SalespersonShopsView(
-                salespersonShops: model,
-                salespersonViewModel: salespersonViewModel);
+              salespersonShops: model,
+              salespersonViewModel: salespersonViewModel,
+              onReload: controller.loadShops,
+            );
           }),
     );
   }

@@ -4,15 +4,14 @@ part of 'fetch_salesperson_shop_bloc.dart';
 abstract class FetchSalespersonShopsState extends BlocState
     with _$FetchSalespersonShopsState {
   const factory FetchSalespersonShopsState({
-    bool isLoading,
-    bool hasLoaded,
-    Failure salesPersonShopsLoadingFailure,
     List<Shop> shops,
+    Option<Failure> salesPersonShopsLoadingFailure,
+    bool isLoading,
   }) = _FetchSalespersonShopState;
 
   factory FetchSalespersonShopsState.initial() => FetchSalespersonShopsState(
+      shops: [],
+      salesPersonShopsLoadingFailure: none(),
       isLoading: false,
-      hasLoaded: false,
-      salesPersonShopsLoadingFailure: null,
-      shops: null);
+  );
 }

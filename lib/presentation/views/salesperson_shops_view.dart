@@ -1,3 +1,4 @@
+import 'package:admin_app/common/widgets/simple_list_view.dart';
 import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -7,21 +8,34 @@ import '../../common/common.dart';
 class SalespersonShopsView extends StatelessWidget {
   final SalespersonShopsViewModel salespersonShops;
   final SalespersonViewModel salespersonViewModel;
+  final VoidCallback onReload;
 
-  const SalespersonShopsView(
-      {Key key, this.salespersonShops, this.salespersonViewModel})
-      : super(key: key);
+  const SalespersonShopsView({
+    Key key,
+    @required this.salespersonShops,
+    @required this.salespersonViewModel,
+    @required this.onReload,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: salespersonShops.shops.length,
-        itemBuilder: (BuildContext context, int index) {
-          return SalespersonShopView(
-            shopViewModel: salespersonShops.shops[index],
-            salespersonViewModel: salespersonViewModel,
-          );
-        });
+    return SimpleListView<SalespersonShopViewModel>(
+        model: salespersonShops,
+        itemBuilder: (BuildContext context, SalespersonShopViewModel model) {
+          return SalespersonShopView._(
+              shopViewModel: model, salespersonViewModel: salespersonViewModel);
+        },
+        errorView: Center(
+            child: EmptyErrorView.defaultError(
+          description: salespersonShops.errorMessage,
+          onAction: onReload,
+        )),
+        loadingView: Center(child: MyLoadingView()),
+        emptyView: Center(
+          child: EmptyErrorView.defaultEmpty(
+            onAction: onReload,
+          ),
+        ));
   }
 }
 
@@ -29,7 +43,7 @@ class SalespersonShopView extends StatelessWidget {
   final SalespersonShopViewModel shopViewModel;
   final SalespersonViewModel salespersonViewModel;
 
-  const SalespersonShopView(
+  const SalespersonShopView._(
       {Key key,
       @required this.shopViewModel,
       @required this.salespersonViewModel})
@@ -56,7 +70,7 @@ class SalespersonShopView extends StatelessWidget {
           icon: Icons.swap_horiz,
           caption: 'Sales',
           onTap: () {
-            Navigator.pushNamed(context, '/saleTransactionsPage', arguments: {
+            Navigator.pushNamed(context, '/cardTransactionsPage', arguments: {
               'Salesperson': salespersonViewModel,
               'Shop': shopViewModel
             });
@@ -70,7 +84,7 @@ class SalespersonShopView extends StatelessWidget {
           icon: Icons.attach_money,
           caption: 'Funds',
           onTap: () {
-            Navigator.pushNamed(context, '/fundTransactionsPage', arguments: {
+            Navigator.pushNamed(context, '/cashTransactionsPage', arguments: {
               'Salesperson': salespersonViewModel,
               'Shop': shopViewModel
             });

@@ -1,28 +1,42 @@
+import 'package:admin_app/common/widgets/simple_list_view.dart';
 import 'package:admin_app/presentation/models/new_shops_view_model.dart';
 import 'package:flutter/material.dart';
 
 class NewShopsView extends StatelessWidget {
-  final NewShopsViewModel newShopsViewModel;
+  final NewShopsViewModel newShops;
+  final VoidCallback onReload;
 
-  const NewShopsView({Key key, this.newShopsViewModel}) : super(key: key);
+  const NewShopsView({
+    Key key,
+    @required this.newShops,
+    @required this.onReload,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: newShopsViewModel.newShops.length,
-        itemBuilder: (BuildContext context, int index) {
-          return NewShopView._(
-            newShopViewModel: newShopsViewModel.newShops[index],
-          );
-        });
+    return SimpleListView<NewShopViewModel>(
+        model: newShops,
+        itemBuilder: (BuildContext context, NewShopViewModel model) {
+          return NewShopView._(newShop: model);
+        },
+        errorView: Center(
+            child: EmptyErrorView.defaultError(
+          description: newShops.errorMessage,
+          onAction: onReload,
+        )),
+        loadingView: Center(child: MyLoadingView()),
+        emptyView: Center(
+          child: EmptyErrorView.defaultEmpty(
+            onAction: onReload,
+          ),
+        ));
   }
 }
 
 class NewShopView extends StatelessWidget {
-  final NewShopViewModel newShopViewModel;
+  final NewShopViewModel newShop;
 
-  const NewShopView._({Key key, @required this.newShopViewModel})
-      : super(key: key);
+  const NewShopView._({Key key, @required this.newShop}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +45,9 @@ class NewShopView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10),
         child: Icon(Icons.shopping_cart),
       ),
-      title: Text(newShopViewModel.name),
+      title: Text(newShop.name),
       subtitle: Text(
-        '${newShopViewModel.phoneNumber}\n${newShopViewModel.address}',
+        '${newShop.phoneNumber}\n${newShop.address}',
         style: TextStyle(color: Colors.grey, fontSize: 12),
       ),
       isThreeLine: true,

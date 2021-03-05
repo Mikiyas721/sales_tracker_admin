@@ -1,13 +1,16 @@
 import 'package:admin_app/common/view_model.dart';
-import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
-class RecentSalesViewModel extends ViewModel {
+class RecentSalesViewModel extends SimpleListViewModel<RecentlySoldViewModel> {
   final List<RecentlySoldViewModel> newSales;
+  final bool isLoading;
+  final String errorMessage;
 
-  RecentSalesViewModel({this.newSales});
-
-  @override
-  List<Object> get props => [newSales];
+  RecentSalesViewModel(
+      {@required this.newSales,
+      @required this.isLoading,
+      @required this.errorMessage})
+      : super(data: newSales, isLoading: isLoading, error: errorMessage);
 }
 
 class RecentlySoldViewModel extends ViewModel {

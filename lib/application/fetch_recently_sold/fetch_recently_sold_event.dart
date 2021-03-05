@@ -1,21 +1,29 @@
 part of 'fetch_recently_sold_bloc.dart';
 
-abstract class FetchRecentlySoldEvent extends BlocEvent<FetchRecentlySoldState>  {}
+abstract class FetchRecentlySoldEvent
+    extends BlocEvent<FetchRecentlySoldState> {}
 
 class FetchingRecentlySoldEvent extends FetchRecentlySoldEvent {
   @override
-  Stream<FetchRecentlySoldState> handle(FetchRecentlySoldState currentState) async* {
+  Stream<FetchRecentlySoldState> handle(
+      FetchRecentlySoldState currentState) async* {
     yield currentState.copyWith(isLoading: true);
   }
 }
+
 class FetchingRecentlySoldSucceededEvent extends FetchRecentlySoldEvent {
-  final List<SaleTransaction> sales;
+  final List<CardTransaction> sales;
 
   FetchingRecentlySoldSucceededEvent(this.sales);
 
   @override
-  Stream<FetchRecentlySoldState> handle(FetchRecentlySoldState currentState) async* {
-    yield currentState.copyWith(isLoading:false,hasLoaded: true, sales: sales);
+  Stream<FetchRecentlySoldState> handle(
+      FetchRecentlySoldState currentState) async* {
+    yield currentState.copyWith(
+      sales: sales,
+      fetchingSalesFailure:none(),
+      isLoading: false,
+    );
   }
 }
 
@@ -25,8 +33,11 @@ class FetchingRecentlySoldFailedEvent extends FetchRecentlySoldEvent {
   FetchingRecentlySoldFailedEvent(this.loadingFailure);
 
   @override
-  Stream<FetchRecentlySoldState> handle(FetchRecentlySoldState currentState) async* {
+  Stream<FetchRecentlySoldState> handle(
+      FetchRecentlySoldState currentState) async* {
     yield currentState.copyWith(
-        isLoading: false, fetchingSalesFailure: loadingFailure);
+      isLoading: false,
+      fetchingSalesFailure: Failure.getFailureWithOption(loadingFailure),
+    );
   }
 }

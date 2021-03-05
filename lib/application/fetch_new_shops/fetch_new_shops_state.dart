@@ -3,16 +3,14 @@ part of 'fetch_new_shops_bloc.dart';
 @freezed
 abstract class FetchNewShopsState extends BlocState with _$FetchNewShopsState {
   const factory FetchNewShopsState({
-    bool isLoading,
-    bool hasLoaded,
-    Failure fetchingShopsFailure,
     List<Shop> shops,
+    Option<Failure> fetchingShopsFailure,
+    bool isLoading,
   }) = _FetchNewShopsState;
 
   factory FetchNewShopsState.initial() => FetchNewShopsState(
+        shops: [],
+        fetchingShopsFailure: none(),
         isLoading: false,
-        hasLoaded: false,
-        shops: null,
-        fetchingShopsFailure: null,
       );
 }

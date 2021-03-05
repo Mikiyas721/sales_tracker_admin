@@ -48,12 +48,11 @@ class AddSalespersonSucceededEvent extends AddSalespersonEvent {
   Stream<AddSalespersonState> handle(
       AddSalespersonState currentState) async* {
     yield currentState.copyWith(
-      name: null,
-      phoneNumber: null,
-      addSalespersonFailure: null,
+      name: Name.create(''),
+      phoneNumber: PhoneNumber.create(''),
+      addSalespersonFailure: none(),
       hasRequested: false,
       hasSubmitted: false,
-      requestCompleted: true,
     );
   }
 }
@@ -67,8 +66,8 @@ class AddSalespersonFailedEvent extends AddSalespersonEvent {
   Stream<AddSalespersonState> handle(
       AddSalespersonState currentState) async* {
     yield currentState.copyWith(
-      addSalespersonFailure: addSalesPersonFailure,
       hasRequested: false,
+      addSalespersonFailure: Failure.getFailureWithOption(addSalesPersonFailure),
     );
   }
 }

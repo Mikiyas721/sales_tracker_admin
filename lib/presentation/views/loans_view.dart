@@ -1,20 +1,32 @@
+import 'package:admin_app/common/widgets/simple_list_view.dart';
 import 'package:admin_app/presentation/models/loans_view_model.dart';
 import 'package:flutter/material.dart';
 
 class LoansView extends StatelessWidget {
   final LoansViewModel loans;
+  final VoidCallback onReload;
 
-  const LoansView({Key key, this.loans}) : super(key: key);
+  const LoansView({Key key, @required this.loans, @required this.onReload})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: loans.loans.length,
-        itemBuilder: (BuildContext context, int index) {
-          return LoanView._(
-            loan: loans.loans[index],
-          );
-        });
+    return SimpleListView<LoanViewModel>(
+        model: loans,
+        itemBuilder: (BuildContext context, LoanViewModel model) {
+          return LoanView._(loan: model);
+        },
+        errorView: Center(
+            child: EmptyErrorView.defaultError(
+          description: loans.errorMessage,
+          onAction: onReload,
+        )),
+        loadingView: Center(child: MyLoadingView()),
+        emptyView: Center(
+          child: EmptyErrorView.defaultEmpty(
+            onAction: onReload,
+          ),
+        ));
   }
 }
 

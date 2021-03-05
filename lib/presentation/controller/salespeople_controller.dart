@@ -18,11 +18,14 @@ class SalespeopleController extends BlocViewModelController<
   @override
   SalespeopleViewModel mapStateToViewModel(FetchSalespeopleState s) {
     return SalespeopleViewModel(
-        salespeople: s.salespeople.map((e) => SalespersonViewModel(
-              id: e.id,
-              name: e.name.value,
-              phoneNumber: e.phoneNumber.value,
-            )));
+      salespeople: s.salespeople.map((e) => SalespersonViewModel(
+            id: e.id,
+            name: e.name.value,
+            phoneNumber: e.phoneNumber.value,
+          )),
+      isLoading: s.isLoading,
+      errorMessage: s.salespeopleLoadingFailure.getOrElse(() => null)?.message,
+    );
   }
 
   void loadSalespeople() async {

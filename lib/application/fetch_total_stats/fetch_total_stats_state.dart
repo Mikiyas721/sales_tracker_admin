@@ -4,17 +4,18 @@ part of 'fetch_total_stats_bloc.dart';
 abstract class FetchTotalStatsState extends BlocState
     with _$FetchTotalStatsState {
   const factory FetchTotalStatsState({
-    Stats stats,
+    List<CardTransaction> cards,
+    List<CashTransaction> cash,
     int activeTabIndex,
-    Failure loadingError,
+    Option<Failure> loadingError,
     bool isLoading,
-    bool hasLoaded
   }) = _FetchTotalStatsState;
 
-  factory FetchTotalStatsState.initial()=>
-      FetchTotalStatsState(hasLoaded: false,
-          isLoading: false,
-          stats: null,
-          loadingError: null,
-          activeTabIndex: 0);
+  factory FetchTotalStatsState.initial() => FetchTotalStatsState(
+        cards: [],
+        cash: [],
+        activeTabIndex: 0,
+        loadingError: none(),
+        isLoading: false,
+      );
 }

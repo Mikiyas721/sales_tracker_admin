@@ -1,14 +1,14 @@
 import 'package:admin_app/common/view_model.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class LoansViewModel extends ViewModel {
+class LoansViewModel extends SimpleListViewModel<LoanViewModel> {
   final List<LoanViewModel> loans;
+  final bool loading;
+  final String errorMessage;
 
-  LoansViewModel({@required this.loans});
-
-  @override
-  List<Object> get props => [loans];
+  LoansViewModel(
+      {@required this.loans, @required this.errorMessage, @required this.loading})
+      : super(data: loans, isLoading: loading, error: errorMessage);
 }
 
 class LoanViewModel extends ViewModel {
@@ -24,8 +24,8 @@ class LoanViewModel extends ViewModel {
 
   @override
   List<Object> get props => [
-    name,
-    phoneNumber,
-    amount,
-  ];
+        name,
+        phoneNumber,
+        amount,
+      ];
 }

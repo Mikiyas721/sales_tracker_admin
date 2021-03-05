@@ -1,5 +1,4 @@
 import 'package:admin_app/common/view_model.dart';
-import 'package:equatable/equatable.dart';
 
 class NewSalesPersonViewModel extends ViewModel{
   final String name;

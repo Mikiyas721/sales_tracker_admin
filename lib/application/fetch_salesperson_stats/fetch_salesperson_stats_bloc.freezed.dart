@@ -15,17 +15,17 @@ class _$FetchSalespersonStatsStateTearOff {
 
 // ignore: unused_element
   _FetchSalespersonStatsState call(
-      {Stats stats,
+      {List<CardTransaction> cards,
+      List<CashTransaction> cash,
       int activeTabIndex,
-      Failure loadingError,
-      bool isLoading,
-      bool hasLoaded}) {
+      Option<Failure> loadingError,
+      bool isLoading}) {
     return _FetchSalespersonStatsState(
-      stats: stats,
+      cards: cards,
+      cash: cash,
       activeTabIndex: activeTabIndex,
       loadingError: loadingError,
       isLoading: isLoading,
-      hasLoaded: hasLoaded,
     );
   }
 }
@@ -36,11 +36,11 @@ const $FetchSalespersonStatsState = _$FetchSalespersonStatsStateTearOff();
 
 /// @nodoc
 mixin _$FetchSalespersonStatsState {
-  Stats get stats;
+  List<CardTransaction> get cards;
+  List<CashTransaction> get cash;
   int get activeTabIndex;
-  Failure get loadingError;
+  Option<Failure> get loadingError;
   bool get isLoading;
-  bool get hasLoaded;
 
   @JsonKey(ignore: true)
   $FetchSalespersonStatsStateCopyWith<FetchSalespersonStatsState> get copyWith;
@@ -52,11 +52,11 @@ abstract class $FetchSalespersonStatsStateCopyWith<$Res> {
           $Res Function(FetchSalespersonStatsState) then) =
       _$FetchSalespersonStatsStateCopyWithImpl<$Res>;
   $Res call(
-      {Stats stats,
+      {List<CardTransaction> cards,
+      List<CashTransaction> cash,
       int activeTabIndex,
-      Failure loadingError,
-      bool isLoading,
-      bool hasLoaded});
+      Option<Failure> loadingError,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -70,22 +70,22 @@ class _$FetchSalespersonStatsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object stats = freezed,
+    Object cards = freezed,
+    Object cash = freezed,
     Object activeTabIndex = freezed,
     Object loadingError = freezed,
     Object isLoading = freezed,
-    Object hasLoaded = freezed,
   }) {
     return _then(_value.copyWith(
-      stats: stats == freezed ? _value.stats : stats as Stats,
+      cards: cards == freezed ? _value.cards : cards as List<CardTransaction>,
+      cash: cash == freezed ? _value.cash : cash as List<CashTransaction>,
       activeTabIndex: activeTabIndex == freezed
           ? _value.activeTabIndex
           : activeTabIndex as int,
       loadingError: loadingError == freezed
           ? _value.loadingError
-          : loadingError as Failure,
+          : loadingError as Option<Failure>,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
     ));
   }
 }
@@ -99,11 +99,11 @@ abstract class _$FetchSalespersonStatsStateCopyWith<$Res>
       __$FetchSalespersonStatsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Stats stats,
+      {List<CardTransaction> cards,
+      List<CashTransaction> cash,
       int activeTabIndex,
-      Failure loadingError,
-      bool isLoading,
-      bool hasLoaded});
+      Option<Failure> loadingError,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -120,22 +120,22 @@ class __$FetchSalespersonStatsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object stats = freezed,
+    Object cards = freezed,
+    Object cash = freezed,
     Object activeTabIndex = freezed,
     Object loadingError = freezed,
     Object isLoading = freezed,
-    Object hasLoaded = freezed,
   }) {
     return _then(_FetchSalespersonStatsState(
-      stats: stats == freezed ? _value.stats : stats as Stats,
+      cards: cards == freezed ? _value.cards : cards as List<CardTransaction>,
+      cash: cash == freezed ? _value.cash : cash as List<CashTransaction>,
       activeTabIndex: activeTabIndex == freezed
           ? _value.activeTabIndex
           : activeTabIndex as int,
       loadingError: loadingError == freezed
           ? _value.loadingError
-          : loadingError as Failure,
+          : loadingError as Option<Failure>,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
-      hasLoaded: hasLoaded == freezed ? _value.hasLoaded : hasLoaded as bool,
     ));
   }
 }
@@ -143,34 +143,36 @@ class __$FetchSalespersonStatsStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FetchSalespersonStatsState implements _FetchSalespersonStatsState {
   const _$_FetchSalespersonStatsState(
-      {this.stats,
+      {this.cards,
+      this.cash,
       this.activeTabIndex,
       this.loadingError,
-      this.isLoading,
-      this.hasLoaded});
+      this.isLoading});
 
   @override
-  final Stats stats;
+  final List<CardTransaction> cards;
+  @override
+  final List<CashTransaction> cash;
   @override
   final int activeTabIndex;
   @override
-  final Failure loadingError;
+  final Option<Failure> loadingError;
   @override
   final bool isLoading;
-  @override
-  final bool hasLoaded;
 
   @override
   String toString() {
-    return 'FetchSalespersonStatsState(stats: $stats, activeTabIndex: $activeTabIndex, loadingError: $loadingError, isLoading: $isLoading, hasLoaded: $hasLoaded)';
+    return 'FetchSalespersonStatsState(cards: $cards, cash: $cash, activeTabIndex: $activeTabIndex, loadingError: $loadingError, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FetchSalespersonStatsState &&
-            (identical(other.stats, stats) ||
-                const DeepCollectionEquality().equals(other.stats, stats)) &&
+            (identical(other.cards, cards) ||
+                const DeepCollectionEquality().equals(other.cards, cards)) &&
+            (identical(other.cash, cash) ||
+                const DeepCollectionEquality().equals(other.cash, cash)) &&
             (identical(other.activeTabIndex, activeTabIndex) ||
                 const DeepCollectionEquality()
                     .equals(other.activeTabIndex, activeTabIndex)) &&
@@ -179,20 +181,17 @@ class _$_FetchSalespersonStatsState implements _FetchSalespersonStatsState {
                     .equals(other.loadingError, loadingError)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)) &&
-            (identical(other.hasLoaded, hasLoaded) ||
-                const DeepCollectionEquality()
-                    .equals(other.hasLoaded, hasLoaded)));
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(stats) ^
+      const DeepCollectionEquality().hash(cards) ^
+      const DeepCollectionEquality().hash(cash) ^
       const DeepCollectionEquality().hash(activeTabIndex) ^
       const DeepCollectionEquality().hash(loadingError) ^
-      const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(hasLoaded);
+      const DeepCollectionEquality().hash(isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -204,22 +203,22 @@ class _$_FetchSalespersonStatsState implements _FetchSalespersonStatsState {
 abstract class _FetchSalespersonStatsState
     implements FetchSalespersonStatsState {
   const factory _FetchSalespersonStatsState(
-      {Stats stats,
+      {List<CardTransaction> cards,
+      List<CashTransaction> cash,
       int activeTabIndex,
-      Failure loadingError,
-      bool isLoading,
-      bool hasLoaded}) = _$_FetchSalespersonStatsState;
+      Option<Failure> loadingError,
+      bool isLoading}) = _$_FetchSalespersonStatsState;
 
   @override
-  Stats get stats;
+  List<CardTransaction> get cards;
+  @override
+  List<CashTransaction> get cash;
   @override
   int get activeTabIndex;
   @override
-  Failure get loadingError;
+  Option<Failure> get loadingError;
   @override
   bool get isLoading;
-  @override
-  bool get hasLoaded;
   @override
   @JsonKey(ignore: true)
   _$FetchSalespersonStatsStateCopyWith<_FetchSalespersonStatsState>
