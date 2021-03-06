@@ -1,3 +1,5 @@
+import 'package:admin_app/common/controller/controller_provider.dart';
+import 'package:admin_app/presentation/controller/new_salesperson_controller.dart';
 import 'package:admin_app/presentation/models/new_salesperson_view_model.dart';
 import 'package:admin_app/presentation/widgets/my_action_button.dart';
 import 'package:admin_app/presentation/widgets/my_text_field.dart';
@@ -20,6 +22,7 @@ class NewSalesPersonView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<NewSalespersonController>(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -28,11 +31,13 @@ class NewSalesPersonView extends StatelessWidget {
             labelText: 'name',
             errorText: newSalesPersonViewModel.nameError,
             keyboardType: TextInputType.text,
+            controller: controller.nameController,
             onChanged: onNameChanged),
         MyTextField(
             icon: Icons.phone,
             labelText: 'phone number',
             errorText: newSalesPersonViewModel.phoneNumberError,
+            controller: controller.phoneNumberController,
             onChanged: onPhoneNumberChanged),
         200.vSpace,
         MyActionButton(

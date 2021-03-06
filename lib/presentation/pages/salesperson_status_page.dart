@@ -41,10 +41,12 @@ class SalespersonStatusPage extends StatelessWidget {
                   onInit: (controller) => controller.onToday(true),
                   builder: (context, controller, model) {
                     return SalesStatusView(
-                        onToday: controller.onToday,
-                        onThisWeek: controller.onThisWeek,
-                        onThisMonth: controller.onThisMonth,
-                        salesStatusViewModel: model);
+                      onToday: controller.onToday,
+                      onThisWeek: controller.onThisWeek,
+                      onThisMonth: controller.onThisMonth,
+                      salesStatusViewModel: model,
+                      onReload: controller.onReload,
+                    );
                   }),
               95.vSpace,
             ],

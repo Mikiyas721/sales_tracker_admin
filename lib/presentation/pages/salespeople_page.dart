@@ -12,19 +12,16 @@ class SalespeoplePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Salespeople'),
       ),
-      body: Padding(
-        padding: 20.hPadding,
-        child: ViewModelBuilder.withController<SalespeopleViewModel,
-                SalespeopleController>(
-            create: () => SalespeopleController(context),
-            onInit: (controller) => controller.loadSalespeople(),
-            builder: (context, controller, model) {
-              return SalespeopleView(
-                salespeople: model,
-                onReload: controller.loadSalespeople,
-              );
-            }),
-      ),
+      body: ViewModelBuilder.withController<SalespeopleViewModel,
+              SalespeopleController>(
+          create: () => SalespeopleController(context),
+          onInit: (controller) => controller.loadSalespeople(),
+          builder: (context, controller, model) {
+            return SalespeopleView(
+              salespeople: model,
+              onReload: controller.loadSalespeople,
+            );
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/newSalesPersonPage');

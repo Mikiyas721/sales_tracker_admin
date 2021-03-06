@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'data_source/rest_datasource/rest_datasource.dart';
-import 'data_source/rest_datasource/rest_request.dart';
-import 'data_source/rest_datasource/rest_response.dart';
+import 'rest_datasource.dart';
+import 'rest_request.dart';
+import 'rest_response.dart';
 
 @LazySingleton(as: RestDataSource)
 class DioRestDataSource implements RestDataSource {
@@ -16,7 +16,7 @@ class DioRestDataSource implements RestDataSource {
           BaseOptions(
             connectTimeout: 10000,
             receiveTimeout: 10000,
-            baseUrl: 'http://localhost:3000/api',
+            baseUrl: 'http://192.168.1.106:3000/api',
           ),
         ) {}
 

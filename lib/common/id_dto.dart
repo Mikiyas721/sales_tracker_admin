@@ -6,9 +6,10 @@ abstract class IdDto<T> extends Equatable {
   String get id;
 
   static List<T> toDomainList<T extends Entity, E extends IdDto>(List<E> dto) {
-    return dto.map((e) {
-      var result = e.toDomain().getOrElse(() => null);
-      if (result != null) return result;
+   return dto.map<T>((e) {
+      return e.toDomain().fold(() {
+        throw Exception('Unable to map to entity list');
+      }, (a) => a);
     }).toList();
   }
 

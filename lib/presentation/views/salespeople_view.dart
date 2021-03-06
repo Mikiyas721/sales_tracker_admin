@@ -59,6 +59,10 @@ class SalespersonView extends StatelessWidget {
           Text(salesperson.phoneNumber, style: context.caption)
         ],
       ),
+      trailing: Text(
+        salesperson.createdDate,
+        style: context.caption,
+      ),
       onTap: () {
         Navigator.pushNamed(context, '/salesPersonStatusPage',
             arguments: salesperson);

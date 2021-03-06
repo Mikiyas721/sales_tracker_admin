@@ -17,7 +17,6 @@ SalespersonDto _$SalespersonDtoFromJson(Map<String, dynamic> json) {
     createdAt: json['createdAt'] == null
         ? null
         : DateTime.parse(json['createdAt'] as String),
-    shops: (json['shops'] as List).map((e) => e as String).toList(),
   );
 }
 
@@ -26,7 +25,6 @@ Map<String, dynamic> _$SalespersonDtoToJson(SalespersonDto instance) {
     'id': instance.id,
     'name': instance.name,
     'phoneNumber': instance.phoneNumber,
-    'shops': instance.shops,
   };
 
   void writeNotNull(String key, dynamic value) {

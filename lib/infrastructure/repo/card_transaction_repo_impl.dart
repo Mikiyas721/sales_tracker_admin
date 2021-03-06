@@ -27,7 +27,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Sale Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CardTransaction, CardTransactionDto>(r)));
   }
@@ -58,7 +58,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Sale Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CardTransaction, CardTransactionDto>(r)));
   }
@@ -89,7 +89,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Sale Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CardTransaction, CardTransactionDto>(r)));
   }
@@ -119,7 +119,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Sale Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CardTransaction, CardTransactionDto>(r)));
   }
@@ -136,7 +136,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Sale Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CardTransaction, CardTransactionDto>(r)));
   }
@@ -153,7 +153,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Sale Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CardTransaction, CardTransactionDto>(r)));
   }

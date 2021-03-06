@@ -27,7 +27,7 @@ class CashTransactionRepoImpl implements ICashTransactionRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Fund Transaction Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<CashTransaction, CashTransactionDto>(r)));
   }
@@ -45,7 +45,7 @@ class CashTransactionRepoImpl implements ICashTransactionRepo {
       }
     });
     return result.either.fold(
-            (l) => left(SimpleFailure("Invalid Fund Transaction Data")),
+            (l) => left(l),
             (r) =>
             right(IdDto.toDomainList<CashTransaction, CashTransactionDto>(r)));
 
@@ -64,7 +64,7 @@ class CashTransactionRepoImpl implements ICashTransactionRepo {
       }
     });
     return result.either.fold(
-            (l) => left(SimpleFailure("Invalid Fund Transaction Data")),
+            (l) => left(l),
             (r) =>
             right(IdDto.toDomainList<CashTransaction, CashTransactionDto>(r)));
 
@@ -83,7 +83,7 @@ class CashTransactionRepoImpl implements ICashTransactionRepo {
       }
     });
     return result.either.fold(
-            (l) => left(SimpleFailure("Invalid Fund Transaction Data")),
+            (l) => left(l),
             (r) =>
             right(IdDto.toDomainList<CashTransaction, CashTransactionDto>(r)));
   }

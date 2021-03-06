@@ -7,51 +7,56 @@ import 'package:flutter/material.dart';
 import '../../common/common.dart';
 
 class HomePage extends StatelessWidget {
-  // could it be a StatefulWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: 20.hPadding,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              50.vSpace,
-              Stack(
+      body: Stack(
+        children: [
+          Padding(
+            padding: 20.hPadding,
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
+                  50.vSpace,
                   ViewModelBuilder.withController<SalesStatusViewModel,
                           StatsController>(
                       create: () => StatsController(context),
                       onInit: (controller) => controller.onToday(true),
                       builder: (context, controller, model) {
                         return SalesStatusView(
-                            onToday: controller.onToday,
-                            onThisWeek: controller.onThisWeek,
-                            onThisMonth: controller.onThisMonth,
-                            salesStatusViewModel: model);
+                          onToday: controller.onToday,
+                          onThisWeek: controller.onThisWeek,
+                          onThisMonth: controller.onThisMonth,
+                          salesStatusViewModel: model,
+                          onReload: controller.onRefresh,
+                        );
                       }),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_forward_ios_outlined),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/currentStatusPage');
-                      },
-                    ),
-                  ),
                 ],
               ),
-              70.vSpace,
-              MyActionButton(
-                  label: 'Salespeople',
-                  onSubmit: () {
-                    Navigator.pushNamed(context, '/salesPeoplePage');
-                  }),
-              25.vSpace
-            ],
+            ),
           ),
-        ),
+          Align(
+            alignment: Alignment(0.95,-0.87),
+            child: IconButton(
+              icon: Icon(Icons.arrow_forward_ios_outlined),
+              onPressed: () {
+                Navigator.pushNamed(context, '/currentStatusPage');
+              },
+            ),
+          ),
+          Positioned(
+            left: 20,
+            right: 20,
+            bottom: 20,
+            child: MyActionButton(
+                label: 'Salespeople',
+                onSubmit: () {
+                  Navigator.pushNamed(context, '/salesPeoplePage');
+                }),
+          ),
+        ],
       ),
     );
   }
 }
+

@@ -23,7 +23,7 @@ class RecentSalesController extends BlocViewModelController<
                 name: e.salesPerson.getOrElse(() => null)?.name?.value,
                 phoneNumber:
                     e.salesPerson.getOrElse(() => null)?.phoneNumber?.value,
-                amount: e.amount.value.toString())),
+                amount: e.amount.value.toString())).toList(),
         isLoading: s.isLoading,
         errorMessage: s.fetchingSalesFailure.getOrElse(() => null)?.message);
   }

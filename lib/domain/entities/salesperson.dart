@@ -7,7 +7,6 @@ class Salesperson extends Entity {
   final String id;
   final Name name;
   final PhoneNumber phoneNumber;
-  final List<String> shops;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -15,7 +14,6 @@ class Salesperson extends Entity {
     this.id,
     this.name,
     this.phoneNumber,
-    this.shops,
     this.createdAt,
     this.updatedAt,
   });
@@ -24,7 +22,6 @@ class Salesperson extends Entity {
     String id,
     String name,
     String phoneNumber,
-    List<String> shops,
     DateTime createdAt,
     DateTime updatedAt,
   }) {
@@ -32,7 +29,6 @@ class Salesperson extends Entity {
       id,
       name,
       phoneNumber,
-      shops,
       createdAt,
       updatedAt,
     ].any((element) => element == null)) return none();
@@ -45,7 +41,6 @@ class Salesperson extends Entity {
       id: id,
       name: nameObject,
       phoneNumber: phoneNumberObject,
-      shops: shops,
       createdAt: createdAt,
       updatedAt: updatedAt,
     ));

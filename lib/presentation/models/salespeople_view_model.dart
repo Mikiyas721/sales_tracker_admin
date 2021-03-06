@@ -9,18 +9,21 @@ class SalespeopleViewModel extends SimpleListViewModel<SalespersonViewModel> {
   SalespeopleViewModel(
       {@required this.salespeople,
       @required this.isLoading,
-      @required this.errorMessage});
+      @required this.errorMessage})
+      : super(data: salespeople, isLoading: isLoading, error: errorMessage);
 }
 
 class SalespersonViewModel extends ViewModel {
   final String id;
   final String name;
   final String phoneNumber;
+  final String createdDate;
 
   SalespersonViewModel({
     @required this.id,
     @required this.name,
     @required this.phoneNumber,
+    @required this.createdDate
   });
 
   @override

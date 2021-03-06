@@ -7,14 +7,15 @@ class MyTextField extends StatelessWidget {
   final IconData icon;
   final TextInputType keyboardType;
   final void Function(String value) onChanged;
+  final TextEditingController controller;
 
-  const MyTextField(
-      {Key key,
-      @required this.icon,
-      @required this.labelText,
-      @required this.errorText,
-      @required this.onChanged,
-      this.keyboardType = TextInputType.number})
+  const MyTextField({Key key,
+    @required this.icon,
+    @required this.labelText,
+    @required this.errorText,
+    @required this.onChanged,
+    this.keyboardType = TextInputType.number,
+    this.controller,})
       : super(key: key);
 
   @override
@@ -22,6 +23,7 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: 5.vPadding,
       child: TextField(
+        controller:controller,
         onChanged: onChanged,
         keyboardType: keyboardType,
         decoration: InputDecoration(

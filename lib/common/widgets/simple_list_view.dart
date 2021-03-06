@@ -35,8 +35,6 @@ class EmptyErrorLoadingView<T> extends StatelessWidget {
   }
 }
 
-
-
 class SimpleListView<T> extends StatelessWidget {
   final SimpleListViewModel<T> model;
   final Widget Function(BuildContext, T) itemBuilder;

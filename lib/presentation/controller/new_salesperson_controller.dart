@@ -14,9 +14,14 @@ class NewSalespersonController extends BlocViewModelController<
     AddSalespersonState,
     NewSalesPersonViewModel> with ToastMixin {
   final BuildContext context;
+  TextEditingController nameController;
+  TextEditingController phoneNumberController;
 
   NewSalespersonController(this.context)
-      : super(getIt.get<AddSalespersonBloc>(), true);
+      : super(getIt.get<AddSalespersonBloc>(), true) {
+    nameController = TextEditingController();
+    phoneNumberController = TextEditingController();
+  }
 
   @override
   NewSalesPersonViewModel mapStateToViewModel(AddSalespersonState s) {
@@ -36,7 +41,7 @@ class NewSalespersonController extends BlocViewModelController<
   }
 
   void onPhoneNumberChanged(String phoneNumber) {
-    bloc.add(AddSalespersonNameChangedEvent(phoneNumber));
+    bloc.add(AddSalespersonPhoneNumberChangedEvent(phoneNumber));
   }
 
   void onAdd() {
@@ -51,6 +56,8 @@ class NewSalespersonController extends BlocViewModelController<
       }, (r) {
         bloc.add(AddSalespersonSubmittedEvent());
         toastSuccess('Salesperson Added Successfully');
+        nameController.text = "";
+        phoneNumberController.text = "";
       });
     });
   }

@@ -24,7 +24,7 @@ class ShopRepoImpl extends IShopRepo {
       }
     });
     return result.either.fold(
-        (l) => left(SimpleFailure("Invalid Shop Data")),
+        (l) => left(l),
         (r) =>
             right(IdDto.toDomainList<Shop, ShopDto>(r)));
   }
@@ -41,7 +41,7 @@ class ShopRepoImpl extends IShopRepo {
       }
     });
     return result.either.fold(
-            (l) => left(SimpleFailure("Invalid Shop Transaction Data")),
+            (l) => left(l),
             (r) =>
             right(IdDto.toDomainList<Shop, ShopDto>(r)));
   }

@@ -11,9 +11,6 @@ class SalespersonDto extends IdDto<Salesperson> implements TimeStampedDto {
   final String id;
   final String name;
   final String phoneNumber;
-  final List<String> shops;
-
-  /// Should it also include list of ShopDtos
   @JsonKey(nullable: true, includeIfNull: false) final DateTime createdAt;
   @JsonKey(nullable: true, includeIfNull: false) final DateTime updatedAt;
 
@@ -23,7 +20,6 @@ class SalespersonDto extends IdDto<Salesperson> implements TimeStampedDto {
     @required this.phoneNumber,
     @required this.updatedAt,
     @required this.createdAt,
-    this.shops,
   });
 
   factory SalespersonDto.fromJson(Map<String, dynamic> json) =>
@@ -37,7 +33,6 @@ class SalespersonDto extends IdDto<Salesperson> implements TimeStampedDto {
         id:id,
         name:name,
         phoneNumber:phoneNumber,
-        shops:shops,
         createdAt:createdAt,
         updatedAt:updatedAt,
     );

@@ -1,3 +1,4 @@
+import 'package:admin_app/common/widgets/simple_list_view.dart';
 import 'package:admin_app/presentation/models/sales_status_view_model.dart';
 import 'package:admin_app/presentation/widgets/my_tab_button.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -9,13 +10,13 @@ class SalesStatusView extends StatelessWidget {
   final void Function(bool isActive) onToday;
   final void Function(bool isActive) onThisWeek;
   final void Function(bool isActive) onThisMonth;
+  final VoidCallback onReload;
 
-  const SalesStatusView(
-      {Key key,
-      @required this.salesStatusViewModel,
-      @required this.onToday,
-      @required this.onThisWeek,
-      @required this.onThisMonth})
+  const SalesStatusView({Key key,
+    @required this.salesStatusViewModel,
+    @required this.onToday,
+    @required this.onThisWeek,
+    @required this.onThisMonth, @required this.onReload,})
       : super(key: key);
 
   @override
@@ -38,24 +39,46 @@ class SalesStatusView extends StatelessWidget {
               MyTabButton(
                 label: 'T',
                 isActive:
-                    salesStatusViewModel.activeButtonIndex == 0 ? true : false,
+                salesStatusViewModel.activeButtonIndex == 0 ? true : false,
                 onTap: onToday,
               ),
               MyTabButton(
                 label: 'W',
                 isActive:
-                    salesStatusViewModel.activeButtonIndex == 1 ? true : false,
+                salesStatusViewModel.activeButtonIndex == 1 ? true : false,
                 onTap: onThisWeek,
               ),
               MyTabButton(
                 label: 'M',
                 isActive:
-                    salesStatusViewModel.activeButtonIndex == 2 ? true : false,
+                salesStatusViewModel.activeButtonIndex == 2 ? true : false,
                 onTap: onThisMonth,
               ),
             ],
           ),
         ),
+        getBody(context)
+      ],
+    );
+  }
+  Widget getBody(BuildContext context) {
+    if (salesStatusViewModel.isLoading) return MyLoadingView();
+    if (salesStatusViewModel.loadingFailure.isSome())
+      return EmptyErrorView.defaultError(
+          description: salesStatusViewModel.loadingFailure
+              ?.getOrElse(() => null)
+              ?.message,
+          onAction: onReload);
+    if (salesStatusViewModel.bars.isEmpty)
+      return EmptyErrorView.defaultEmpty(
+        description:
+        'No transactions ${getTitle(
+            salesStatusViewModel.activeButtonIndex)}',
+        onAction: onReload,
+      );
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
         Text(
           'Sold',
           style: context.caption,
@@ -104,7 +127,7 @@ class SalesStatusView extends StatelessWidget {
         BarChart(BarChartData(
           barGroups: salesStatusViewModel.bars
               .map((BarData data) =>
-                  getBar(data.value, data.barHeight, data.stackHeight))
+              getBar(data.value, data.barHeight, data.stackHeight))
               .toList(),
           minY: 0,
           maxY: salesStatusViewModel.maxY,
@@ -135,24 +158,24 @@ BarChartGroupData getBar(int x, double barHeight, double stackHeight) {
     x: x,
     barRods: stackHeight > barHeight
         ? [
-            BarChartRodData(
-              colors: [Colors.blue],
-              width: 20,
-              borderRadius: BorderRadius.all(Radius.circular(3)),
-              y: stackHeight,
-            )
-          ]
+      BarChartRodData(
+        colors: [Colors.blue],
+        width: 20,
+        borderRadius: BorderRadius.all(Radius.circular(3)),
+        y: stackHeight,
+      )
+    ]
         : [
-            BarChartRodData(
-              colors: [Colors.red],
-              width: 20,
-              borderRadius: BorderRadius.all(Radius.circular(3)),
-              y: barHeight,
-              rodStackItems: [
-                BarChartRodStackItem(0, stackHeight, Colors.blue)
-              ],
-            )
-          ],
+      BarChartRodData(
+        colors: [Colors.red],
+        width: 20,
+        borderRadius: BorderRadius.all(Radius.circular(3)),
+        y: barHeight,
+        rodStackItems: [
+          BarChartRodStackItem(0, stackHeight, Colors.blue)
+        ],
+      )
+    ],
   );
 }
 
