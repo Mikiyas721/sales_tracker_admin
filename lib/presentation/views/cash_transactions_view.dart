@@ -1,4 +1,6 @@
+import 'package:admin_app/common/controller/controller_provider.dart';
 import 'package:admin_app/common/widgets/simple_list_view.dart';
+import 'package:admin_app/presentation/controller/cash_with_shop_controller.dart';
 import 'package:admin_app/presentation/models/cash_transaction_view_model.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';
@@ -15,6 +17,7 @@ class CashTransactionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<CashWithShopController>(context);
     return SimpleListView<CashTransactionViewModel>(
         model: cash,
         itemBuilder: (BuildContext context, CashTransactionViewModel model) {
@@ -27,7 +30,11 @@ class CashTransactionsView extends StatelessWidget {
         )),
         loadingView: Center(child: MyLoadingView()),
         emptyView: Center(
-          child: EmptyErrorView.defaultEmpty(onAction: onReload,),
+          child: EmptyErrorView.defaultEmpty(
+            onAction: onReload,
+            description:
+                'No cash transaction between ${controller.salesperson.name} and ${controller.shop.name}',
+          ),
         ));
   }
 }

@@ -1,4 +1,6 @@
+import 'package:admin_app/common/controller/controller_provider.dart';
 import 'package:admin_app/common/widgets/simple_list_view.dart';
+import 'package:admin_app/presentation/controller/cards_with_shop_controller.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/models/card_transaction_view_model.dart';
 import '../../common/common.dart';
@@ -15,6 +17,7 @@ class CardTransactionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<CardsWithShopController>(context);
     return SimpleListView<CardTransactionViewModel>(
         model: cards,
         itemBuilder: (BuildContext context, CardTransactionViewModel model) {
@@ -29,6 +32,8 @@ class CardTransactionsView extends StatelessWidget {
         emptyView: Center(
           child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
+            description:
+                'No card transaction between ${controller.salesperson.name} and ${controller.shop.name}',
           ),
         ));
   }

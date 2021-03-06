@@ -25,6 +25,7 @@ class LoansView extends StatelessWidget {
         emptyView: Center(
           child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
+            description: 'There is no loans',
           ),
         ));
   }

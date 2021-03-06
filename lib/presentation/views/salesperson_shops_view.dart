@@ -1,4 +1,6 @@
+import 'package:admin_app/common/controller/controller_provider.dart';
 import 'package:admin_app/common/widgets/simple_list_view.dart';
+import 'package:admin_app/presentation/controller/salesperson_shops_controller.dart';
 import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -19,6 +21,7 @@ class SalespersonShopsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<SalespersonShopsController>(context);
     return SimpleListView<SalespersonShopViewModel>(
         model: salespersonShops,
         itemBuilder: (BuildContext context, SalespersonShopViewModel model) {
@@ -34,6 +37,7 @@ class SalespersonShopsView extends StatelessWidget {
         emptyView: Center(
           child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
+            description: '${controller.salesperson.name} has no shops',
           ),
         ));
   }

@@ -5,6 +5,8 @@ import 'package:admin_app/common/mixins/toast_mixin.dart';
 import 'package:admin_app/domain/use_cases/fetch_salesperson_cards_with_shop.dart';
 import 'package:admin_app/injection.dart';
 import 'package:admin_app/presentation/models/card_transaction_view_model.dart';
+import 'package:admin_app/presentation/models/salespeople_view_model.dart';
+import 'package:admin_app/presentation/models/shop_view_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class CardsWithShopController extends BlocViewModelController<
@@ -13,10 +15,10 @@ class CardsWithShopController extends BlocViewModelController<
     CardTransactionsState,
     CardTransactionsViewModel> with DateTimeMixin, ToastMixin {
   final BuildContext context;
-  final String salespersonId;
-  final String shopId;
+  final SalespersonShopViewModel shop;
+  final SalespersonViewModel salesperson;
 
-  CardsWithShopController(this.context, this.salespersonId, this.shopId)
+  CardsWithShopController(this.context, this.salesperson, this.shop)
       : super(getIt.get<CardTransactionsBloc>(), true);
 
   @override
@@ -37,7 +39,7 @@ class CardsWithShopController extends BlocViewModelController<
     bloc.add(FetchingCardsEvent());
     final result = await getIt
         .get<FetchSalespersonCardsWithShop>()
-        .execute(salespersonId, shopId);
+        .execute(salesperson.id, shop.id);
     result.fold((l) {
       bloc.add(FetchingCardsFailedEvent(l));
     }, (r) {

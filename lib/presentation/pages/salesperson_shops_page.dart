@@ -19,7 +19,7 @@ class SalespersonShopsPage extends StatelessWidget {
       body: ViewModelBuilder.withController<SalespersonShopsViewModel,
               SalespersonShopsController>(
           create: () =>
-              SalespersonShopsController(context, salespersonViewModel.id),
+              SalespersonShopsController(context, salespersonViewModel),
           onInit: (controller) => controller.loadShops(),
           builder: (context, controller, model) {
             return SalespersonShopsView(

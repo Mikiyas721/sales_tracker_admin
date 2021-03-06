@@ -15,11 +15,13 @@ class SalespersonShopsViewModel
 }
 
 class SalespersonShopViewModel extends ViewModel {
+  final String id;
   final String name;
   final String phoneNumber;
   final String location;
 
   SalespersonShopViewModel({
+    @required this.id,
     @required this.name,
     @required this.phoneNumber,
     @required this.location,

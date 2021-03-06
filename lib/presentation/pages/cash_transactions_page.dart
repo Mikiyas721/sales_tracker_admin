@@ -21,7 +21,7 @@ class CashTransactionsPage extends StatelessWidget {
         child: ViewModelBuilder.withController<CashTransactionsViewModel,
                 CashWithShopController>(
             create: () => CashWithShopController(
-                context, args['Salesperson'].id, args['Shop'].id),
+                context, args['Salesperson'], args['Shop']),
             onInit: (controller) => controller.loadFunds(),
             builder: (context, controller, model) {
               return CashTransactionsView(

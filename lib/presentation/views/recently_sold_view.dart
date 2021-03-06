@@ -28,6 +28,7 @@ class RecentSalesView extends StatelessWidget {
         emptyView: Center(
           child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
+            description: 'There is no recently sold card',
           ),
         ));
   }

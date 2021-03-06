@@ -4,6 +4,8 @@ import 'package:admin_app/common/mixins/date_time_mixin.dart';
 import 'package:admin_app/domain/use_cases/fetch_salesperson_cash_with_shop.dart';
 import 'package:admin_app/injection.dart';
 import 'package:admin_app/presentation/models/cash_transaction_view_model.dart';
+import 'package:admin_app/presentation/models/salespeople_view_model.dart';
+import 'package:admin_app/presentation/models/shop_view_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class CashWithShopController extends BlocViewModelController<
@@ -12,10 +14,10 @@ class CashWithShopController extends BlocViewModelController<
     CashTransactionsState,
     CashTransactionsViewModel> with DateTimeMixin {
   final BuildContext context;
-  final String salespersonId;
-  final String shopId;
+  final SalespersonShopViewModel shop;
+  final SalespersonViewModel salesperson;
 
-  CashWithShopController(this.context, this.salespersonId, this.shopId)
+  CashWithShopController(this.context, this.salesperson, this.shop)
       : super(getIt.get<CashTransactionsBloc>(), true);
 
   @override
@@ -37,7 +39,7 @@ class CashWithShopController extends BlocViewModelController<
     bloc.add(FetchingCashEvent());
     final result = await getIt
         .get<FetchSalespersonCashWithShop>()
-        .execute(salespersonId, shopId);
+        .execute(salesperson.id, shop.id);
     result.fold((l) {
       bloc.add(FetchingCashFailedEvent(l));
     }, (r) {

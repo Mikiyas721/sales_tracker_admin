@@ -21,7 +21,7 @@ class CardTransactionsPage extends StatelessWidget {
         child: ViewModelBuilder.withController<CardTransactionsViewModel,
                 CardsWithShopController>(
             create: () => CardsWithShopController(
-                context, args['Salesperson'].id, args['Shop'].id),
+                context, args['Salesperson'], args['Shop']),
             onInit: (controller) => controller.loadCards(),
             builder: (context, controller, model) {
               return CardTransactionsView(

@@ -28,6 +28,7 @@ class NewShopsView extends StatelessWidget {
         emptyView: Center(
           child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
+            description: 'There is no new shop',
           ),
         ));
   }
