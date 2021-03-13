@@ -6,6 +6,5 @@ import '../../domain/entities/salesperson.dart';
 abstract class ISalesPersonRepo{
   Future<Either<Failure, Salesperson>> create(Salesperson salesPerson);
   Future<Either<Failure,List<Salesperson>>> fetchAll();
-  Future<Either<Failure,Salesperson>> fetchSalesperson(PhoneNumber phoneNumber);
-  Future<Either<Failure, Map>> login(String idToken);
+
 }

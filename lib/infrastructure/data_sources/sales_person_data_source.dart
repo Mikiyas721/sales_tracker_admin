@@ -8,7 +8,6 @@ import 'package:injectable/injectable.dart';
 
 abstract class SalesPersonCrudDataSource
     extends CrudDataSource<SalespersonDto, RestResponseFailure> {
-  Future<RestResponseWithFailure> logIn(String idToken);
 }
 
 @LazySingleton(as: SalesPersonCrudDataSource)
@@ -22,12 +21,4 @@ class SalesPersonLoopbackDataSource
           (salesPerson) => salesPerson.toJson(),
           (map) => SalespersonDto.fromJson(map),
         );
-  Future<RestResponseWithFailure> logIn(String idToken) async {
-    return restDataSource.post(RestRequest(
-      url: '$path/login',
-      data: {
-        "idToken": "$idToken"
-      },
-    ));
-  }
 }

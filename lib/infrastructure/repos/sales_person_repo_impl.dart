@@ -31,28 +31,4 @@ class SalesPersonRepoImpl extends ISalesPersonRepo {
     return result.either.fold((l) => left(l),
         (r) => right(IdDto.toDomainList<Salesperson, SalespersonDto>(r)));
   }
-  @override
-  Future<Either<Failure, Salesperson>> fetchSalesperson(PhoneNumber phoneNumber) async {
-    print(phoneNumber.value);
-    final salesPeople = await salesPersonCrudDataSource.find(options: {
-      "filter": {
-        "where": {
-          "phoneNumber": phoneNumber.value,
-        }
-      }
-    });
-    return salesPeople.either.fold((l) => left(l), (r) {
-      if (r.isEmpty)
-        return left(SimpleFailure("No Such User.Please ask to be registered first."));
-      else
-        return r[0]
-            .toDomain()
-            .fold(() => left(SimpleFailure('Unable to change to Domain')), (a) => right(a));
-    });
-  }
-
-  Future<Either<Failure, Map>> login(String idToken)async{
-    final result = await salesPersonCrudDataSource.logIn(idToken);
-    return result.fold((l)=>left(l), (r) => right(r.value));
-  }
 }

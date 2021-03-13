@@ -5,7 +5,7 @@ import '../../common/failure.dart';
 import '../../common/mixins/toast_mixin.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/use_cases/clear_loggedin_user.dart';
-import '../../domain/use_cases/fetch_sales_person.dart';
+import '../../domain/use_cases/fetch_admin.dart';
 import '../../domain/use_cases/login_into_api.dart';
 import '../../domain/use_cases/request_firebase_verification_code.dart';
 import '../../domain/use_cases/save_user.dart';
@@ -54,7 +54,7 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
       toastError(l.message);
     }, (phoneNumber) async {
       final apiResult =
-          await getIt.get<FetchSalesPerson>().execute(phoneNumber);
+          await getIt.get<FetchAdmin>().execute(phoneNumber);
       apiResult.fold((l) {
         toastError(l.message);
       }, (r) async {
