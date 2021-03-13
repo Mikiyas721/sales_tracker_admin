@@ -1,6 +1,6 @@
 import 'package:admin_app/common/id_dto.dart';
 import 'package:admin_app/infrastructure/data_sources/card_transaction_data_source.dart';
-import 'package:admin_app/infrastructure/dto/card_transaction_dto.dart';
+import 'package:admin_app/infrastructure/dtos/card_transaction_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../common/failure.dart';

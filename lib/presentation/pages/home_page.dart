@@ -1,5 +1,5 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
-import 'package:admin_app/presentation/controller/stats_controller.dart';
+import 'package:admin_app/presentation/controllers/stats_controller.dart';
 import 'package:admin_app/presentation/models/sales_status_view_model.dart';
 import 'package:admin_app/presentation/views/sales_status_view.dart';
 import 'package:admin_app/presentation/widgets/my_action_button.dart';

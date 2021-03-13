@@ -3,7 +3,7 @@ import 'package:admin_app/common/id_dto.dart';
 import 'package:admin_app/domain/entities/shop-sales.dart';
 import 'package:admin_app/domain/ports/shop-sales_repo.dart';
 import 'package:admin_app/infrastructure/data_sources/shop-sales_datasource.dart';
-import 'package:admin_app/infrastructure/dto/shop-sales_dto.dart';
+import 'package:admin_app/infrastructure/dtos/shop-sales_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 

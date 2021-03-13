@@ -1,5 +1,5 @@
 import 'package:admin_app/common/id_dto.dart';
-import 'package:admin_app/infrastructure/dto/cash_transaction_dto.dart';
+import 'package:admin_app/infrastructure/dtos/cash_transaction_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../common/failure.dart';

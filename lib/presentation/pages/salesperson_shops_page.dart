@@ -1,5 +1,5 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
-import 'package:admin_app/presentation/controller/salesperson_shops_controller.dart';
+import 'package:admin_app/presentation/controllers/salesperson_shops_controller.dart';
 import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:admin_app/presentation/models/shop_view_model.dart';
 import 'package:admin_app/presentation/views/salesperson_shops_view.dart';

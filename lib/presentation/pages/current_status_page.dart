@@ -1,7 +1,7 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
-import 'package:admin_app/presentation/controller/loans_controller.dart';
-import 'package:admin_app/presentation/controller/new_shops_controller.dart';
-import 'package:admin_app/presentation/controller/recent_sales_controller.dart';
+import 'package:admin_app/presentation/controllers/loans_controller.dart';
+import 'package:admin_app/presentation/controllers/new_shops_controller.dart';
+import 'package:admin_app/presentation/controllers/recent_sales_controller.dart';
 import 'package:admin_app/presentation/models/loans_view_model.dart';
 import 'package:admin_app/presentation/models/new_sales_view_model.dart';
 import 'package:admin_app/presentation/models/new_shops_view_model.dart';

@@ -1,5 +1,5 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
-import 'package:admin_app/presentation/controller/cards_with_shop_controller.dart';
+import 'package:admin_app/presentation/controllers/cards_with_shop_controller.dart';
 import 'package:admin_app/presentation/models/card_transaction_view_model.dart';
 import 'package:admin_app/presentation/views/card_transactions_view.dart';
 import 'package:flutter/material.dart';

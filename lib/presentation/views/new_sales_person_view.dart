@@ -1,5 +1,5 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
-import 'package:admin_app/presentation/controller/new_salesperson_controller.dart';
+import 'package:admin_app/presentation/controllers/new_salesperson_controller.dart';
 import 'package:admin_app/presentation/models/new_salesperson_view_model.dart';
 import 'package:admin_app/presentation/widgets/my_action_button.dart';
 import 'package:admin_app/presentation/widgets/my_text_field.dart';

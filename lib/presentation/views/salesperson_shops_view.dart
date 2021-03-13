@@ -1,6 +1,6 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
 import 'package:admin_app/common/widgets/simple_list_view.dart';
-import 'package:admin_app/presentation/controller/salesperson_shops_controller.dart';
+import 'package:admin_app/presentation/controllers/salesperson_shops_controller.dart';
 import 'package:admin_app/presentation/models/salespeople_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';

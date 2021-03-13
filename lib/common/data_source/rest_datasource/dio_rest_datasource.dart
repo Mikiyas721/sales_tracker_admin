@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:admin_app/domain/use_cases/load_logged_in_user.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import '../../../injection.dart';
 import 'rest_datasource.dart';
 import 'rest_request.dart';
 import 'rest_response.dart';
@@ -18,7 +20,24 @@ class DioRestDataSource implements RestDataSource {
             receiveTimeout: 10000,
             baseUrl: 'http://192.168.43.218:3000/api',
           ),
-        ) {}
+        ) {
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (RequestOptions options) async {
+          final user = await getIt.get<LoadLoggedInUser>().execute();
+          if (user.isSome())
+            options.headers['Authorization'] = user.getOrElse(() => null)?.token;
+          return options;
+        },
+        onResponse: (Response response) async {
+          return response; // continue
+        },
+        onError: (DioError e) async {
+          return e; //continue
+        },
+      ),
+    );
+  }
 
   Future<RestResponseWithFailure> _request(Future<Response> request) async {
     try {

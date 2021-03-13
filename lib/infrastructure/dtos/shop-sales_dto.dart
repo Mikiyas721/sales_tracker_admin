@@ -1,7 +1,7 @@
 import 'package:admin_app/common/id_dto.dart';
 import 'package:admin_app/domain/entities/shop-sales.dart';
-import 'package:admin_app/infrastructure/dto/sales_person_dto.dart';
-import 'package:admin_app/infrastructure/dto/shop_dto.dart';
+import 'package:admin_app/infrastructure/dtos/sales_person_dto.dart';
+import 'package:admin_app/infrastructure/dtos/shop_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

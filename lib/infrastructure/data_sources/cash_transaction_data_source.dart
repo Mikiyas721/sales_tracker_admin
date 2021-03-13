@@ -3,7 +3,7 @@ import '../../common/data_source/crud_datasource/crud_datasource.dart';
 import '../../common/data_source/crud_datasource/rest_crud_datasource.dart';
 import '../../common/data_source/rest_datasource/rest_datasource.dart';
 import '../../common/data_source/rest_datasource/rest_response.dart';
-import '../../infrastructure/dto/cash_transaction_dto.dart';
+import '../../infrastructure/dtos/cash_transaction_dto.dart';
 
 abstract class CashTransactionCrudDataSource
     implements CrudDataSource<CashTransactionDto, RestResponseFailure> {}

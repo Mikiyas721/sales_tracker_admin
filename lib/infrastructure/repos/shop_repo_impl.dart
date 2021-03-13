@@ -1,5 +1,5 @@
 import 'package:admin_app/common/id_dto.dart';
-import 'package:admin_app/infrastructure/dto/shop_dto.dart';
+import 'package:admin_app/infrastructure/dtos/shop_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import '../../common/failure.dart';

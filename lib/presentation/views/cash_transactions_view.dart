@@ -1,6 +1,6 @@
 import 'package:admin_app/common/controller/controller_provider.dart';
 import 'package:admin_app/common/widgets/simple_list_view.dart';
-import 'package:admin_app/presentation/controller/cash_with_shop_controller.dart';
+import 'package:admin_app/presentation/controllers/cash_with_shop_controller.dart';
 import 'package:admin_app/presentation/models/cash_transaction_view_model.dart';
 import 'package:flutter/material.dart';
 import '../../common/common.dart';

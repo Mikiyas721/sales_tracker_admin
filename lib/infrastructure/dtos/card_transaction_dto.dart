@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import '../../common/id_dto.dart';
 import '../../domain/entities/card_transaction.dart';
-import '../dto/sales_person_dto.dart';
-import '../dto/shop_dto.dart';
+import '../dtos/sales_person_dto.dart';
+import '../dtos/shop_dto.dart';
 
 part 'card_transaction_dto.g.dart';
 
