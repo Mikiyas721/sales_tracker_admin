@@ -42,7 +42,7 @@ class CardTransaction extends Entity {
       salesPerson,
       amount,
       createdAt,
-      updatedAt].any((element) => null)) return none();
+      updatedAt].any((element) => element==null)) return none();
 
     final card = CardAmount.createFromNum(amount).getOrElse(() => null);
 

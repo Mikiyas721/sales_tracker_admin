@@ -6,4 +6,5 @@ import 'package:dartz/dartz.dart';
 abstract class IAdminRepo{
   Future<Either<Failure,User>> fetchAdmin(PhoneNumber phoneNumber);
   Future<Either<Failure, Map>> login(String idToken);
+  Future<Either<Failure, User>> create(User admin);
 }

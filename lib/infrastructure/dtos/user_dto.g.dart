@@ -12,8 +12,7 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     phoneNumber: json['phoneNumber'] as String,
     token: json['token'] as String,
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    updatedAt: DateTime.parse(json['updatedAt'] as String),
+    roleId: json['roleId'] as String,
   );
 }
 
@@ -29,8 +28,7 @@ Map<String, dynamic> _$UserDtoToJson(UserDto instance) {
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
   val['phoneNumber'] = instance.phoneNumber;
-  val['token'] = instance.token;
-  val['createdAt'] = instance.createdAt.toIso8601String();
-  val['updatedAt'] = instance.updatedAt.toIso8601String();
+  writeNotNull('token', instance.token);
+  val['roleId'] = instance.roleId;
   return val;
 }

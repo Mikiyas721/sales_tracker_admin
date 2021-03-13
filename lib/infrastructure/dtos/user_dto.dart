@@ -10,20 +10,21 @@ part 'user_dto.g.dart';
 
 @JsonSerializable(nullable: false)
 class UserDto extends IdDto<User> {
-  @JsonKey(nullable: true,includeIfNull: false) final String id;
+  @JsonKey(nullable: true, includeIfNull: false)
+  final String id;
   final String name;
   final String phoneNumber;
+  @JsonKey(nullable: true, includeIfNull: false)
   final String token;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final String roleId;
 
-  UserDto(
-      {@required this.id,
-      @required this.name,
-      @required this.phoneNumber,
-      @required this.token,
-      @required this.createdAt,
-      @required this.updatedAt});
+  UserDto({
+    @required this.id,
+    @required this.name,
+    @required this.phoneNumber,
+    @required this.token,
+    @required this.roleId,
+  });
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>
       _$UserDtoFromJson(json);
@@ -33,12 +34,12 @@ class UserDto extends IdDto<User> {
   @override
   Option<User> toDomain() {
     return User.create(
-        id: id,
-        name: Name.create(name).getOrElse(() => null),
-        phoneNumber: PhoneNumber.create(phoneNumber).getOrElse(() => null),
-        token: token,
-        createdAt: createdAt,
-        updatedAt: updatedAt);
+      id: id,
+      name: Name.create(name).getOrElse(() => null),
+      phoneNumber: PhoneNumber.create(phoneNumber).getOrElse(() => null),
+      token: token,
+      roleId: roleId,
+    );
   }
 
   static UserDto fromDomain(User user) {
@@ -47,8 +48,7 @@ class UserDto extends IdDto<User> {
       name: user.name.value,
       phoneNumber: user.phoneNumber.value,
       token: user.token,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
+      roleId: user.roleId,
     );
   }
 }

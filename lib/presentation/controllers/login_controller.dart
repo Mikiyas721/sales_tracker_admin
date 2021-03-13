@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../application/login/login_bloc.dart';
 import '../../common/controller/controller.dart';
 import '../../common/failure.dart';
@@ -16,8 +17,11 @@ import '../../infrastructure/repos/firebase_repo_impl.dart';
 import '../../injection.dart';
 import '../../presentation/models/login_view_model.dart';
 
-class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
-    LoginState, LoginViewModel> with ToastMixin {
+class LoginController extends BlocViewModelController<LoginBloc,
+    LoginEvent,
+    LoginState,
+    LoginViewModel>
+    with ToastMixin {
   final BuildContext context;
 
   LoginController(this.context) : super(getIt.get<LoginBloc>(), false);
@@ -25,13 +29,18 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
   @override
   LoginViewModel mapStateToViewModel(LoginState s) {
     return LoginViewModel(
-      phoneNumber: s.phoneNumber.getOrElse(() => null)?.value,
+      phoneNumber: s.phoneNumber
+          .getOrElse(() => null)
+          ?.value,
       phoneNumberError: s.hasSubmittedPhoneNumber
           ? s.phoneNumber.fold((l) => l.message, (r) => null)
           : null,
       hasSubmittedPhoneNumber: s.hasSubmittedPhoneNumber,
       isRequestingCode: s.isRequestingCode,
-      code: s.verificationCode.getOrElse(() => null)?.value?.toString(),
+      code: s.verificationCode
+          .getOrElse(() => null)
+          ?.value
+          ?.toString(),
       codeError: s.hasSubmittedCode
           ? s.verificationCode.fold((l) => l.message, (r) => null)
           : null,
@@ -53,8 +62,7 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
     bloc.state.phoneNumber.fold((l) {
       toastError(l.message);
     }, (phoneNumber) async {
-      final apiResult =
-          await getIt.get<FetchAdmin>().execute(phoneNumber);
+      final apiResult = await getIt.get<FetchAdmin>().execute(phoneNumber);
       apiResult.fold((l) {
         toastError(l.message);
       }, (r) async {
@@ -86,7 +94,7 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
     }, (r) async {
       bloc.add(LoginVerifyingCodeEvent());
       final verificationResult =
-          await getIt.get<VerifyFirebaseCode>().execute(r.value.toString());
+      await getIt.get<VerifyFirebaseCode>().execute(r.value.toString());
       verificationResult.fold((l) {
         bloc.add(LoginVerifyingCodeFailedEvent(l));
         toastError(l.message);
@@ -103,14 +111,12 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
       toastError(l.message);
     }, (response) {
       final loggedInUser = User.create(
-        id: response['id'],
-        name: Name.create(response['name']).getOrElse(() => null),
-        phoneNumber:
-            PhoneNumber.create(response['phoneNumber']).getOrElse(() => null),
-        token: response['token'],
-        createdAt: DateTime.parse(response['createdAt']),
-        updatedAt: DateTime.parse(response['updatedAt']),
-      );
+          id: response['id'],
+          name: Name.create(response['name']).getOrElse(() => null),
+          phoneNumber:
+          PhoneNumber.create(response['phoneNumber']).getOrElse(() => null),
+          token: response['token'],
+          roleId: response['roleId']);
       loggedInUser.fold(() {
         bloc.add(LoginVerifyingCodeFailedEvent(SimpleFailure("No user found")));
         toastError("No user found");
@@ -121,6 +127,52 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
             context, '/homePage', (route) => false);
       });
     });
+  }
+
+  void onAccountTap() async {
+    final menuStrings = ['More Stats', 'Add Admin', 'Logout'];
+    final response = await showMenu<String>(
+      context: context,
+      position: RelativeRect.fromLTRB(100, 80, 0, 0),
+      items: menuStrings
+          .map((e) =>
+          PopupMenuItem<String>(
+            child: Text('$e'),
+            value: e,
+          ))
+          .toList(),
+    );
+    if (response == menuStrings[0])
+      Navigator.pushNamed(context, '/currentStatusPage');
+    else if (response == menuStrings[1])
+      Navigator.pushNamed(context, '/addAdminPage');
+    else if (response == menuStrings[2]) onShowDialog();
+  }
+
+  void onShowDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text(
+                'Signing out',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+              content:
+              Text('Are you sure you want to log out?'),
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Cancel')),
+                FlatButton(
+                    onPressed: onLogout,
+                    child: Text('Ok'))
+              ]);
+        });
   }
 
   void onLogout() async {

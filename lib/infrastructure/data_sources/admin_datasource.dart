@@ -4,13 +4,14 @@ import 'package:admin_app/common/data_source/rest_datasource/rest_datasource.dar
 import 'package:admin_app/common/data_source/rest_datasource/rest_request.dart';
 import 'package:admin_app/common/data_source/rest_datasource/rest_response.dart';
 import 'package:admin_app/infrastructure/dtos/user_dto.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class AdminCrudDataSource
     extends CrudDataSource<UserDto, RestResponseFailure> {
   Future<RestResponseWithFailure> logIn(String idToken);
 
 }
-
+@LazySingleton(as:AdminCrudDataSource)
 class AdminLoopbackDataSource extends LoopbackRestCrudDataSource<UserDto>
     implements AdminCrudDataSource {
   AdminLoopbackDataSource(RestDataSource restDataSource)

@@ -1,4 +1,5 @@
 import 'package:admin_app/injection.dart';
+import 'package:admin_app/presentation/pages/add_admin_page.dart';
 import 'package:admin_app/presentation/pages/current_status_page.dart';
 import 'package:admin_app/presentation/pages/cash_transactions_page.dart';
 import 'package:admin_app/presentation/pages/home_page.dart';
@@ -58,6 +59,7 @@ final routes = {
   '/loginPage': (BuildContext context) => LoginPage(),
   '/homePage': (BuildContext context)=> HomePage(),
   '/salesPeoplePage': (BuildContext context)=> SalespeoplePage(),
+  '/addAdminPage': (BuildContext context)=> AddAdminPage(),
   '/newSalesPersonPage': (BuildContext context)=> NewSalesPersonPage(),
   '/salesPersonStatusPage': (BuildContext context)=> SalespersonStatusPage(),
   '/salesPersonShopsPage': (BuildContext context)=> SalespersonShopsPage(),

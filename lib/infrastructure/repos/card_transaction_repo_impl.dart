@@ -128,6 +128,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
   Future<Either<Failure, List<CardTransaction>>> fetchLoans() async {
     final result = await _cardTransactionCrudDataSource.find(options: {
       "filter": {
+        "include": {"relation": "salesPerson"},
         "where": {
           "soldAmount": {
             //TODO check
@@ -145,6 +146,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
   Future<Either<Failure, List<CardTransaction>>> fetchRecentlySold() async {
     final result = await _cardTransactionCrudDataSource.find(options: {
       "filter": {
+        "include": {"relation": "salesPerson"},
         "where": {
           "createdAt": {
             "gt": "${DateTime.now().subtract(Duration(days: 7)).toString()}"

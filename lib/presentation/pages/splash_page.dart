@@ -27,7 +27,13 @@ class SplashPage extends StatelessWidget {
                 children: [
                   Text(
                     'Sales Tracker',
-                    style: GoogleFonts.poppins(fontSize: 30, color: Colors.white),
+                    style:
+                    GoogleFonts.montserrat(fontSize: 22, color: Colors.white),
+                  ),
+                  Text(
+                    'Administrator',
+                    style:
+                        GoogleFonts.poppins(fontSize: 30, color: Colors.white),
                   ),
                   30.vSpace,
                   SpinKitWave(
