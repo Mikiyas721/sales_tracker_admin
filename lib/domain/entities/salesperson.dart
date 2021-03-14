@@ -9,6 +9,7 @@ class Salesperson extends Entity {
   final PhoneNumber phoneNumber;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final double balance;
 
   Salesperson._({
     this.id,
@@ -16,6 +17,7 @@ class Salesperson extends Entity {
     this.phoneNumber,
     this.createdAt,
     this.updatedAt,
+    this.balance,
   });
 
   static Option<Salesperson> create({
@@ -24,6 +26,7 @@ class Salesperson extends Entity {
     String phoneNumber,
     DateTime createdAt,
     DateTime updatedAt,
+    double balance,
   }) {
     if ([
       id,
@@ -43,6 +46,7 @@ class Salesperson extends Entity {
       phoneNumber: phoneNumberObject,
       createdAt: createdAt,
       updatedAt: updatedAt,
+      balance: balance
     ));
   }
 

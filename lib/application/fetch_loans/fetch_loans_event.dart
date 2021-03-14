@@ -10,7 +10,7 @@ class FetchingLoansEvent extends FetchLoansEvent {
 }
 
 class FetchingLoansSucceededEvent extends FetchLoansEvent {
-  final List<CardTransaction> sales;
+  final List<Salesperson> sales;
 
   FetchingLoansSucceededEvent(this.sales);
 

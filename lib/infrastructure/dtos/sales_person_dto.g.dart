@@ -17,15 +17,12 @@ SalespersonDto _$SalespersonDtoFromJson(Map<String, dynamic> json) {
     createdAt: json['createdAt'] == null
         ? null
         : DateTime.parse(json['createdAt'] as String),
+    balance: (json['balance'] as num)?.toDouble(),
   );
 }
 
 Map<String, dynamic> _$SalespersonDtoToJson(SalespersonDto instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'name': instance.name,
-    'phoneNumber': instance.phoneNumber,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -33,6 +30,10 @@ Map<String, dynamic> _$SalespersonDtoToJson(SalespersonDto instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
+  val['name'] = instance.name;
+  val['phoneNumber'] = instance.phoneNumber;
+  writeNotNull('balance', instance.balance);
   writeNotNull('createdAt', instance.createdAt?.toIso8601String());
   writeNotNull('updatedAt', instance.updatedAt?.toIso8601String());
   return val;

@@ -18,6 +18,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
       String salesPersonId, String shopId) async {
     final result = await _cardTransactionCrudDataSource.find(options: {
       "filter": {
+        "order": "createdAt DESC",
         "where": {
           "and": [
             {"salesPersonId": "$salesPersonId"},
@@ -146,6 +147,7 @@ class CardTransactionRepoImpl extends ICardTransactionRepo {
   Future<Either<Failure, List<CardTransaction>>> fetchRecentlySold() async {
     final result = await _cardTransactionCrudDataSource.find(options: {
       "filter": {
+        "order": "createdAt DESC",
         "include": {"relation": "salesPerson"},
         "where": {
           "createdAt": {

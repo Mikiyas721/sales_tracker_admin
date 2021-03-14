@@ -20,11 +20,13 @@ class NewShopViewModel extends ViewModel {
   final String name;
   final String phoneNumber;
   final String address;
+  final String date;
 
   NewShopViewModel({
     this.name,
     this.phoneNumber,
     this.address,
+    this.date
   });
 
   @override

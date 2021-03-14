@@ -16,10 +16,10 @@ class LoansController extends BlocViewModelController<FetchLoansBloc,
     return LoansViewModel(
       loans: s.sales
           .map<LoanViewModel>((e) => LoanViewModel(
-              name: e.salesPerson.getOrElse(() => null)?.name?.value,
+              name: e.name.value,
               phoneNumber:
-                  e.salesPerson.getOrElse(() => null)?.phoneNumber?.value,
-              amount: e.amount.value.toString()))
+                  e.phoneNumber.value,
+              amount: e.balance.toString()))
           .toList(),
       loading: s.isLoading,
       errorMessage: s.fetchingSalesFailure.getOrElse(() => null)?.message,

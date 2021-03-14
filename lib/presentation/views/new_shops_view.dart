@@ -51,6 +51,10 @@ class NewShopView extends StatelessWidget {
         '${newShop.phoneNumber}\n${newShop.address}',
         style: TextStyle(color: Colors.grey, fontSize: 12),
       ),
+      trailing: Text(
+        '${newShop.date}',
+        style: TextStyle(color: Colors.grey, fontSize: 12),
+      ),
       isThreeLine: true,
     );
   }

@@ -15,7 +15,7 @@ class _$FetchLoansStateTearOff {
 
 // ignore: unused_element
   _FetchLoansState call(
-      {List<CardTransaction> sales,
+      {List<Salesperson> sales,
       Option<Failure> fetchingSalesFailure,
       bool isLoading}) {
     return _FetchLoansState(
@@ -32,7 +32,7 @@ const $FetchLoansState = _$FetchLoansStateTearOff();
 
 /// @nodoc
 mixin _$FetchLoansState {
-  List<CardTransaction> get sales;
+  List<Salesperson> get sales;
   Option<Failure> get fetchingSalesFailure;
   bool get isLoading;
 
@@ -46,7 +46,7 @@ abstract class $FetchLoansStateCopyWith<$Res> {
           FetchLoansState value, $Res Function(FetchLoansState) then) =
       _$FetchLoansStateCopyWithImpl<$Res>;
   $Res call(
-      {List<CardTransaction> sales,
+      {List<Salesperson> sales,
       Option<Failure> fetchingSalesFailure,
       bool isLoading});
 }
@@ -67,7 +67,7 @@ class _$FetchLoansStateCopyWithImpl<$Res>
     Object isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      sales: sales == freezed ? _value.sales : sales as List<CardTransaction>,
+      sales: sales == freezed ? _value.sales : sales as List<Salesperson>,
       fetchingSalesFailure: fetchingSalesFailure == freezed
           ? _value.fetchingSalesFailure
           : fetchingSalesFailure as Option<Failure>,
@@ -84,7 +84,7 @@ abstract class _$FetchLoansStateCopyWith<$Res>
       __$FetchLoansStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<CardTransaction> sales,
+      {List<Salesperson> sales,
       Option<Failure> fetchingSalesFailure,
       bool isLoading});
 }
@@ -107,7 +107,7 @@ class __$FetchLoansStateCopyWithImpl<$Res>
     Object isLoading = freezed,
   }) {
     return _then(_FetchLoansState(
-      sales: sales == freezed ? _value.sales : sales as List<CardTransaction>,
+      sales: sales == freezed ? _value.sales : sales as List<Salesperson>,
       fetchingSalesFailure: fetchingSalesFailure == freezed
           ? _value.fetchingSalesFailure
           : fetchingSalesFailure as Option<Failure>,
@@ -122,7 +122,7 @@ class _$_FetchLoansState implements _FetchLoansState {
       {this.sales, this.fetchingSalesFailure, this.isLoading});
 
   @override
-  final List<CardTransaction> sales;
+  final List<Salesperson> sales;
   @override
   final Option<Failure> fetchingSalesFailure;
   @override
@@ -162,12 +162,12 @@ class _$_FetchLoansState implements _FetchLoansState {
 
 abstract class _FetchLoansState implements FetchLoansState {
   const factory _FetchLoansState(
-      {List<CardTransaction> sales,
+      {List<Salesperson> sales,
       Option<Failure> fetchingSalesFailure,
       bool isLoading}) = _$_FetchLoansState;
 
   @override
-  List<CardTransaction> get sales;
+  List<Salesperson> get sales;
   @override
   Option<Failure> get fetchingSalesFailure;
   @override

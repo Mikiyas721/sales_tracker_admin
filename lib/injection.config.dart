@@ -140,7 +140,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i47.FetchAdmin>(
       () => _i47.FetchAdmin(get<_i31.IAdminRepo>()));
   gh.lazySingleton<_i48.FetchLoans>(
-      () => _i48.FetchLoans(get<_i33.ICardTransactionRepo>()));
+      () => _i48.FetchLoans(get<_i37.ISalesPersonRepo>()));
   gh.lazySingleton<_i49.FetchNewShops>(
       () => _i49.FetchNewShops(get<_i39.IShopRepo>()));
   gh.lazySingleton<_i50.FetchRecentlySold>(

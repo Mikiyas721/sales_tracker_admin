@@ -18,6 +18,7 @@ class ShopSalesRepoImpl extends IShopSalesRepo {
       String salespersonId) async {
     final shopSalesResults = await shopSalesCrudDataSource.find(options: {
       "filter": {
+        "order": "createdAt DESC",
         "include": {"relation": "shop"},
         "where": {
           "salesPersonId": {"eq": "$salespersonId"}

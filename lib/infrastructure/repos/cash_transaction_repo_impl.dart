@@ -18,6 +18,7 @@ class CashTransactionRepoImpl implements ICashTransactionRepo {
       String salesPersonId, String shopId) async {
     final result = await _cashTransactionCrudDataSource.find(options: {
       "filter": {
+        "order": "createdAt DESC",
         "where": {
           "and": [
             {"salesPersonId": "$salesPersonId"},

@@ -33,6 +33,7 @@ class ShopRepoImpl extends IShopRepo {
   Future<Either<Failure, List<Shop>>> fetchNewShops() async{
     final result = await shopCrudDataSource.find(options: {
       "filter": {
+        "order": "createdAt DESC",
         "where": {
           "createdAt": {
             "gt": "${DateTime.now().subtract(Duration(days: 7)).toString()}"

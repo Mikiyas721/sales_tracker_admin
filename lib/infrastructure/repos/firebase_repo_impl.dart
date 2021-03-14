@@ -36,7 +36,6 @@ class FirebaseRepoImpl extends IFirebaseRepo {
         UserCredential result =
             await authInstance.signInWithCredential(authCredential);
         final idToken = await result.user.getIdToken();
-        print(idToken);
         completer.complete(PhoneAuthSuccessResult(idToken));
       },
       verificationFailed: (FirebaseAuthException exception) {
